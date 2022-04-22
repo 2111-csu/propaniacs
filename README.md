@@ -1,4 +1,4 @@
-# Let's Build a Full Stack Application
+# Let's Build a Full Stack Application - E Commerce Application
 
 This full stack app boilerplate consists of:
 
