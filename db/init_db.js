@@ -3,12 +3,12 @@ const {
   Products,
   // declare your model imports here
   // for example, User
-} = require('./');
+} = require("./");
 
 async function dropTables() {
   try {
-    console.log('Starting to drop tables...');
-    
+    console.log("Starting to drop tables...");
+
     client.query(`
       DROP TABLE IF EXISTS order_products;
       DROP TABLE IF EXISTS orders;
@@ -16,9 +16,9 @@ async function dropTables() {
       DROP TABLE IF EXISTS products;
     `);
 
-    console.log('Finished dropping tables!');
+    console.log("Finished dropping tables!");
   } catch (error) {
-    console.error('Error while dropping tables!');
+    console.error("Error while dropping tables!");
 
     throw error;
   }
@@ -36,7 +36,7 @@ async function createTables() {
       name VARCHAR(255) UNIQUE NOT NULL,
       description VARCHAR(255) NOT NULL,
       price INTEGER NOT NULL,
-      'imageURL' VARCHAR(255) DEFAULT '',
+      "imageURL" VARCHAR(255) DEFAULT '',
       "inStock" BOOLEAN DEFAULT false,
       category VARCHAR(255) NOT NULL
     );
@@ -68,7 +68,7 @@ async function createTables() {
 
   `);
   } catch (error) {
-    console.error(error, 'Error constructing tables!');
+    console.error(error, "Error constructing tables!");
     throw error;
   }
 }
@@ -78,9 +78,9 @@ async function buildTables() {
     client.connect();
 
     // drop tables in correct order
-    await dropTables()
+    await dropTables();
     // build tables in correct order
-    await createTables()
+    await createTables();
   } catch (error) {
     throw error;
   }
@@ -88,32 +88,38 @@ async function buildTables() {
 
 async function populateInitialData() {
   try {
-   const productsToCreate = [ 
-     {name:'5 Gallon Tank', 
-     description: '5 Gallons of Propane', 
-     price: '$20.00', 
-     imageURL: 'https://image.url', 
-     inStock: true, 
-     category: 'Propane'},
-     {name:'Weber 3000', 
-     description:'4 burner propane grill', 
-     price:'$300',
-     imageURL:'https://image.url', 
-     inStock: true, 
-     category:'Grill'},
-     {name: 'Tongs', 
-     description: 'Stainless Steel', 
-     price: '5.00', 
-     imageURL: 'https://image.url', 
-     inStock: true, 
-     category: "Accessories"},
-   ] 
-
-   const products = await Promise.all(productsToCreate.map(Products.createProduct)) 
-
-   console.log('Products created:');
-   console.log(products);
-   console.log('Finished creating Products!');
+    const productsToCreate = [
+      {
+        name: "5 Gallon Tank",
+        description: "5 Gallons of Propane",
+        price: 20,
+        imageURL: "text",
+        inStock: true,
+        category: "Propane",
+      },
+      {
+        name: "Weber 3000",
+        description: "4 burner propane grill",
+        price: 300,
+        imageURL: "text",
+        inStock: true,
+        category: "Grill",
+      },
+      {
+        name: "Tongs",
+        description: "Stainless Steel",
+        price: "5",
+        imageURL: "text",
+        inStock: true,
+        category: "Accessories",
+      },
+    ];
+    const products = await Promise.all(
+      productsToCreate.map(Products.createProduct)
+    );
+    console.log("Products created:");
+    console.log(products);
+    console.log("Finished creating Products!");
     // create useful starting data by leveraging your
     // Model.method() adapters to seed your db, for example:
     // const user1 = await User.createUser({ ...user info goes here... })
