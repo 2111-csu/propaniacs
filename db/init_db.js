@@ -77,9 +77,9 @@ async function buildTables() {
     client.connect();
 
     // drop tables in correct order
-    dropTables()
+    await dropTables()
     // build tables in correct order
-    createTables()
+    await createTables()
   } catch (error) {
     throw error;
   }
