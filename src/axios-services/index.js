@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 // this file holds your frontend network request adapters
 // think about each function as a service that provides data
@@ -18,9 +18,27 @@ import axios from 'axios';
   }
 */
 
+export async function getProducts() {
+  try {
+    const { data: products } = await axios.get("/api/products");
+    return products;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export async function getProductById(id) {
+  try {
+    const { data: product } = await axios.get(`/api/products/${id}`);
+    return product;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 export async function getAPIHealth() {
   try {
-    const { data } = await axios.get('/api/health');
+    const { data } = await axios.get("/api/health");
     return data;
   } catch (err) {
     console.error(err);
