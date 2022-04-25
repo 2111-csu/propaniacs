@@ -77,4 +77,4 @@ usersRouter.get('/me', requireUser, async (req, res, next) => {
     }
 })
 
-module.exports = productsRouter;
+module.exports = usersRouter;
