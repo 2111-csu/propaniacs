@@ -1,6 +1,7 @@
 const {
   client,
   Products,
+  Users,
   // declare your model imports here
   // for example, User
 } = require("./");
@@ -43,8 +44,8 @@ async function createTables() {
 
     CREATE TABLE users(
       id SERIAL PRIMARY KEY,
-      "firstName" VARCHAR(255) UNIQUE NOT NULL,
-      "lastName" VARCHAR(255) UNIQUE NOT NULL,
+      "firstName" VARCHAR(255) NOT NULL,
+      "lastName" VARCHAR(255) NOT NULL,
       email VARCHAR(255) UNIQUE NOT NULL,
       username VARCHAR(255) UNIQUE NOT NULL,
       password VARCHAR(255) UNIQUE NOT NULL,
@@ -114,12 +115,44 @@ async function populateInitialData() {
         category: "Accessories",
       },
     ];
+
     const products = await Promise.all(
       productsToCreate.map(Products.createProduct)
     );
     console.log("Products created:");
     console.log(products);
     console.log("Finished creating Products!");
+
+    const usersToCreate = [
+      {
+        firstName: "Hank",
+        lastName: "Hill",
+        email: "PropaneHank@strick-landpropane.com",
+        username: "KingOfTheHill",
+        password: "propaneIsBeautiful",
+        isAdmin: true,
+      },
+      {
+        firstName: "Bobby",
+        lastName: "Hill",
+        email: "damnitbobby@gmail.com",
+        username: "damnitbobby",
+        password: "password",
+        isAdmin: false,
+      },
+      {
+        firstName: "Peggy",
+        lastName: "Hill",
+        email: "peggy.hill@yahoo.com",
+        username: "peggyhill",
+        password: "arlington",
+        isAdmin: false,
+      },
+    ];
+    const users = await Promise.all(usersToCreate.map(Users.createUser));
+    console.log("Users created:");
+    console.log(users);
+    console.log("Finished creating Users!");
     // create useful starting data by leveraging your
     // Model.method() adapters to seed your db, for example:
     // const user1 = await User.createUser({ ...user info goes here... })
