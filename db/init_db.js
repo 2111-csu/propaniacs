@@ -3,6 +3,7 @@ const {
   Products,
   Users,
   Orders,
+  Order_products,
   // declare your model imports here
   // for example, User
 } = require("./");
@@ -173,6 +174,51 @@ async function populateInitialData() {
     console.log("Orders created:");
     console.log(orders);
     console.log("Finished creating Orders!");
+
+    const orderProductsToCreate = [
+      {
+        productId: 1,
+        orderId: 1,
+        price: 20,
+        quantity: 1,
+      },
+      {
+        productId: 2,
+        orderId: 1,
+        price: 300,
+        quantity: 1,
+      },
+      {
+        productId: 3,
+        orderId: 1,
+        price: 5,
+        quantity: 1,
+      },
+      {
+        productId: 1,
+        orderId: 2,
+        price: 20,
+        quantity: 1,
+      },
+      {
+        productId: 2,
+        orderId: 2,
+        price: 300,
+        quantity: 1,
+      },
+      {
+        productId: 1,
+        orderId: 3,
+        price: 20,
+        quantity: 1,
+      },
+    ];
+    const orderProducts = await Promise.all(
+      orderProductsToCreate.map(Order_products.addProductToOrder)
+    );
+    console.log("Order_products created:");
+    console.log(orderProducts);
+    console.log("Finished creating Order_products!");
     // create useful starting data by leveraging your
     // Model.method() adapters to seed your db, for example:
     // const user1 = await User.createUser({ ...user info goes here... })
