@@ -219,6 +219,31 @@ async function populateInitialData() {
     console.log("Order_products created:");
     console.log(orderProducts);
     console.log("Finished creating Order_products!");
+
+    console.log("Fetching Orders");
+    const allOrders = await Orders.getAllOrders();
+    console.log(allOrders);
+    console.log("Finished fetching all orders!");
+
+    console.log("Fetching Order by user");
+    const orderByUser = await Orders.getOrderByUser(1);
+    console.log(orderByUser);
+    console.log("Finished fetching order by user!");
+
+    console.log("Fetching Order by id");
+    const orderById = await Orders.getOrderById(2);
+    console.log(orderById);
+    console.log("Finished fetching order by Id");
+
+    console.log("Fetching Order by product");
+    const orderByProduct = await Orders.getOrderByProduct(3);
+    console.log(orderByProduct);
+    console.log("Finished fetching order by product!");
+
+    console.log("Fetching Order by user's cart");
+    const cartByUser = await Orders.getCartByUser(1);
+    console.log(cartByUser);
+    console.log("Finished fetching cart by user!");
     // create useful starting data by leveraging your
     // Model.method() adapters to seed your db, for example:
     // const user1 = await User.createUser({ ...user info goes here... })
