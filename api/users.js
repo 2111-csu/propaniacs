@@ -82,4 +82,15 @@ usersRouter.get('/me', requireUser, async (req, res, next) => {
     }
 })
 
+usersRouter.get('/users/:userId/orders', requireUser, async (req, res, next) => {
+  try {
+      res.send(req.user);
+  } catch (error) {
+      next(error)
+  }
+})
+
+// Get a list of orders for a particular user.
+
+
 module.exports = usersRouter;

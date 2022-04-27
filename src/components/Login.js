@@ -62,7 +62,7 @@ const Login = () => {
             </button>
           </form>
           <br></br>
-          <Link to = "/users/register">
+          <Link to = "/account/register">
             <h4>
               Already have an account? Login here!
             </h4>

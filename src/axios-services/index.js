@@ -53,7 +53,7 @@ export async function loginUser(username, password) {
       password,
     });
     console.log(data, "data from loginUser");
-
+    localStorage.setItem("token", data.token)
     return data;
   } catch (err) {
     throw err;
@@ -80,6 +80,9 @@ export async function createUser(
     console.log(data, "data from createUser");
 
     return data;
+=======
+    localStorage.setItem("token", data.token)
+    return data;  
   } catch (err) {
     throw err;
   }
