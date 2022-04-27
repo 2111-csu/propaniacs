@@ -11,7 +11,8 @@
     "db:build": "node ./db/init_db",
     "start:dev": "concurrently \"npm run client:build\" \"npm run client:dev\" \"npm run server:dev\"",
     "start": "node index.js",
-    "test": "jest --runInBand"
+    "test": "jest --runInBand",
+    "start-client": "CHOKIDAR_USEPOLLING=true react-scripts start"
   },
   "keywords": [],
   "author": "",
@@ -29,7 +30,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.4"
+    "react-scripts": "^3.4.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.4",

@@ -8,13 +8,14 @@ const { getUser, createUser, getUserByUsername} = require("../db/models/users")
 
 usersRouter.post('/register', async (req, res, next) => {
     try {
-      const {username, password} = req.body;
+      const {username, password, email, firstName, lastName, isAdmin} = req.body;
       const queriedUser = await getUserByUsername(username);
       if (queriedUser) {
         res.status(401);
         next({
           name: 'UserExistsError',
           message: 'Another propane enthusiast is already using that username. Please choose another username'
+  
         });
       } else if (password.length < 8) {
         res.status(401);
@@ -23,18 +24,22 @@ usersRouter.post('/register', async (req, res, next) => {
           message: 'That password is too dang short! Eight character minimum please.'
         });
       } else {
-        const user = await createUser({
+        const newUser = await createUser({
           username,
-          password
+          password,
+          email, 
+          firstName,
+          lastName,
+          isAdmin
         });
-        if (!user) {
+        if (!newUser) {
           next({
             name: 'UserCreationError',
             message: 'There was a problem registering you. Please try again.',
           });
         } else {
-          const token = jwt.sign({id: user.id, username: user.username}, JWT_SECRET, { expiresIn: '1w' });
-          res.send({ user, message: "Well alright then; you are signed up!", token });
+          const token = jwt.sign({id: newUser.id, username: newUser.username}, JWT_SECRET, { expiresIn: '1w' });
+          res.send({ user: newUser, message: "Well alright then; you are signed up!", token });
         }
       }
     } catch (error) {

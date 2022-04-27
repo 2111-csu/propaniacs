@@ -36,6 +36,28 @@ export async function getProductById(id) {
   }
 }
 
+export async function loginUser(username, password) {
+  try {
+    const {data} = await axios.post(`/api/users/login`, {username, password});
+    console.log(data, "data from loginUser");
+
+    return data;
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function createUser(username, password, firstName, lastName, email, isAdmin) {
+  try {
+    const { data } = await axios.post(`/api/users/register`, {username, password, firstName, lastName, email, isAdmin});
+    console.log(data, "data from createUser");
+
+    return data;  
+  } catch (err) {
+    throw err;
+  }
+}
+
 export async function getAPIHealth() {
   try {
     const { data } = await axios.get("/api/health");
