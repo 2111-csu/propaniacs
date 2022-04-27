@@ -8,13 +8,14 @@ const { getUser, createUser, getUserByUsername} = require("../db/models/users")
 
 usersRouter.post('/register', async (req, res, next) => {
     try {
-      const {username, password, email, firstName, lastName} = req.body;
+      const {username, password, email, firstName, lastName, isAdmin} = req.body;
       const queriedUser = await getUserByUsername(username);
       if (queriedUser) {
         res.status(401);
         next({
           name: 'UserExistsError',
           message: 'Another propane enthusiast is already using that username. Please choose another username'
+  
         });
       } else if (password.length < 8) {
         res.status(401);
@@ -28,7 +29,8 @@ usersRouter.post('/register', async (req, res, next) => {
           password,
           email, 
           firstName,
-          lastName
+          lastName,
+          isAdmin
         });
         if (!newUser) {
           next({

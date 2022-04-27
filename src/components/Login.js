@@ -37,7 +37,7 @@ const Login = () => {
           <h1 class="welcome">Welcome!</h1>
           <br></br>
           <h3 class = "welcome">
-              Register to create activities, routines, and more!
+              Login to experience the joy of Propane!
           </h3>
           <form class ="input" onSubmit={handleSubmit}>
             <input 

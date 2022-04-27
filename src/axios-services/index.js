@@ -47,10 +47,12 @@ export async function loginUser(username, password) {
   }
 }
 
-export async function createUser() {
+export async function createUser(username, password, firstName, lastName, email, isAdmin) {
   try {
-    const { data: user } = await axios.get("/api/users/register");
-    return user;
+    const { data } = await axios.post(`/api/users/register`, {username, password, firstName, lastName, email, isAdmin});
+    console.log(data, "data from createUser");
+
+    return data;  
   } catch (err) {
     throw err;
   }
