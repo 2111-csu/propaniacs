@@ -36,9 +36,22 @@ export async function getProductById(id) {
   }
 }
 
+export async function getOrderById(id) {
+  try {
+    const { data: order } = await axios.get(`/api/orders/${id}`);
+    console.log(order);
+    return order;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 export async function loginUser(username, password) {
   try {
-    const {data} = await axios.post(`/api/users/login`, {username, password});
+    const { data } = await axios.post(`/api/users/login`, {
+      username,
+      password,
+    });
     console.log(data, "data from loginUser");
     localStorage.setItem("token", data.token)
     return data;
@@ -47,10 +60,27 @@ export async function loginUser(username, password) {
   }
 }
 
-export async function createUser(username, password, firstName, lastName, email, isAdmin) {
+export async function createUser(
+  username,
+  password,
+  firstName,
+  lastName,
+  email,
+  isAdmin
+) {
   try {
-    const { data } = await axios.post(`/api/users/register`, {username, password, firstName, lastName, email, isAdmin});
+    const { data } = await axios.post(`/api/users/register`, {
+      username,
+      password,
+      firstName,
+      lastName,
+      email,
+      isAdmin,
+    });
     console.log(data, "data from createUser");
+
+    return data;
+=======
     localStorage.setItem("token", data.token)
     return data;  
   } catch (err) {
