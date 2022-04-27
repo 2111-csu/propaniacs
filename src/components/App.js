@@ -10,14 +10,38 @@ import {
   AllProducts, 
   NavBar, 
   Register, 
-  Login,
-  Profile 
+  Login 
 } from "./index";
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
+  const storedEmail = localStorage.getItem("email")
+  const storedUsername = localStorage.getItem("username")
+  const storedFirstName = localStorage.getItem("firstName")
+  const storedLastName = localStorage.getItem("lastName")
+  const storedId = localStorage.getItem("id")
+  const storedIsAdmin = localStorage.getItem("isAdmin")
+  const storedToken = localStorage.getItem("token")
+  console.log(localStorage, "localstorage from App");  
+
+  const [token, setToken] = useState("");
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [id, setId] = useState("");
+  const [isAdmin, setisAdmin] = useState(false);
 
   useEffect(() => {
+    if (storedToken){
+      setToken(storedToken)
+      setEmail(storedEmail)
+      setUsername(storedUsername)
+      setFirstName(storedFirstName)
+      setLastName(storedLastName)
+      setId(storedId)
+      setisAdmin(storedIsAdmin)
+    }
     // follow this pattern inside your useEffect calls:
     // first, create an async function that will wrap your axios service adapter
     // invoke the adapter, await the response, and set the data
@@ -36,17 +60,17 @@ const App = () => {
       <h1>Hello, World!</h1>
       <p>API Status: {APIHealth}</p>
       <BrowserRouter>
-        <NavBar />
+        <NavBar token = {token}/>
         <Route exact path="/products">
           <AllProducts />
         </Route>
         <Route exact path={`/products/:productId`}>
           <SingleProduct />
         </Route>
-        <Route exact path="/users/login">
+        <Route exact path="/account/login">
           <Login />
         </Route>
-        <Route exact path="/users/register">
+        <Route exact path="/account/register">
           <Register />
         </Route>
         {/* <Route exact path="/users/me">

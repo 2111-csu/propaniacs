@@ -10,7 +10,6 @@ const Register = () => {
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const [isAdmin, setisAdmin] = useState(false)
-    
 
     const handleSubmit = async (event) => {
       event.preventDefault();
@@ -75,7 +74,6 @@ const Register = () => {
               type = "text" 
               placeholder = "username" 
               value = {username}
-              // value = "KingOfTheHill"
               onChange={(e) => setUsername(e.target.value)}>
             </input>
             <br></br>
@@ -87,20 +85,13 @@ const Register = () => {
               onChange={(e) => setPassword(e.target.value)}>
             </input>
             <br></br>
-            <input 
-              type = "checkbox" 
-              placeholder = "Admin?" 
-              value = {isAdmin}
-              onChange={(e) => setisAdmin(true)}>
-            </input>
-            <br></br>
             <button 
               type = "submit">
               SUBMIT
             </button>
           </form>
           <br></br>
-          <Link to = "/users/login">
+          <Link to = "/account/login">
             <h4>
               Already have an account? Login here!
             </h4>
