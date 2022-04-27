@@ -40,7 +40,7 @@ export async function loginUser(username, password) {
   try {
     const {data} = await axios.post(`/api/users/login`, {username, password});
     console.log(data, "data from loginUser");
-
+    localStorage.setItem("token", data.token)
     return data;
   } catch (err) {
     throw err;
@@ -51,7 +51,7 @@ export async function createUser(username, password, firstName, lastName, email,
   try {
     const { data } = await axios.post(`/api/users/register`, {username, password, firstName, lastName, email, isAdmin});
     console.log(data, "data from createUser");
-
+    localStorage.setItem("token", data.token)
     return data;  
   } catch (err) {
     throw err;
