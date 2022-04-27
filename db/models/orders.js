@@ -27,13 +27,25 @@ const getAllOrders = async () => {
       JOIN order_products ON orders.id="orderId"
     `);
 
+    const { rows: allProducts } = await client.query(`
+      SELECT *
+      FROM products
+      
+    `);
+
+    orders.forEach((order) => {
+      order.products = allProducts.filter(
+        (product) => product.id == order.productId
+      );
+    });
+
     return orders;
   } catch (error) {
     throw error;
   }
 };
 
-const getOrderByUser = async (id) => {
+const getOrderByUser = async ({ id }) => {
   try {
     const { rows: orders } = await client.query(
       `
@@ -44,6 +56,18 @@ const getOrderByUser = async (id) => {
     `,
       [id]
     );
+
+    const { rows: allProducts } = await client.query(`
+      SELECT *
+      FROM products
+      
+    `);
+
+    orders.forEach((order) => {
+      order.products = allProducts.filter(
+        (product) => product.id == order.productId
+      );
+    });
 
     return orders;
   } catch (error) {
@@ -63,13 +87,25 @@ const getOrderById = async (id) => {
       [id]
     );
 
+    const { rows: allProducts } = await client.query(`
+      SELECT *
+      FROM products
+      
+    `);
+
+    orders.forEach((order) => {
+      order.products = allProducts.filter(
+        (product) => product.id == order.productId
+      );
+    });
+
     return orders;
   } catch (error) {
     throw error;
   }
 };
 
-const getOrderByProduct = async (id) => {
+const getOrderByProduct = async ({ id }) => {
   try {
     const { rows: orders } = await client.query(
       `
@@ -81,13 +117,25 @@ const getOrderByProduct = async (id) => {
       [id]
     );
 
+    const { rows: allProducts } = await client.query(`
+      SELECT *
+      FROM products
+      
+    `);
+
+    orders.forEach((order) => {
+      order.products = allProducts.filter(
+        (product) => product.id == order.productId
+      );
+    });
+
     return orders;
   } catch (error) {
     throw error;
   }
 };
 
-const getCartByUser = async (id) => {
+const getCartByUser = async ({ id }) => {
   try {
     const { rows: orders } = await client.query(
       `
@@ -100,6 +148,18 @@ const getCartByUser = async (id) => {
     `,
       [id]
     );
+
+    const { rows: allProducts } = await client.query(`
+      SELECT *
+      FROM products
+      
+    `);
+
+    orders.forEach((order) => {
+      order.products = allProducts.filter(
+        (product) => product.id == order.productId
+      );
+    });
 
     return orders;
   } catch (error) {
