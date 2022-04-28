@@ -10,6 +10,7 @@ const SingleOrder = () => {
     const getSingleOrder = async (orderId) => {
       const singleOrder = await getOrderById(orderId);
       console.log("singleOrder", singleOrder);
+
       setOrder(singleOrder);
     };
 
@@ -19,11 +20,29 @@ const SingleOrder = () => {
   return (
     <div>
       <h1>Single Order</h1>
+      {
+    order.map((orderItem) => {
+      return(
+        <>
       <ul key={order.id}>
-        <li>Order Status:{order.status}</li>
-        <li>Order Date:{order.datePlaced}</li>
+        <li>Order Status:{orderItem.status}</li>
+        <li>Order Date:{orderItem.datePlaced}</li>
       </ul>
-    </div>
+        {
+          orderItem.products.map((item) => {
+            return(
+              <>
+                <ul>
+                <li>Product Name: {item.name}</li>
+                </ul>
+              </>
+            )
+          })
+        }
+        </>
+      )
+      })}
+      </div>
   );
 };
 

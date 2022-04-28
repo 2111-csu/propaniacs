@@ -76,21 +76,28 @@ usersRouter.post('/login', async (req, res, next) => {
 
 usersRouter.get('/me', requireUser, async (req, res, next) => {
     try {
-        res.send(req.user);
+        res.send(req.body);
     } catch (error) {
         next(error)
     }
 })
 
-usersRouter.get('/users/:userId/orders', requireUser, async (req, res, next) => {
+usersRouter.get("/:username", async (req, res, next) => {
+  const { username } = req.params;
+  try {
+    const user = await getUserByUsername(username);
+    res.send(user);
+  } catch (error) {
+    throw error;
+  }
+});
+
+usersRouter.get('/:userId/orders', requireUser, async (req, res, next) => {
   try {
       res.send(req.user);
   } catch (error) {
       next(error)
   }
 })
-
-// Get a list of orders for a particular user.
-
 
 module.exports = usersRouter;

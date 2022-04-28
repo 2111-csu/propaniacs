@@ -56,7 +56,7 @@ const App = () => {
     // second, after you've defined your getter above
     // invoke it immediately after its declaration, inside the useEffect callback
     getAPIStatus();
-  }, []);
+  }, [storedToken, storedEmail, storedFirstName, storedLastName, storedId, storedIsAdmin, storedUsername]);
 
   return (
     <div className="app-container">
@@ -76,7 +76,7 @@ const App = () => {
         <Route exact path="/account/register">
           <Register />
         </Route>
-        <Route exact path="/account">
+        <Route exact path="/account/me">
           <Profile token = {token} username = {username} email = {email} firstName = {firstName} lastName = {lastName}/>
         </Route>
         <Route exact path="/orders/:orderId">
