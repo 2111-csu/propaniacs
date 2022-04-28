@@ -5,14 +5,15 @@ import { BrowserRouter, Route } from "react-router-dom";
 // where each adapter fetches specific info from our express server's /api route
 import { getAPIHealth } from "../axios-services";
 import "../style/App.css";
-=======
+ 
 import { 
   SingleProduct, 
   AllProducts, 
   NavBar, 
   Register, 
   Login,
-  singleOrder
+  SingleOrder,
+  Profile
 } from "./index";
 
 const App = () => {
@@ -75,11 +76,11 @@ const App = () => {
         <Route exact path="/account/register">
           <Register />
         </Route>
-        {/* <Route exact path="/users/me">
-          <Profile />
-        </Route> */}
+        <Route exact path="/account">
+          <Profile token = {token} username = {username} email = {email} firstName = {firstName} lastName = {lastName}/>
+        </Route>
         <Route exact path="/orders/:orderId">
-          <SingleOrder />
+          <SingleOrder id = {id} />
         </Route>
       </BrowserRouter>
     </div>
