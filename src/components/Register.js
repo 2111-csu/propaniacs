@@ -22,6 +22,7 @@ const Register = () => {
         setFirstName(result.firstName, "First Name Set")
         setLastName(result.lastName, "Last Name Set")
         setEmail(result.email, "Email Set")
+        setisAdmin(result.isAdmin, "isAdmin Set")
         console.log(username, "username from Login");
         console.log(password, "password from Login");
         localStorage.setItem("email", result.user.email)

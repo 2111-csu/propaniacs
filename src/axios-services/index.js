@@ -60,14 +60,10 @@ export async function loginUser(username, password) {
   }
 }
 
-export async function profileUser(username, password) {
+export async function profileUser() {
   try {
-    const { data } = await axios.post(`/api/users/login`, {
-      username,
-      password,
-    });
-    console.log(data, "data from loginUser");
-    localStorage.setItem("token", data.token)
+    const { data } = await axios.get(`/api/account/me`)
+    console.log(data, "data from profileUser");
     return data;
   } catch (err) {
     throw err;

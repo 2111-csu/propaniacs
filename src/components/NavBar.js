@@ -1,5 +1,5 @@
 import React, {useEffect} from "react"
-import {useHistory, Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 
 const NavBar = ({token}) => {
 
@@ -19,7 +19,7 @@ const NavBar = ({token}) => {
       {token
         ?
         <>
-        <Link to="/account"> My Profile |</Link>
+        <Link to="/account/me"> My Profile |</Link>
         <Link to = "/" 
           onClick={() => {localStorage.clear()}}
           >Log Out</Link>
