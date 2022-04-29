@@ -27,7 +27,6 @@ const App = () => {
   const storedToken = localStorage.getItem("token")
   console.log(localStorage, "localstorage from App");  
 
-  const [token, setToken] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -37,7 +36,6 @@ const App = () => {
 
   useEffect(() => {
     if (storedToken){
-      setToken(storedToken)
       setEmail(storedEmail)
       setUsername(storedUsername)
       setFirstName(storedFirstName)
@@ -63,7 +61,7 @@ const App = () => {
       <h1>Hello, World!</h1>
       <p>API Status: {APIHealth}</p>
       <BrowserRouter>
-        <NavBar token = {token} setToken = {setToken}/>
+        <NavBar token = {storedToken}/>
         <Route exact path="/products">
           <AllProducts />
         </Route>
@@ -71,13 +69,13 @@ const App = () => {
           <SingleProduct />
         </Route>
         <Route exact path="/account/login">
-          <Login setToken = {setToken} />
+          <Login />
         </Route>
         <Route exact path="/account/register">
-          <Register setToken = {setToken} />
+          <Register />
         </Route>
         <Route exact path="/account/me">
-          <Profile token = {token} username = {username} email = {email} firstName = {firstName} lastName = {lastName}/>
+          <Profile token = {storedToken} username = {username} email = {email} firstName = {firstName} lastName = {lastName}/>
         </Route>
         <Route exact path="/orders/:orderId">
           <SingleOrder id = {id} />

@@ -1,16 +1,16 @@
 import React, {useEffect} from "react"
 import {Link } from "react-router-dom";
 
-const NavBar = ({token, setToken}) => {
+const NavBar = ({token}) => {
   
 
   useEffect(() => {
-    const renderPage = async () => {
-      if (token){
-        renderPage()
-      }
-    }
-  }, [token]);
+    // const renderPage = async () => {
+    //   if (token){
+    //     renderPage()
+    //   }
+    // }
+  }, []);
 
   return (
     <nav>
@@ -21,7 +21,7 @@ const NavBar = ({token, setToken}) => {
         <>
         <Link to="/account/me"> My Profile |</Link>
         <Link to = "/" 
-          onClick={() => {localStorage.clear(); setToken("")}}
+          onClick={() => {localStorage.clear()}}
           >Log Out</Link>
         </>
         : <Link to = "/account/login"> Login/Register</Link>}
