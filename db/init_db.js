@@ -242,7 +242,7 @@ async function populateInitialData() {
     console.log("Finished fetching order by product!");
 
     console.log("Fetching Order by user's cart");
-    const cartByUser = await Orders.getCartByUser({ id: 1 });
+    const cartByUser = await Orders.getCartByUser(id);
     console.log(cartByUser);
     console.log("Finished fetching cart by user!");
 

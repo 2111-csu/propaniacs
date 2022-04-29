@@ -2,7 +2,11 @@ const express = require("express");
 const ordersRouter = express.Router();
 
 const { requireUser } = require("./utils");
-const { getAllOrders, getCartByUser, getOrderById } = require("../db/models/orders");
+const {
+  getAllOrders,
+  getCartByUser,
+  getOrderById,
+} = require("../db/models/orders");
 
 ordersRouter.get("/", async (req, res, next) => {
   try {
@@ -27,8 +31,9 @@ ordersRouter.get("/:orderId", async (req, res, next) => {
 
 ordersRouter.get("/cart", async (req, res, next) => {
   try {
-    const { id } = req.body;
-    const userCart = await getCartByUser({ id });
+    const { id } = req.user;
+
+    const userCart = await getCartByUser(1);
     res.send(userCart);
   } catch (error) {
     next(error);
