@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import {useHistory, Link} from "react-router-dom"
 import { createUser } from "../axios-services";
 
-const Register = () => {
+const Register = ({setToken}) => {
     const history = useHistory()
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -15,22 +15,22 @@ const Register = () => {
       event.preventDefault();
       try {
         const result = await createUser(username, password, firstName, lastName, email, isAdmin)
-        console.log(result, "Result during login");
 
+        setToken(result.token)
         setPassword(result.password, "Password Set")
         setUsername(result.username, "Username Set")
         setFirstName(result.firstName, "First Name Set")
         setLastName(result.lastName, "Last Name Set")
         setEmail(result.email, "Email Set")
         setisAdmin(result.isAdmin, "isAdmin Set")
-        console.log(username, "username from Login");
-        console.log(password, "password from Login");
+
         localStorage.setItem("email", result.user.email)
         localStorage.setItem("firstName", result.user.firstName)
         localStorage.setItem("id", result.user.id)
         localStorage.setItem("isAdmin", result.user.isAdmin)
         localStorage.setItem("lastName", result.user.lastName)
         localStorage.setItem("username", result.user.username)
+        localStorage.setItem("token", result.user.token)
         console.log(localStorage);  
       if (result.token){
           history.push("/products")
