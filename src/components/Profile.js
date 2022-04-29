@@ -3,7 +3,7 @@ import React, {useEffect} from "react"
 import SingleOrder from "./SingleOrder";
 
 const Profile = ({token, username, firstName, lastName, email }) => {
-  // const [user, setUser] = useState({})
+  const [user, setUser] = useState({})
 
     useEffect(() => {
         // const getUserProfile = async () => {
