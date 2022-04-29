@@ -5,12 +5,12 @@ const NavBar = ({token, setToken}) => {
   
 
   useEffect(() => {
-    const renderPage = async () => {
-      if (token){
-        renderPage()
-      }
-    }
-  }, [token]);
+    // const renderPage = async () => {
+    //   if (token){
+    //     renderPage()
+    //   }
+    // }
+  }, []);
 
   return (
     <nav>

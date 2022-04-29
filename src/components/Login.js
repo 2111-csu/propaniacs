@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import {useHistory, Link} from "react-router-dom"
 import { loginUser } from "../axios-services";
 
-const Login = ({setToken}) => {
+const Login = () => {
     const history = useHistory()
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -12,7 +12,6 @@ const Login = ({setToken}) => {
       try {
         const result = await loginUser(username, password)
         console.log(result, "Result during login");
-        setToken(result.token)
         setPassword(result.password)
         setUsername(result.username)
 
@@ -22,7 +21,8 @@ const Login = ({setToken}) => {
         localStorage.setItem("isAdmin", result.user.isAdmin)
         localStorage.setItem("lastName", result.user.lastName)
         localStorage.setItem("username", result.user.username)
-        localStorage.setItem("token", result.user.token)
+        localStorage.setItem("token", result.token)
+
         console.log(localStorage);  
       if (result.token){
           history.push("/products")

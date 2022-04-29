@@ -17,8 +17,8 @@ const Register = ({setToken}) => {
         const result = await createUser(username, password, firstName, lastName, email, isAdmin)
 
         setToken(result.token)
-        setPassword(result.password, "Password Set")
-        setUsername(result.username, "Username Set")
+        setPassword(result.password)
+        setUsername(result.username)
         setFirstName(result.firstName, "First Name Set")
         setLastName(result.lastName, "Last Name Set")
         setEmail(result.email, "Email Set")
@@ -30,7 +30,6 @@ const Register = ({setToken}) => {
         localStorage.setItem("isAdmin", result.user.isAdmin)
         localStorage.setItem("lastName", result.user.lastName)
         localStorage.setItem("username", result.user.username)
-        localStorage.setItem("token", result.user.token)
         console.log(localStorage);  
       if (result.token){
           history.push("/products")
