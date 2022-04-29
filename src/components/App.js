@@ -23,7 +23,7 @@ const App = () => {
   const storedFirstName = localStorage.getItem("firstName")
   const storedLastName = localStorage.getItem("lastName")
   const storedId = localStorage.getItem("id")
-  const storedIsAdmin = localStorage.getItem("isAdmin")
+  // const storedIsAdmin = localStorage.getItem("isAdmin")
   const storedToken = localStorage.getItem("token")
   console.log(localStorage, "localstorage from App");  
 
@@ -32,7 +32,8 @@ const App = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [id, setId] = useState("");
-  const [isAdmin, setisAdmin] = useState(false);
+  // const [isAdmin, setisAdmin] = useState(false);
+  const [token, setToken] = useState("");
 
   useEffect(() => {
     if (storedToken){
@@ -41,7 +42,8 @@ const App = () => {
       setFirstName(storedFirstName)
       setLastName(storedLastName)
       setId(storedId)
-      setisAdmin(storedIsAdmin)
+      // setisAdmin(storedIsAdmin)
+      setToken(storedToken)
     }
     // follow this pattern inside your useEffect calls:
     // first, create an async function that will wrap your axios service adapter
@@ -54,16 +56,16 @@ const App = () => {
     // second, after you've defined your getter above
     // invoke it immediately after its declaration, inside the useEffect callback
     getAPIStatus();
-  }, [storedToken, storedEmail, storedFirstName, storedLastName, storedId, storedIsAdmin, storedUsername]);
+  }, [storedToken, storedEmail, storedFirstName, storedLastName, storedId, storedUsername]);
 
   return (
     <div className="app-container">
       <h1>Hello, World!</h1>
       <p>API Status: {APIHealth}</p>
       <BrowserRouter>
-        <NavBar token = {storedToken}/>
+        <NavBar token = {token} setToken = {setToken}/>
         <Route exact path="/products">
-          <AllProducts />
+          <AllProducts token = {token} />
         </Route>
         <Route exact path={`/products/:productId`}>
           <SingleProduct />
@@ -75,7 +77,7 @@ const App = () => {
           <Register />
         </Route>
         <Route exact path="/account/me">
-          <Profile token = {storedToken} username = {username} email = {email} firstName = {firstName} lastName = {lastName}/>
+          <Profile token = {token} username = {username} email = {email} firstName = {firstName} lastName = {lastName}/>
         </Route>
         <Route exact path="/orders/:orderId">
           <SingleOrder id = {id} />

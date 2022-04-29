@@ -6,17 +6,15 @@ const Login = () => {
     const history = useHistory()
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [token, setToken] = useState("");
 
     const handleSubmit = async (event) => {
       event.preventDefault();
       try {
         const result = await loginUser(username, password)
         console.log(result, "Result during login");
-        setToken(result.token)
         setPassword(result.password)
         setUsername(result.username)
-        console.log(token, "token set from Login");
+
         localStorage.setItem("email", result.user.email)
         localStorage.setItem("firstName", result.user.firstName)
         localStorage.setItem("id", result.user.id)
