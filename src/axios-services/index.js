@@ -48,7 +48,7 @@ export async function getOrderById(id) {
 
 export async function loginUser(username, password) {
   try {
-    const { data } = await axios.post(`/api/users/login`, {
+    const { data } = await axios.post(`/api/account/login`, {
       username,
       password,
     });
@@ -79,7 +79,7 @@ export async function createUser(
   isAdmin
 ) {
   try {
-    const { data } = await axios.post(`/api/users/register`, {
+    const { data } = await axios.post(`/api/account/register`, {
       username,
       password,
       firstName,

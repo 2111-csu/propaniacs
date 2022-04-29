@@ -1,15 +1,15 @@
 import React, {useEffect} from "react"
 import {Link } from "react-router-dom";
 
-const NavBar = ({token}) => {
+const NavBar = ({token, setToken}) => {
+  
 
   useEffect(() => {
-    // const renderPage = async () => {
-    //   if (token){
-    //     await fetch(`postgres://localhost:5432/strick-land`)
-    //     renderPage()
-    //   }
-    // }
+    const renderPage = async () => {
+      if (token){
+        renderPage()
+      }
+    }
   }, [token]);
 
   return (
@@ -21,7 +21,7 @@ const NavBar = ({token}) => {
         <>
         <Link to="/account/me"> My Profile |</Link>
         <Link to = "/" 
-          onClick={() => {localStorage.clear()}}
+          onClick={() => {localStorage.clear(); setToken("")}}
           >Log Out</Link>
         </>
         : <Link to = "/account/login"> Login/Register</Link>}

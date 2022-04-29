@@ -63,7 +63,7 @@ const App = () => {
       <h1>Hello, World!</h1>
       <p>API Status: {APIHealth}</p>
       <BrowserRouter>
-        <NavBar token = {token}/>
+        <NavBar token = {token} setToken = {setToken}/>
         <Route exact path="/products">
           <AllProducts />
         </Route>
@@ -71,10 +71,10 @@ const App = () => {
           <SingleProduct />
         </Route>
         <Route exact path="/account/login">
-          <Login />
+          <Login setToken = {setToken} />
         </Route>
         <Route exact path="/account/register">
-          <Register />
+          <Register setToken = {setToken} />
         </Route>
         <Route exact path="/account/me">
           <Profile token = {token} username = {username} email = {email} firstName = {firstName} lastName = {lastName}/>
