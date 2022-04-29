@@ -46,6 +46,16 @@ export async function getOrderById(id) {
   }
 }
 
+export async function getCartByUser(id) {
+  try {
+    const { data: cart } = axios.get("/api/cart", { id });
+    console.log("cart from axios", cart);
+    return cart;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export async function loginUser(username, password) {
   try {
     const { data } = await axios.post(`/api/account/login`, {
@@ -53,7 +63,7 @@ export async function loginUser(username, password) {
       password,
     });
     console.log(data, "data from loginUser");
-    localStorage.setItem("token", data.token)
+    localStorage.setItem("token", data.token);
     return data;
   } catch (err) {
     throw err;
@@ -62,7 +72,7 @@ export async function loginUser(username, password) {
 
 export async function profileUser() {
   try {
-    const { data } = await axios.get(`/api/account/me`)
+    const { data } = await axios.get(`/api/account/me`);
     console.log(data, "data from profileUser");
     return data;
   } catch (err) {
@@ -89,8 +99,8 @@ export async function createUser(
     });
     console.log(data, "data from createUser");
 
-    localStorage.setItem("token", data.token)
-    return data;  
+    localStorage.setItem("token", data.token);
+    return data;
   } catch (err) {
     throw err;
   }

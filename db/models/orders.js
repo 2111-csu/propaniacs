@@ -135,7 +135,7 @@ const getOrderByProduct = async ({ id }) => {
   }
 };
 
-const getCartByUser = async ({ id }) => {
+const getCartByUser = async (id) => {
   try {
     const { rows: orders } = await client.query(
       `

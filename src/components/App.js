@@ -5,27 +5,28 @@ import { BrowserRouter, Route } from "react-router-dom";
 // where each adapter fetches specific info from our express server's /api route
 import { getAPIHealth } from "../axios-services";
 import "../style/App.css";
- 
-import { 
-  SingleProduct, 
-  AllProducts, 
-  NavBar, 
-  Register, 
+
+import {
+  SingleProduct,
+  AllProducts,
+  NavBar,
+  Register,
   Login,
   SingleOrder,
-  Profile
+  Profile,
+  Cart,
 } from "./index";
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
-  const storedEmail = localStorage.getItem("email")
-  const storedUsername = localStorage.getItem("username")
-  const storedFirstName = localStorage.getItem("firstName")
-  const storedLastName = localStorage.getItem("lastName")
-  const storedId = localStorage.getItem("id")
+  const storedEmail = localStorage.getItem("email");
+  const storedUsername = localStorage.getItem("username");
+  const storedFirstName = localStorage.getItem("firstName");
+  const storedLastName = localStorage.getItem("lastName");
+  const storedId = localStorage.getItem("id");
   // const storedIsAdmin = localStorage.getItem("isAdmin")
-  const storedToken = localStorage.getItem("token")
-  console.log(localStorage, "localstorage from App");  
+  const storedToken = localStorage.getItem("token");
+  console.log(localStorage, "localstorage from App");
 
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -36,14 +37,14 @@ const App = () => {
   const [token, setToken] = useState("");
 
   useEffect(() => {
-    if (storedToken){
-      setEmail(storedEmail)
-      setUsername(storedUsername)
-      setFirstName(storedFirstName)
-      setLastName(storedLastName)
-      setId(storedId)
+    if (storedToken) {
+      setEmail(storedEmail);
+      setUsername(storedUsername);
+      setFirstName(storedFirstName);
+      setLastName(storedLastName);
+      setId(storedId);
       // setisAdmin(storedIsAdmin)
-      setToken(storedToken)
+      setToken(storedToken);
     }
     // follow this pattern inside your useEffect calls:
     // first, create an async function that will wrap your axios service adapter
@@ -56,16 +57,23 @@ const App = () => {
     // second, after you've defined your getter above
     // invoke it immediately after its declaration, inside the useEffect callback
     getAPIStatus();
-  }, [storedToken, storedEmail, storedFirstName, storedLastName, storedId, storedUsername]);
+  }, [
+    storedToken,
+    storedEmail,
+    storedFirstName,
+    storedLastName,
+    storedId,
+    storedUsername,
+  ]);
 
   return (
     <div className="app-container">
       <h1>Hello, World!</h1>
       <p>API Status: {APIHealth}</p>
       <BrowserRouter>
-        <NavBar token = {token} setToken = {setToken}/>
+        <NavBar token={token} setToken={setToken} />
         <Route exact path="/products">
-          <AllProducts token = {token} />
+          <AllProducts token={token} />
         </Route>
         <Route exact path={`/products/:productId`}>
           <SingleProduct />
@@ -77,10 +85,19 @@ const App = () => {
           <Register />
         </Route>
         <Route exact path="/account/me">
-          <Profile token = {token} username = {username} email = {email} firstName = {firstName} lastName = {lastName}/>
+          <Profile
+            token={token}
+            username={username}
+            email={email}
+            firstName={firstName}
+            lastName={lastName}
+          />
         </Route>
         <Route exact path="/orders/:orderId">
-          <SingleOrder id = {id} />
+          <SingleOrder id={id} />
+        </Route>
+        <Route exact path="/cart">
+          <Cart id={id} />
         </Route>
       </BrowserRouter>
     </div>
