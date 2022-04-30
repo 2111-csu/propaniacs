@@ -16,6 +16,7 @@ apiRouter.get("/health", (req, res, next) => {
 apiRouter.use("/products", require("../api/products"));
 apiRouter.use("/account", require("../api/users"));
 apiRouter.use("/orders", require("../api/orders"));
+apiRouter.use("/order_products", require("../api/order_products"));
 apiRouter.use("/cart", require("../api/cart"));
 
 module.exports = apiRouter;

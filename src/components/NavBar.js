@@ -25,7 +25,6 @@ const NavBar = ({token, setToken}) => {
           > Log Out |</Link>
         </>
         : <Link to = "/account/login"> Login/Register |</Link>}
-        <Link to = "/cart"> Cart |</Link>
     </nav>
   );
 };
