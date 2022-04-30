@@ -33,7 +33,7 @@ ordersRouter.get("/cart", async (req, res, next) => {
   try {
     const { id } = req.user;
 
-    const userCart = await getCartByUser(1);
+    const userCart = await getCartByUser(id);
     res.send(userCart);
   } catch (error) {
     next(error);

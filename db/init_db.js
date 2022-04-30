@@ -7,6 +7,11 @@ const {
   // declare your model imports here
   // for example, User
 } = require("./");
+const {
+  getOrderProductById,
+  updateOrderProduct,
+  destroyOrderProduct,
+} = require("./models/order_products");
 
 async function dropTables() {
   try {
@@ -242,10 +247,28 @@ async function populateInitialData() {
     console.log("Finished fetching order by product!");
 
     console.log("Fetching Order by user's cart");
-    const cartByUser = await Orders.getCartByUser(id);
+    const cartByUser = await Orders.getCartByUser(1);
     console.log(cartByUser);
     console.log("Finished fetching cart by user!");
 
+    console.log("Getting order_product by id");
+    const OrderProductById = await getOrderProductById({ id: 1 });
+    console.log(OrderProductById);
+    console.log("Finished getting order_product by Id");
+
+    console.log("Updating order Product");
+    const OrderProduct = await updateOrderProduct({
+      id: 1,
+      price: 100,
+      quantity: 3,
+    });
+    console.log(OrderProduct);
+    console.log("Finished getting order_product by Id");
+
+    console.log("Deleting order Product (6 order_products)");
+    const destroyedProduct = await destroyOrderProduct(6);
+    console.log(destroyedProduct);
+    console.log("Finished deleting order product");
     // create useful starting data by leveraging your
     // Model.method() adapters to seed your db, for example:
     // const user1 = await User.createUser({ ...user info goes here... })
