@@ -284,6 +284,26 @@ async function populateInitialData() {
     const destroyedProduct = await destroyOrderProduct(6);
     console.log(destroyedProduct);
     console.log("Finished deleting order product");
+
+    console.log("Updating Order");
+    const orderToUpdate = await Orders.updateOrder({
+      id: 2,
+      status: "created",
+    });
+    console.log(orderToUpdate);
+    console.log("Finished updated order");
+
+    console.log("Completing Order");
+    const orderToComplete = await Orders.completeOrder({
+      id: 2,
+    });
+    console.log(orderToComplete);
+    console.log("Order completed");
+
+    console.log("Canceling Order");
+    const orderToCancel = await Orders.cancelOrder(2);
+    console.log(orderToCancel);
+    console.log("Order Canceled");
     // create useful starting data by leveraging your
     // Model.method() adapters to seed your db, for example:
     // const user1 = await User.createUser({ ...user info goes here... })

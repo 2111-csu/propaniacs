@@ -166,6 +166,61 @@ const getCartByUser = async (id) => {
     throw error;
   }
 };
+
+const updateOrder = async ({ id, status }) => {
+  try {
+    const {
+      rows: [order],
+    } = await client.query(
+      `
+        UPDATE orders
+        SET status = $1
+        WHERE id = ${id}
+        RETURNING *;
+      `,
+      [status]
+    );
+    return order;
+  } catch (error) {
+    throw error;
+  }
+};
+
+const completeOrder = async ({ id }) => {
+  try {
+    const {
+      rows: [order],
+    } = await client.query(
+      `
+        UPDATE orders
+        SET status = 'completed'
+        WHERE id = ${id}
+        RETURNING *;
+      `
+    );
+    return order;
+  } catch (error) {
+    throw error;
+  }
+};
+
+const cancelOrder = async (id) => {
+  try {
+    const {
+      rows: [order],
+    } = await client.query(
+      `
+        UPDATE orders
+        SET status = 'cancelled'
+        WHERE id = ${id}
+        RETURNING *;
+      `
+    );
+    return order;
+  } catch (error) {
+    throw error;
+  }
+};
 module.exports = {
   createOrder,
   getAllOrders,
@@ -173,4 +228,7 @@ module.exports = {
   getOrderById,
   getOrderByProduct,
   getCartByUser,
+  updateOrder,
+  completeOrder,
+  cancelOrder,
 };
