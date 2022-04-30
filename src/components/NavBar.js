@@ -22,9 +22,10 @@ const NavBar = ({token, setToken}) => {
         <Link to="/account/me"> My Profile |</Link>
         <Link to = "/" 
           onClick={() => {localStorage.clear(); setToken("")}}
-          >Log Out</Link>
+          > Log Out |</Link>
         </>
-        : <Link to = "/account/login"> Login/Register</Link>}
+        : <Link to = "/account/login"> Login/Register |</Link>}
+        <Link to = "/cart"> Cart |</Link>
     </nav>
   );
 };

@@ -48,7 +48,7 @@ export async function getOrderById(id) {
 
 export async function getCartByUser(id) {
   try {
-    const { data: cart } = axios.get("/api/cart", { id });
+    const { data: cart } = await axios.get("/api/cart", { id });
     console.log("cart from axios", cart);
     return cart;
   } catch (error) {
