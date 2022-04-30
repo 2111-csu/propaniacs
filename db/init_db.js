@@ -121,6 +121,14 @@ async function populateInitialData() {
         inStock: true,
         category: "Accessories",
       },
+      {
+        name: "Spatula",
+        description: "Heat Resistant",
+        price: "10",
+        imageURL: "text",
+        inStock: true,
+        category: "Accessories",
+      },
     ];
 
     const products = await Promise.all(
@@ -199,6 +207,13 @@ async function populateInitialData() {
         price: 5,
         quantity: 1,
       },
+      {
+        productId: 4,
+        orderId: 1,
+        price: 10,
+        quantity: 5,
+      },
+
       {
         productId: 1,
         orderId: 2,
