@@ -2,9 +2,7 @@ const client = require("../client");
 
 async function addProductToOrder({ productId, orderId, price, quantity }) {
   try {
-    const {
-      rows: [orderProduct],
-    } = await client.query(
+    await client.query(
       `
     INSERT INTO order_products ( "productId", "orderId", price, quantity)
     VALUES($1, $2, $3, $4)
@@ -12,14 +10,15 @@ async function addProductToOrder({ productId, orderId, price, quantity }) {
       `,
       [productId, orderId, price, quantity]
     );
-    // console.log("orderProduct", orderProduct);
-    // if (orderProduct.productId) {
-    //   console.log("This product already exists in the order");
-    //   return;
-    // } else {
-    //   console.log("added product to order", orderProduct);
-    //   return orderProduct;
-    // }
+
+    const {
+      rows: [orderProduct],
+    } = await client.query(`
+    UPDATE order_products
+    SET price = ${price}, quantity = ${quantity}
+    WHERE "orderId" = ${orderId} AND "productId" = ${productId}
+    RETURNING *
+    `);
     return orderProduct;
   } catch (error) {
     throw error;
