@@ -97,7 +97,7 @@ const App = () => {
           <SingleOrder id={id} />
         </Route>
         <Route exact path="/cart">
-          <Cart id={id} />
+          <Cart id={id} token={token} />
         </Route>
       </BrowserRouter>
     </div>
