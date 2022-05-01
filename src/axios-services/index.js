@@ -18,6 +18,35 @@ import axios from "axios";
   }
 */
 
+export const callApi = async ({ url, method = "GET", token, data }) => {
+  try {
+    const options = {
+      url,
+      method: method.toUpperCase(),
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      data: data,
+    };
+    if (token) {
+      options.headers["Authorization"] = `Bearer ${token}`;
+    }
+    console.log("options", options);
+    console.log("token", token);
+    const resp = await axios(options);
+
+    console.log(resp);
+
+    if (resp.error) {
+      console.log(resp.error);
+      throw resp.error;
+    }
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export async function getProducts() {
   try {
     const { data: products } = await axios.get("/api/products");

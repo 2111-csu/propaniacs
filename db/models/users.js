@@ -1,7 +1,6 @@
 const client = require("../client");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 const SALT_COUNT = 10;
-
 
 const createUser = async ({
   firstName,
@@ -37,24 +36,24 @@ async function getAllUsers() {
     SELECT *
     FROM users;
     `);
-    delete user.password
+    delete user.password;
     return rows;
   } catch (error) {
     throw error;
   }
 }
 
-async function getUser({username, password}) {
+async function getUser({ username, password }) {
   if (!username || !password) {
     return;
   }
 
   try {
     const user = await getUserByUsername(username);
-    if(!user) return;
+    if (!user) return;
     const hashedPassword = user.password;
     const passwordsMatch = await bcrypt.compare(password, hashedPassword);
-    if(!passwordsMatch) return;
+    if (!passwordsMatch) return;
     delete user.password;
     return user;
   } catch (error) {
@@ -64,36 +63,42 @@ async function getUser({username, password}) {
 
 async function getUserByUsername(username) {
   try {
-    const {rows: [user]} = await client.query(`
+    const {
+      rows: [user],
+    } = await client.query(
+      `
       SELECT *
       FROM users
       WHERE username = $1;
-    `, [username]);
+    `,
+      [username]
+    );
     return user;
-
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }
 
-async function getUserById (id) {
+async function getUserById(id) {
   try {
-      const { rows: [user] } = await client.query(`
+    const {
+      rows: [user],
+    } = await client.query(`
       SELECT * 
       FROM users
-      WHERE id=${ id };
-      `,)
-      delete user.password;
-      return user;
+      WHERE id=${id};
+      `);
+    delete user.password;
+    return user;
   } catch (error) {
-      throw error;
+    throw error;
   }
-};
+}
 
 module.exports = {
   createUser,
   getAllUsers,
-  getUser, 
+  getUser,
   getUserById,
-  getUserByUsername
+  getUserByUsername,
 };
