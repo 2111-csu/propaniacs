@@ -4,7 +4,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 // you can think of that directory as a collection of api adapters
 // where each adapter fetches specific info from our express server's /api route
 import { getAPIHealth } from "../axios-services";
-import "../style/App.css";
+import './style_assets/style.css';
 
 import {
   SingleProduct,
@@ -15,6 +15,7 @@ import {
   SingleOrder,
   Profile,
   Cart,
+  Home
 } from "./index";
 
 const App = () => {
@@ -68,10 +69,11 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <h1>Hello, World!</h1>
-      <p>API Status: {APIHealth}</p>
       <BrowserRouter>
         <NavBar token={token} setToken={setToken} />
+        <Route exact path = "/">
+          <Home />
+        </Route>
         <Route exact path="/products">
           <AllProducts token={token} />
         </Route>
@@ -100,6 +102,8 @@ const App = () => {
           <Cart id={id} token={token} />
         </Route>
       </BrowserRouter>
+      <h1>Hello, World!</h1>
+      <p>API Status: {APIHealth}</p>
     </div>
   );
 };

@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+
+*{
+  box-sizing: border-box;
+}
+
+html {
+  background-color:aqua;
+}
+
+h1 {
+  text-align: center;
+  font-weight: bold;
+  margin: 0;
+}
+
+.subjects{
+    margin-top: 2rem;
+}
+
+.companyLogo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35%;
+}
+
+.links{
+    color: yellow;
+    font-size: 20px;
+}
+
+.products{
+    width: 250px;
+    height: 250px;
+    padding: 1rem
+}
+
+#title {
+  background-color:darkblue;
+  text-align: center;
+  font-weight: bold;
+  padding: 2%;
+  font-family: 'Oswald', sans-serif;
+}
+
+#title h1 {
+  font-size: 5rem;
+  color: white;
+}
+
+#title h5 {
+  font-size: 2rem ;
+  color: yellow;
+}
+
+input{
+  padding: 5px;
+  border: solid black 2px;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: .5rem;
+}
+
+.welcomeContainer {
+    background-color:white;
+    color:black;
+    text-align: center;
+    border: black solid 2px;
+    border-radius: 2rem;
+    box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+    padding: 1rem;
+    margin: 3rem;
+    width: 25rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+}
+
+#search {
+  padding: 8px;
+  margin-top: 10px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  border: 1px solid black;
+}
+
+.card {
+  justify-content: center;
+  background-color:white;
+  border: black solid 2px;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: 1rem;
+  padding: 1rem;
+  width: 20rem;
+}
+
+.card__title {
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: black
+}
+
+.card__subtitle {
+  font-size: 2vh;
+  font-weight: 200;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: black
+}
+
+.card__text {
+  line-height: 1.5;
+}
+
+button {
+    background-color: darkblue;
+    color: white;
+    font-weight: bold;
+    border: 1px solid #cccccc;
+    border-radius: .75rem;
+    padding: 0.5rem;
+    margin: .5rem
+  }

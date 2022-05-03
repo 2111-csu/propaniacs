@@ -17,15 +17,21 @@ const SingleProduct = () => {
 
   return (
     <div>
-      <h1>Single Product</h1>
-      <ul key={product.id}>
-        <li>Product Name:{product.name}</li>
-        <li>Product Description:{product.description}</li>
-        <li>Product Price:{product.price}</li>
-        <li>Product Image:{product.imageURL}</li>
-        <li>Product inStock:{product.inStock}</li>
-        <li>Product Category:{product.category}</li>
-      </ul>
+      <h1 className="subjects">Single Product</h1>
+      <div className="cards">
+        <div className="card">
+          <div className="card__text">
+            <div key={product.id}>
+              <img className ="products" src={product.imageURL} alt=""/>
+              <p className="card__subtitle">Product Name:{product.name}</p>
+              <p className="card__subtitle">Product Description:{product.description}</p>
+              <p className="card__subtitle">Product Price:{product.price}</p>
+              <p className="card__subtitle">Product inStock:{product.inStock}</p>
+              <p className="card__subtitle">Product Category:{product.category}</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

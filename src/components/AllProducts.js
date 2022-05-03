@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getProducts } from "../axios-services";
 
+
 const AllProducts = () => {
   const [products, setProducts] = useState([]);
 
@@ -16,19 +17,27 @@ const AllProducts = () => {
 
   return (
     <>
-      <h1>AllProducts</h1>
+      <h1 className="subjects">AllProducts</h1>
       {products.map((product) => {
         return (
-          <ul key={product.id}>
-            <Link to={`/products/${product.id}`}>
-              <li>Product Name:{product.name}</li>
-            </Link>
-            <li>Product Description:{product.description}</li>
-            <li>Product Price:{product.price}</li>
-            <li>Product Image:{product.imageURL}</li>
-            <li>Product inStock:{product.inStock}</li>
-            <li>Product Category:{product.category}</li>
-          </ul>
+          <div key={product.id}>
+            <div className="cards">
+              <div className="card">
+                <div className="card__text">
+                  <Link to={`/products/${product.id}`}>
+                    <div className="card__title" >Name: {product.name}</div>
+                  </Link>
+                  <img className ="products" src={product.imageURL} alt=""/>
+                  <div className="card__subtitle"> Category: {product.category}</div>
+                  <br></br>
+                  <div className="card__subtitle"> Description: {product.description}</div>
+                  <br></br>
+                  <div className="card__subtitle"> Price: {product.price}</div>
+                  <div className="card__subtitle"> inStock: {product.inStock}</div>
+              </div>
+            </div>
+          </div>
+          </div>
         );
       })}
     </>
