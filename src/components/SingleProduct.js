@@ -18,19 +18,19 @@ const SingleProduct = () => {
   return (
     <div>
       <h1 className="subjects">Single Product</h1>
-      <div className="cards">
-        <div className="card">
+        <div className="singleContainer">
           <div className="card__text">
             <div key={product.id}>
-              <img className ="products" src={product.imageURL} alt=""/>
-              <p className="card__subtitle">Product Name:{product.name}</p>
-              <p className="card__subtitle">Product Description:{product.description}</p>
-              <p className="card__subtitle">Product Price:{product.price}</p>
-              <p className="card__subtitle">Product inStock:{product.inStock}</p>
-              <p className="card__subtitle">Product Category:{product.category}</p>
+              <div id="singleTextContainer">
+              <p className="single__subtitle">Product Name:{product.name}</p>
+              <p className="single__subtitle">Product Description:{product.description}</p>
+              <p className="single__subtitle">Product Price:{product.price}</p>
+              <p className="single__subtitle">Product inStock:{product.inStock}</p>
+              <p className="single__subtitle">Product Category:{product.category}</p>
             </div>
           </div>
         </div>
+        <img id="singleimg" className ="products" src={product.imageURL} alt=""/>
       </div>
     </div>
   );
