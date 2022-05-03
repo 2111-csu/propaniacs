@@ -14,7 +14,7 @@ const Cart = ({ id, token }) => {
       setCart(userCart.data);
     };
     getCart();
-  }, []);
+  }, [token]);
 
   return (
     <>

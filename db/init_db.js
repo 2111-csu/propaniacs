@@ -98,18 +98,18 @@ async function populateInitialData() {
   try {
     const productsToCreate = [
       {
-        name: "5 Gallon Tank",
-        description: "5 Gallons of Propane",
-        price: 20,
-        imageURL: "text",
+        name: "10 Gallon Tank",
+        description: "Your everyday tank for everyday use",
+        price: 10,
+        imageURL: src="https://cdn11.bigcommerce.com/s-vmvni2zq0j/images/stencil/1280x1280/products/37046/53046/apisaus4j__46352.1581525335.jpg?c=2",
         inStock: true,
         category: "Propane",
-      },
+      },,
       {
         name: "Weber 3000",
         description: "4 burner propane grill",
         price: 300,
-        imageURL: "text",
+        imageURL: "https://images.thdstatic.com/productImages/7060e02f-7f30-425c-99b7-90ec2075cb52/svn/nexgrill-propane-grills-720-0830x-64_600.jpg",
         inStock: true,
         category: "Grill",
       },
@@ -117,7 +117,7 @@ async function populateInitialData() {
         name: "Tongs",
         description: "Stainless Steel",
         price: "5",
-        imageURL: "text",
+        imageURL: "https://cdnimg.webstaurantstore.com/images/products/large/64806/780284.jpg",
         inStock: true,
         category: "Accessories",
       },
@@ -125,10 +125,26 @@ async function populateInitialData() {
         name: "Spatula",
         description: "Heat Resistant",
         price: "10",
-        imageURL: "text",
+        imageURL: "https://images.thdstatic.com/productImages/ff39bed3-16e5-4a3a-a5d8-3e3ae2cff6fb/svn/weber-grill-spatulas-6620-64_600.jpg",
         inStock: true,
         category: "Accessories",
       },
+      {
+        name: "250 Gallon Tank",
+        description: "If you're looking for something to heat your home, look no further than the 250 gallon tank.",
+        price: 999,
+        imageURL: src="https://images.kleen-ritecorp.com/images/product/large/37895.jpg",
+        inStock: true,
+        category: "Propane",
+      },
+      {
+        name: "Char-King Deluxe",
+        description: "The ultimate experience in grilling. This 10 burner grill will crown you king of the block party!",
+        price: 600,
+        imageURL: "https://images.thdstatic.com/productImages/9cceae15-cc4b-434c-9d44-4e1feb9b5169/svn/monument-grills-propane-grills-77352-64_600.jpg",
+        inStock: true,
+        category: "Grill",
+      }
     ];
 
     const products = await Promise.all(

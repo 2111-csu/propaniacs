@@ -18,9 +18,9 @@ const Profile = ({ token, username, firstName, lastName, email }) => {
 
   return (
     <>
-      <h1>
+      <h2>
         {firstName} {lastName}'s' Profile!
-      </h1>
+      </h2>
       <h3>Username: {username}</h3>
       <h3>Email: {email}</h3>
       <h3>

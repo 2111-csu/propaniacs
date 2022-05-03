@@ -40,14 +40,13 @@ const Register = ({setToken}) => {
   }
 
     return (
-        <>
-          <h1 class="welcome">Welcome!</h1>
-          <br></br>
-          <h3 class = "welcome">
-              Register to experience the joy of Propane!
-          </h3>
-          <form class ="input" onSubmit={handleSubmit} >
-          <br></br>
+      <>
+      <div class = "welcomeContainer"> 
+        <h1 >Welcome!</h1>
+        <h3 >
+            Register to experience the joy of Propane!
+        </h3>
+        <form class ="input" onSubmit={handleSubmit} >
             <input 
               type = "text" 
               placeholder = "First Name" 
@@ -89,15 +88,14 @@ const Register = ({setToken}) => {
               type = "submit">
               SUBMIT
             </button>
-          </form>
-          <br></br>
-          <Link to = "/account/login">
-            <h4>
-              Already have an account? Login here!
-            </h4>
-          </Link>
-          <br></br>
-      </>
+            <Link to = "/account/login">
+              <h4>
+                Already have an account? Login here!
+              </h4>
+            </Link>
+        </form>
+        </div>
+    </>
     )
 }
 

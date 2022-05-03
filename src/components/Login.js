@@ -34,10 +34,10 @@ const Login = () => {
 
     return (
         <>
-          <h1 class="welcome">Welcome!</h1>
-          <br></br>
-          <h3 class = "welcome">
-              Login to experience the joy of Propane!
+        <div class = "welcomeContainer"> 
+          <h1 >Welcome!</h1>
+          <h3 >
+              Login to experience the joy of propane!
           </h3>
           <form class ="input" onSubmit={handleSubmit}>
             <input 
@@ -60,14 +60,13 @@ const Login = () => {
               type = "submit">
               SUBMIT
             </button>
-          </form>
-          <br></br>
-          <Link to = "/account/register">
+            <Link to = "/account/register">
             <h4>
               Already have an account? Login here!
             </h4>
           </Link>
-          <br></br>
+          </form>
+          </div>
       </>
     )
 }
