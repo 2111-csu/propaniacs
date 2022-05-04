@@ -1,20 +1,28 @@
 import React, { useEffect } from "react";
-import { callApi } from "../axios-services";
+import { callApi, getCartByUser } from "../axios-services";
 
 const Cart = ({ id, token, cart, setCart }) => {
-  
+  // useEffect(() => {
+  //   const getCart = async () => {
+  //     const userCart = await callApi({
+  //       url: "/api/cart",
+  //       token,
+  //       method: "GET",
+  //     });
+  //     setCart(userCart.data);
+  //   };
+  //   getCart();
+  // }, [token, setCart]);
 
-  useEffect(() => {
-    const getCart = async () => {
-      const userCart = await callApi({
-        url: "/api/cart",
-        token,
-        method: "GET",
-      });
-      setCart(userCart.data);
-    };
-    getCart();
-  }, [token, setCart]);
+  const getCart = async () => {
+    const userCart = await callApi({
+      url: "/api/cart",
+      token,
+      method: "GET",
+    });
+    setCart(userCart.data);
+  };
+  getCart();
 
   const handleRemove = async (event, orderProductId) => {
     event.preventDefault();
@@ -25,8 +33,9 @@ const Cart = ({ id, token, cart, setCart }) => {
         method: "DELETE",
         token,
       });
-      setCart(removeFromCart, ...cart);
-      return cart;
+      setCart(cart);
+      getCart();
+      return removeFromCart;
     } catch (error) {
       throw error;
     }
@@ -49,11 +58,14 @@ const Cart = ({ id, token, cart, setCart }) => {
                   <p>Category: {itemInCart.category}</p>
                   <p>InStock: {itemInCart.true}</p>
                   <p>Item Price: {itemInCart.price}</p>
-                  <button 
-                    type="submit"
-                    onClick={(event) => handleRemove(event, itemInCart.id)}
-                >Remove Item
-                </button>
+                  <form
+                    onSubmit={(event) => {
+                      event.preventDefault();
+                      handleRemove(event, itemInCart.id);
+                    }}
+                  >
+                    <button type="submit">Remove Item</button>
+                  </form>
                 </div>
               );
             })}
