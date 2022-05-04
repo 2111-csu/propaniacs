@@ -4,7 +4,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 // you can think of that directory as a collection of api adapters
 // where each adapter fetches specific info from our express server's /api route
 import { getAPIHealth } from "../axios-services";
-import './style_assets/style.css';
+import "./style_assets/style.css";
 
 import {
   SingleProduct,
@@ -15,7 +15,7 @@ import {
   SingleOrder,
   Profile,
   Cart,
-  Home
+  Home,
 } from "./index";
 
 const App = () => {
@@ -27,6 +27,7 @@ const App = () => {
   const storedId = localStorage.getItem("id");
   // const storedIsAdmin = localStorage.getItem("isAdmin")
   const storedToken = localStorage.getItem("token");
+  const storedLoggedIn = localStorage.getItem("loggedIn");
   console.log(localStorage, "localstorage from App");
 
   const [email, setEmail] = useState("");
@@ -36,6 +37,9 @@ const App = () => {
   const [id, setId] = useState("");
   // const [isAdmin, setisAdmin] = useState(false);
   const [token, setToken] = useState("");
+  const [cart, setCart] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
+  console.log("logged in status", loggedIn);
 
   useEffect(() => {
     if (storedToken) {
@@ -46,6 +50,7 @@ const App = () => {
       setId(storedId);
       // setisAdmin(storedIsAdmin)
       setToken(storedToken);
+      setLoggedIn(storedLoggedIn);
     }
     // follow this pattern inside your useEffect calls:
     // first, create an async function that will wrap your axios service adapter
@@ -70,18 +75,18 @@ const App = () => {
   return (
     <div className="app-container">
       <BrowserRouter>
-        <NavBar token={token} setToken={setToken} />
-        <Route exact path = "/">
+        <NavBar token={token} setToken={setToken} loggedIn={loggedIn} />
+        <Route exact path="/">
           <Home />
         </Route>
         <Route exact path="/products">
-          <AllProducts id = {id} token={token} />
+          <AllProducts id={id} token={token} cart={cart} setCart={setCart} />
         </Route>
         <Route exact path={`/products/:productId`}>
           <SingleProduct />
         </Route>
         <Route exact path="/account/login">
-          <Login />
+          <Login setLoggedIn={setLoggedIn} />
         </Route>
         <Route exact path="/account/register">
           <Register />
@@ -99,7 +104,7 @@ const App = () => {
           <SingleOrder id={id} />
         </Route>
         <Route exact path="/cart">
-          <Cart id={id} token={token} />
+          <Cart id={id} token={token} cart={cart} setCart={setCart} />
         </Route>
       </BrowserRouter>
       <h1>Hello, World!</h1>

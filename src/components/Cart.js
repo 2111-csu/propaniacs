@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { callApi } from "../axios-services";
 
-const Cart = ({ id, token }) => {
-  const [cart, setCart] = useState([]);
+const Cart = ({ id, token, cart, setCart }) => {
+  
 
   useEffect(() => {
     const getCart = async () => {

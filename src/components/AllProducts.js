@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {getProducts } from "../axios-services";
+import { getProducts } from "../axios-services";
 import { callApi } from "../axios-services";
 
-
-const AllProducts = ({token, id}) => {
+const AllProducts = ({ token, id, cart, setCart }) => {
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([])
 
   useEffect(() => {
     const getAllProducts = async () => {
@@ -19,14 +17,14 @@ const AllProducts = ({token, id}) => {
         method: "GET",
       });
       console.log(userCart, "Api call to get cart");
-      setCart(userCart.data)
+      setCart(userCart.data);
     };
 
     getAllProducts();
   }, [token]);
 
-  const handleSubmit = async (event, productId, price, quantity, cart) => {
-    event.preventDefault()
+  const handleAdd = async (event, productId, price, quantity, cart) => {
+    event.preventDefault();
     console.log(cart, "cart going through handle submit");
     try {
       const addedToCart = await callApi({
@@ -36,17 +34,18 @@ const AllProducts = ({token, id}) => {
         data: {
           productId,
           price,
-          quantity
-        },  
+          quantity,
+        },
       });
 
-      setCart([addedToCart, ...cart])
+      setCart([addedToCart, ...cart]);
       console.log(cart, "cart after Add");
-      return cart
+      return cart;
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
+  };
+  console.log("cart status", cart);
 
   return (
     <>
@@ -58,19 +57,41 @@ const AllProducts = ({token, id}) => {
               <div className="card">
                 <div className="card__text">
                   <Link to={`/products/${product.id}`}>
-                    <div className="card__title" >Name: {product.name}</div>
+                    <div className="card__title">Name: {product.name}</div>
                   </Link>
-                  <img className ="products" src={product.imageURL} alt=""/>
-                  <div className="card__subtitle"> Category: {product.category}</div>
+                  <img className="products" src={product.imageURL} alt="" />
+                  <div className="card__subtitle">
+                    {" "}
+                    Category: {product.category}
+                  </div>
                   <br></br>
-                  <div className="card__subtitle"> Description: {product.description}</div>
+                  <div className="card__subtitle">
+                    {" "}
+                    Description: {product.description}
+                  </div>
                   <br></br>
                   <div className="card__subtitle"> Price: {product.price}</div>
-                  <div className="card__subtitle"> inStock: {product.inStock}</div>
-                  <button type = "submit" onClick={(event) => handleSubmit(event, product.id, product.price, product.quantity, cart)}>Add To Cart</button>
+                  <div className="card__subtitle">
+                    {" "}
+                    inStock: {product.inStock}
+                  </div>
+                  <button
+                    type="submit"
+                    onClick={(event) =>
+                      handleAdd(
+                        event,
+                        product.id,
+                        product.price,
+                        product.quantity,
+                        cart
+                      )
+                    }
+                  >
+                    Add To Cart
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
           </div>
         );
       })}
