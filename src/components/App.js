@@ -75,7 +75,7 @@ const App = () => {
           <Home />
         </Route>
         <Route exact path="/products">
-          <AllProducts token={token} />
+          <AllProducts id = {id} token={token} />
         </Route>
         <Route exact path={`/products/:productId`}>
           <SingleProduct />

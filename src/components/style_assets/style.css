@@ -140,7 +140,7 @@ button {
   #infoColumn{
     display: block;
     background: rgb(232,245,77);
-    background: radial-gradient(circle, rgba(232,245,77,1) 75%, rgba(37,39,18,1) 100%, rgba(9,9,9,1) 100%);
+background: radial-gradient(circle, rgba(232,245,77,1) 75%, rgba(6,19,250,1) 100%);
     font-family: 'Oswald', sans-serif;
     text-align: center;
     padding: 2rem;

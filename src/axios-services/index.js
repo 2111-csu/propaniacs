@@ -109,6 +109,16 @@ export async function profileUser() {
   }
 }
 
+export async function addToCart(id){
+  try {
+    const {data} = await axios.post(`api/orders/:orderId/products`, {id})
+    console.log(data, "data from addToCart");
+    return data
+  } catch (err){
+    throw err
+  }
+}
+
 export async function createUser(
   username,
   password,
