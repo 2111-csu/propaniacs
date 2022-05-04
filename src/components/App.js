@@ -27,6 +27,7 @@ const App = () => {
   const storedId = localStorage.getItem("id");
   // const storedIsAdmin = localStorage.getItem("isAdmin")
   const storedToken = localStorage.getItem("token");
+  const storedLoggedIn = localStorage.getItem("loggedIn");
   console.log(localStorage, "localstorage from App");
 
   const [email, setEmail] = useState("");
@@ -49,6 +50,7 @@ const App = () => {
       setId(storedId);
       // setisAdmin(storedIsAdmin)
       setToken(storedToken);
+      setLoggedIn(storedLoggedIn);
     }
     // follow this pattern inside your useEffect calls:
     // first, create an async function that will wrap your axios service adapter

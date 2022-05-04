@@ -25,6 +25,7 @@ const Login = ({ setLoggedIn }) => {
 
       console.log(localStorage);
       if (result.token) {
+        localStorage.setItem("loggedIn", true);
         setLoggedIn(true);
         history.push("/products");
       }
