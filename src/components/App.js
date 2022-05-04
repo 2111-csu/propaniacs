@@ -70,6 +70,7 @@ const App = () => {
     storedLastName,
     storedId,
     storedUsername,
+    storedLoggedIn
   ]);
 
   return (
@@ -83,7 +84,7 @@ const App = () => {
           <AllProducts id={id} token={token} cart={cart} setCart={setCart} />
         </Route>
         <Route exact path={`/products/:productId`}>
-          <SingleProduct />
+          <SingleProduct id={id} token={token} cart={cart} setCart={setCart}/>
         </Route>
         <Route exact path="/account/login">
           <Login setLoggedIn={setLoggedIn} />
