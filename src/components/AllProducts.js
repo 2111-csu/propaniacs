@@ -5,6 +5,7 @@ import { callApi } from "../axios-services";
 
 const AllProducts = ({ token, id, cart, setCart }) => {
   const [products, setProducts] = useState([]);
+  const [quantity, setQuantity] = useState(0)
 
   useEffect(() => {
     const getAllProducts = async () => {
@@ -21,7 +22,7 @@ const AllProducts = ({ token, id, cart, setCart }) => {
     };
 
     getAllProducts();
-  }, [token]);
+  }, [token, setCart]);
 
   const handleAdd = async (event, productId, price, quantity, cart) => {
     event.preventDefault();
@@ -33,27 +34,26 @@ const AllProducts = ({ token, id, cart, setCart }) => {
         method: "POST",
         data: {
           productId,
-          price,
-          quantity,
+          price: Number(price),
+          quantity: Number(quantity),
         },
       });
 
-      setCart([addedToCart, ...cart]);
+      setCart(addedToCart, ...cart);
       console.log(cart, "cart after Add");
       return cart;
     } catch (error) {
       console.error(error);
     }
   };
-  console.log("cart status", cart);
 
   return (
     <>
       <h1 className="subjects">AllProducts</h1>
+      <div className="cards">
       {products.map((product) => {
         return (
           <div key={product.id}>
-            <div className="cards">
               <div className="card">
                 <div className="card__text">
                   <Link to={`/products/${product.id}`}>
@@ -75,6 +75,7 @@ const AllProducts = ({ token, id, cart, setCart }) => {
                     {" "}
                     inStock: {product.inStock}
                   </div>
+                  <input type ="number" name="quantity" placeholder="Quantity" min = "0" value = {quantity} onChange = {(event) => setQuantity(event.target.value)}/>
                   <button
                     type="submit"
                     onClick={(event) =>
@@ -82,19 +83,18 @@ const AllProducts = ({ token, id, cart, setCart }) => {
                         event,
                         product.id,
                         product.price,
-                        product.quantity,
+                        quantity,
                         cart
                       )
                     }
-                  >
-                    Add To Cart
+                  >Add To Cart
                   </button>
                 </div>
               </div>
             </div>
-          </div>
         );
       })}
+    </div>
     </>
   );
 };

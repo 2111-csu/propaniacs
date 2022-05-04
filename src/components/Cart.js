@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { callApi } from "../axios-services";
 
 const Cart = ({ id, token, cart, setCart }) => {
@@ -14,7 +14,7 @@ const Cart = ({ id, token, cart, setCart }) => {
       setCart(userCart.data);
     };
     getCart();
-  }, [token]);
+  }, [token, setCart]);
 
   return (
     <>
@@ -25,14 +25,12 @@ const Cart = ({ id, token, cart, setCart }) => {
             <p>Date Placed: {cartItem.datePlaced}</p>
             <p>Price: {cartItem.price}</p>
             <p>Quantity: {cartItem.quantity}</p>
-            <p>Status: {cartItem.status}</p>
             {cartItem.products.map((itemInCart) => {
               return (
                 <div key={itemInCart.id}>
-                  <p>Category: {itemInCart.category}</p>
                   <p>Item: {itemInCart.name}</p>
                   <p>Description: {itemInCart.description}</p>
-                  <p>Image: {itemInCart.imageURL}</p>
+                  <p>Category: {itemInCart.category}</p>
                   <p>InStock: {itemInCart.true}</p>
                   <p>Item Price: {itemInCart.price}</p>
                 </div>

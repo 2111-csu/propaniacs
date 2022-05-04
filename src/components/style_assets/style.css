@@ -84,6 +84,14 @@ input{
   border: 1px solid black;
 }
 
+.cards{
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+}
+
 .card {
   justify-content: center;
   background-color:white;
