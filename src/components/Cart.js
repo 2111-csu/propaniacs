@@ -16,6 +16,22 @@ const Cart = ({ id, token, cart, setCart }) => {
     getCart();
   }, [token, setCart]);
 
+  const handleRemove = async (event, orderProductId) => {
+    event.preventDefault();
+
+    try {
+      const removeFromCart = await callApi({
+        url: `/api/order_products/${orderProductId}`,
+        method: "DELETE",
+        token,
+      });
+      setCart(removeFromCart, ...cart);
+      return cart;
+    } catch (error) {
+      throw error;
+    }
+  };
+
   return (
     <>
       <h1>Cart</h1>
@@ -33,6 +49,11 @@ const Cart = ({ id, token, cart, setCart }) => {
                   <p>Category: {itemInCart.category}</p>
                   <p>InStock: {itemInCart.true}</p>
                   <p>Item Price: {itemInCart.price}</p>
+                  <button 
+                    type="submit"
+                    onClick={(event) => handleRemove(event, itemInCart.id)}
+                >Remove Item
+                </button>
                 </div>
               );
             })}

@@ -38,22 +38,13 @@ orderProductsRouter.patch("/:orderProductId", requireUser, async (req, res, next
   }
 });
 
-orderProductsRouter.delete("/:orderProductId", requireUser, async (req, res, next) => {
+orderProductsRouter.delete("/:orderProductId", async (req, res, next) => {
     const {orderProductId} = req.params
 
   try {
-    const orderProduct = await getOrderProductById(orderProductId)
-    const order = await getOrderById(orderProduct.orderId)
-    const deletedOrder = await destroyOrderProduct(orderProduct);
-    console.log(deletedOrder, "Order from ordersRouter.get");
-    if(orderProduct && order.userId === req.user.id){
-        res.send(deletedOrder);
-    } else {
-        next({
-            name: 'Error',
-            message: 'You cannot make this request'
-        })
-    }
+    const deletedOrderProduct = await destroyOrderProduct(orderProductId);
+    console.log(deletedOrderProduct, "Delete from ordersRouter.delete");
+    res.send(deletedOrderProduct);
   } catch (error) {
     throw(error);
   }
