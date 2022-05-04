@@ -4,9 +4,9 @@ import {getProducts } from "../axios-services";
 import { callApi } from "../axios-services";
 
 
-const AllProducts = ({token, id}) => {
+const AllProducts = ({token, id, cart, setCart}) => {
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([])
+  
 
   useEffect(() => {
     const getAllProducts = async () => {
