@@ -157,7 +157,7 @@ const getCartByUser = async (id) => {
 
     orders.forEach((order) => {
       order.products = allProducts.filter(
-        (product) => product.id == order.productId
+        (product) => product.id === order.productId
       );
     });
 
