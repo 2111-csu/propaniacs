@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { callApi, getCartByUser } from "../axios-services";
+import React from "react";
+import { callApi } from "../axios-services";
 
 const Cart = ({ id, token, cart, setCart }) => {
   // useEffect(() => {
