@@ -75,7 +75,14 @@ const AllProducts = ({ token, id, cart, setCart }) => {
                     {" "}
                     inStock: {product.inStock}
                   </div>
-                  <input type ="number" name="quantity" placeholder="Quantity" min = "0" value = {quantity} onChange = {(event) => setQuantity(event.target.value)}/>
+                  <br></br>
+                  <input
+                    type ="number"
+                    id = "quantity"
+                    placeholder="Quantity" 
+                    min = "0" 
+                    onChange = {(event) => setQuantity(event.target.value)}
+                   />
                   <button
                     type="submit"
                     onClick={(event) =>

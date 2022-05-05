@@ -131,7 +131,7 @@ async function populateInitialData() {
       },
       {
         name: "250 Gallon Tank",
-        description: "If you're looking for something to heat your home, look no further than the 250 gallon tank.",
+        description: "This tank is perfect to power your whole home! Speak with one of our agents for monthly service.",
         price: 999,
         imageURL: "https://images.kleen-ritecorp.com/images/product/large/37895.jpg",
         inStock: true,
