@@ -70,10 +70,12 @@ input{
     border-radius: 2rem;
     box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
     padding: 1rem;
-    margin: 3rem;
     width: 25rem;
     font-family: 'Oswald', sans-serif;
     font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3rem;
 }
 
 #search {
@@ -103,14 +105,16 @@ input{
   overflow: hidden;
   margin: 1rem;
   padding: 1rem;
-  width: 20rem;
+  width: 20.75rem;
+  height: 36rem
 }
 
 .card__title {
   font-size: 1.25rem;
   font-weight: 300;
-  letter-spacing: 2px;
+  letter-spacing: 1.25px;
   text-transform: uppercase;
+  text-align: center;
   color: black
 }
 
@@ -193,4 +197,8 @@ background: radial-gradient(circle, rgba(232,245,77,1) 75%, rgba(6,19,250,1) 100
     letter-spacing: 2px;
     text-transform: uppercase;
     color: black
+  }
+
+  #quantity{
+    width: 7rem
   }
