@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";import { callApi } from "../axios-services";
+import React, { useState, useEffect } from "react";
+import { callApi } from "../axios-services";
 
 const Cart = ({ id, token, cart, setCart }) => {
   const [quantity, setQuantity] = useState(0);
@@ -16,6 +17,7 @@ const Cart = ({ id, token, cart, setCart }) => {
 
   const reRenderCart = async () => {
       const userCart = await callApi({
+
       url: "/api/cart",
       token,
       method: "GET",
@@ -33,7 +35,7 @@ const Cart = ({ id, token, cart, setCart }) => {
         token,
       });
       setCart(cart);
-      reRenderCart()
+      reRenderCart();
       return removeFromCart;
     } catch (error) {
       throw error;
@@ -53,7 +55,7 @@ const Cart = ({ id, token, cart, setCart }) => {
         },
       });
       setCart(editedCart);
-      reRenderCart()
+      reRenderCart();
       return cart;
     } catch (error) {
       throw error;
@@ -113,13 +115,13 @@ const Cart = ({ id, token, cart, setCart }) => {
               </div>
             );
           })}
-          </div>
-          <div class="totalContainer">
-            <p id="total">Total Price: $</p>
-            <button class="checkoutButton">CheckOut</button>
-            <button class="continueButton">Continue Shopping</button>
-          </div>
         </div>
+        <div class="totalContainer">
+          <p id="total">Total Price: $</p>
+          <button class="checkoutButton">CheckOut</button>
+          <button class="continueButton">Continue Shopping</button>
+        </div>
+      </div>
     </>
   );
 };
