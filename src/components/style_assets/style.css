@@ -26,14 +26,14 @@ h1 {
 }
 
 .links{
-    color: yellow;
-    font-size: 20px;
+  color: yellow;
+  font-size: 20px;
 }
 
 .products{
-    width: 250px;
-    height: 250px;
-    padding: 1rem
+  width: 250px;
+  height: 250px;
+  padding: 1rem;
 }
 
 #title {
@@ -106,7 +106,7 @@ input{
   margin: 1rem;
   padding: 1rem;
   width: 20.75rem;
-  height: 36rem
+  height: 36rem;
 }
 
 .card__title {
@@ -138,67 +138,166 @@ button {
     border-radius: .75rem;
     padding: 0.5rem;
     margin: .5rem
-  }
+}
 
-  #profileBox {
-    display: flex;
-    margin-top: 2.5rem;
-    width: 75%;
-    border: 3px solid black;
-    margin-left: auto;
-    margin-right: auto;
-  }
+#edit{
+  background-color: lightgray;
+  border: 1px solid black;
+  color: black;
+  width: 7rem;
+}
 
-  #infoColumn{
-    display: block;
-    background: rgb(232,245,77);
-background: radial-gradient(circle, rgba(232,245,77,1) 75%, rgba(6,19,250,1) 100%);
-    font-family: 'Oswald', sans-serif;
-    text-align: center;
-    padding: 2rem;
-  }
+#remove{
+  background-color: red;
+  color: white;
+  border: 1px solid black;
+  width: 7rem;
+}
 
-  #orderRow{
-    display: block;
-    background-color: white;
-    font-family: 'Oswald', sans-serif;
-    padding: 1rem;
-    width: 100%;
-  }
+.checkoutButton{
+  background-color: green;
+  color: white;
+  border: 1px solid black;
+  border-radius: 0;
+  font-weight: bold;
+  width: 75%;
+}
 
-  .singleContainer {
-    background-color:white;
-    border: black solid 2px;
-    border-radius: 0.25rem;
-    box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
-    display: flex;
-    margin: 1.5rem;
-    padding: 1rem;
-    width: 75%;
-    margin-left: auto;
-    margin-right: auto;
-  }
+.continueButton{
+  background-color: darkblue;
+  color: white;
+  border: 1px solid black;
+  border-radius: 0;
+  font-weight: bold;
+  width: 75%;
+}
 
-  #singleTextContainer{
-    display: block;
-    width: 100%;
-  }
+#profileBox {
+  display: flex;
+  margin-top: 2.5rem;
+  width: 75%;
+  border: 3px solid black;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  #singleimg{
-    display: block;
-    width: 350px;
-    height: 350px;
-    margin-left: auto;
-  }
+#infoColumn{
+  display: block;
+  background: rgb(232,245,77);
+  background: radial-gradient(circle, rgba(232,245,77,1) 75%, rgba(6,19,250,1) 100%);
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  padding: 2rem;
+}
 
-  .single__subtitle {
-    font-size: 2.5vh;
-    font-weight: 200;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: black
-  }
+#orderRow{
+  display: block;
+  background-color: white;
+  font-family: 'Oswald', sans-serif;
+  padding: 1rem;
+  width: 100%;
+}
 
-  #quantity{
-    width: 7rem
-  }
+.singleContainer {
+  background-color:white;
+  border: black solid 2px;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  margin: 1.5rem;
+  padding: 1rem;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#singleTextContainer{
+  display: block;
+  width: 100%;
+}
+
+#singleimg{
+  display: block;
+  width: 350px;
+  height: 350px;
+  margin-left: auto;
+}
+
+.single__subtitle {
+  font-size: 2.5vh;
+  font-weight: 200;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: black
+}
+
+#quantity{
+  width: 7rem
+}
+
+.cartPageContainer{
+  display: flex;
+  width: 95%;
+  margin-top: 2rem;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 1rem;
+}
+
+.totalContainer{
+  border: solid black 2px;
+  background-color: white;
+  margin-right: auto;
+  margin-left: auto;
+  height:12rem;
+  text-align: center;
+}
+
+.cartContainer{
+  border: solid black 2px;
+  background-color: white;
+  margin-left: 1.5rem;
+  margin-right: auto;
+  width: 75%;
+}
+
+.cartTitles{
+  justify-content: flex-end;
+  display:flex;
+  font-size: 25px;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 25vh
+}
+
+.innerCartContainer{
+  display: flex;
+  margin-right: 2rem;
+  margin-left: .5rem;
+  margin-bottom: .75rem;
+}
+
+.cartImg{
+  width: 100px;
+  height: 100px;
+  margin-left: 3rem;
+}
+
+.cartTextOnly{
+  display: flex;
+  width: 84%;
+}
+
+#singleCartText{
+  width: 35%;
+  display: block;
+  justify-content: flex-end;
+  font-size: 25px;
+  text-align: end;
+}
+
+#total{
+  font-size: 3vh;
+  font-weight: bold;
+}
