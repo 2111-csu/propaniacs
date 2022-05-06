@@ -16,7 +16,8 @@ const Cart = ({ id, token, cart, setCart }) => {
   }, [setCart, token]);
 
   const reRenderCart = async () => {
-    const userCart = await callApi({
+      const userCart = await callApi({
+
       url: "/api/cart",
       token,
       method: "GET",
@@ -79,40 +80,33 @@ const Cart = ({ id, token, cart, setCart }) => {
                     <div key={itemInCart.id}>
                       <div class="innerCartContainer">
                         <div>
-                          <form
-                            onSubmit={(event) => {
-                              event.preventDefault();
-                              handleRemove(event, itemInCart.id);
-                            }}
-                          >
-                            <button id="remove" type="submit">
-                              Remove Item
-                            </button>
-                          </form>
-                          <input
-                            type="number"
-                            id="quantity"
-                            placeholder="Edit qty"
-                            min="0"
-                            onChange={(event) =>
-                              setQuantity(event.target.value)
-                            }
-                          />
-                          <button
-                            id="edit"
-                            type="submit"
-                            onClick={(event) =>
-                              handleEdit(event, quantity, itemInCart.id)
-                            }
-                          >
-                            Edit Item
-                          </button>
-                        </div>
-                        <img class="cartImg" src={itemInCart.imageURL} alt="" />
-                        <div class="cartTextOnly">
-                          <p id="singleCartText">{itemInCart.name}</p>
-                          <p id="singleCartText">{cartItem.quantity}</p>
-                          <p id="singleCartText">${itemInCart.price}</p>
+                        <form
+                        onSubmit={(event) => {
+                          event.preventDefault();
+                          handleRemove(event, itemInCart.id);
+                        }}
+                      >
+                        <button id="remove" type="submit">Remove Item</button>
+                      </form>
+                      <input
+                        type ="number"
+                        id = "quantity"
+                        placeholder="Edit qty" 
+                        min = "0" 
+                        onChange = {(event) => setQuantity(event.target.value)}
+                      />
+                        <button 
+                        id="edit" 
+                        type="submit"
+                        onClick={(event) =>
+                        handleEdit(event, quantity, itemInCart.id)}
+                        >Submit</button>
+                      </div>
+                        <img class ="cartImg" src={itemInCart.imageURL} alt=""/>
+                        <div class ="cartTextOnly">
+                          <p id ="singleCartText">{itemInCart.name}</p>
+                          <p id ="singleCartText">{cartItem.quantity}</p>
+                          <p id ="singleCartText">${itemInCart.price}</p>
                         </div>
                       </div>
                     </div>

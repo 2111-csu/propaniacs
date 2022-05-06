@@ -10,29 +10,31 @@ const {
 const { getOrderById } = require("../db/models/orders");
 const { requireUser } = require("./utils");
 
-orderProductsRouter.patch("/:orderProductId", requireUser, async (req, res, next) => {
-  const {price, quantity } = req.body;
+orderProductsRouter.patch("/:orderProductId", async (req, res, next) => {
+
   const {orderProductId} = req.params
+  const {quantity } = req.body;
   const {id} = req.user
 
   try {
-    const orderProduct = await getOrderProductById(orderProductId)
-    const order = await getOrderById(orderProduct.orderId)
+    // const orderProduct = await getOrderProductById(orderProductId)
+    // console.log(orderProduct, "orderProduct from patch");
+    // const order = await getOrderById(orderProduct.orderId)
+    // console.log(order, "order from patch cart");
     const updatedOrderProduct = await updateOrderProduct({
         id: orderProductId,
-        price,
         quantity
      })
      console.log(updatedOrderProduct, "patch order from orderProductsRouter");
 
-     if (id !== order.userId){
-        next({
-            name: 'UpdateError',
-            message: "You are not able to make this action",
-          });
-        } else {
-        res.send(updatedOrderProduct)
-     }
+    //  if (id !== order.userId){
+    //     next({
+    //         name: 'UpdateError',
+    //         message: "You are not able to make this action",
+    //       });
+    //     } else {
+    //     res.send(updatedOrderProduct)
+    //  }
   } catch (error) {
     throw(error);
   }
