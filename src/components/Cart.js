@@ -1,29 +1,27 @@
-import React, { useState } from "react";
-import { callApi } from "../axios-services";
+import React, { useState, useEffect } from "react";import { callApi } from "../axios-services";
 
 const Cart = ({ id, token, cart, setCart }) => {
-  const [quantity, setQuantity] = useState(0)
-  // useEffect(() => {
-  //   const getCart = async () => {
-  //     const userCart = await callApi({
-  //       url: "/api/cart",
-  //       token,
-  //       method: "GET",
-  //     });
-  //     setCart(userCart.data);
-  //   };
-  //   getCart();
-  // }, []);
+  const [quantity, setQuantity] = useState(0);
+  useEffect(() => {
+    const getCart = async () => {
+      const userCart = await callApi({
+        url: "/api/cart",
+        token,
+        method: "GET",
+      });
+      setCart(userCart.data);
+    };
+    getCart();
+  }, [setCart, token]);
 
-  const getCart = async () => {
-    const userCart = await callApi({
+  const reRenderCart = async () => {
+      const userCart = await callApi({
       url: "/api/cart",
       token,
       method: "GET",
     });
     setCart(userCart.data);
   };
-  getCart();
 
   const handleRemove = async (event, orderProductId) => {
     event.preventDefault();
@@ -35,7 +33,7 @@ const Cart = ({ id, token, cart, setCart }) => {
         token,
       });
       setCart(cart);
-      getCart();
+      reRenderCart()
       return removeFromCart;
     } catch (error) {
       throw error;
@@ -51,11 +49,11 @@ const Cart = ({ id, token, cart, setCart }) => {
         method: "PATCH",
         token,
         data: {
-          quantity: Number(quantity)
-        }
+          quantity: Number(quantity),
+        },
       });
       setCart(editedCart);
-      getCart();
+      reRenderCart()
       return cart;
     } catch (error) {
       throw error;
@@ -78,7 +76,7 @@ const Cart = ({ id, token, cart, setCart }) => {
                 {cartItem.products.map((itemInCart) => {
                   return (
                     <div key={itemInCart.id}>
-                      <div class = "innerCartContainer">
+                      <div class="innerCartContainer">
                         <div>
                         <form
                         onSubmit={(event) => {
@@ -100,7 +98,7 @@ const Cart = ({ id, token, cart, setCart }) => {
                         type="submit"
                         onClick={(event) =>
                         handleEdit(event, quantity, itemInCart.id)}
-                        >Edit Item</button>
+                        >Submit</button>
                       </div>
                         <img class ="cartImg" src={itemInCart.imageURL} alt=""/>
                         <div class ="cartTextOnly">

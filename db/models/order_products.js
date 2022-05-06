@@ -42,18 +42,18 @@ async function getOrderProductById({ id }) {
   }
 }
 
-const updateOrderProduct = async ({ id, price, quantity }) => {
+const updateOrderProduct = async ({ id, quantity }) => {
   try {
     const {
       rows: [orderProduct],
     } = await client.query(
       `
         UPDATE order_products
-        SET price = $1, quantity = $2
+        SET quantity = $1
         WHERE id = ${id}
         RETURNING *;
       `,
-      [price, quantity]
+      [quantity]
     );
     return orderProduct;
   } catch (error) {
