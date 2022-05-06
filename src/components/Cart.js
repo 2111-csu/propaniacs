@@ -13,7 +13,7 @@ const Cart = ({ id, token, cart, setCart }) => {
       setCart(userCart.data);
     };
     getCart();
-  }, []);
+  }, [setCart, token]);
 
   const reRenderCart = async () => {
     const userCart = await callApi({
