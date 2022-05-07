@@ -18,6 +18,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@stripe/react-stripe-js": "^1.7.2",
+    "@stripe/stripe-js": "^1.29.0",
     "axios": "^0.19.2",
     "bcrypt": "^5.0.1",
     "concurrently": "^7.0.0",
@@ -30,7 +32,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.3"
+    "react-scripts": "^3.4.3",
+    "stripe": "^8.222.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4",

@@ -108,7 +108,7 @@ const App = () => {
         <Route exact path="/cart">
           <Cart id={id} token={token} firstName = {firstName} cart={cart} setCart={setCart} />
         </Route>
-        <Route exact path="/cart/checkout/:orderId">
+        <Route exact path="/payment">
           <Checkout token = {token} cart = {cart} email = {email}/>
         </Route>
       </BrowserRouter>
