@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const NavBar = ({ token, setToken, loggedIn }) => {
+const NavBar = ({ token, setToken, setLoggedIn, loggedIn }) => {
   useEffect(() => {
     // const renderPage = async () => {
     //   if (token){
@@ -34,6 +34,7 @@ const NavBar = ({ token, setToken, loggedIn }) => {
                 onClick={() => {
                   localStorage.clear();
                   setToken("");
+                  setLoggedIn(false)
                 }}
               >
                 {" "}

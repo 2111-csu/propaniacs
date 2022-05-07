@@ -16,16 +16,6 @@ const Cart = ({ id, token, cart, firstName, setCart }) => {
     getCart();
   }, [setCart, token]);
 
-  const reRenderCart = async () => {
-      const userCart = await callApi({
-
-      url: "/api/cart",
-      token,
-      method: "GET",
-    });
-    setCart(userCart.data);
-  };
-
   const handleRemove = async (event, orderProductId) => {
     event.preventDefault();
 
@@ -33,6 +23,7 @@ const Cart = ({ id, token, cart, firstName, setCart }) => {
       const removeFromCart = await callApi({
         url: `/api/order_products/${orderProductId}`,
         method: "DELETE",
+        cart,
         token,
       });
       setCart(cart);
@@ -62,6 +53,16 @@ const Cart = ({ id, token, cart, firstName, setCart }) => {
       throw error;
     }
   };
+
+  const reRenderCart = async () => {
+    const userCart = await callApi({
+
+    url: "/api/cart",
+    token,
+    method: "GET",
+  });
+  setCart(userCart.data);
+};
 
   return (
     <>
