@@ -31,9 +31,13 @@ h1 {
 }
 
 .products{
+  display: block;
   width: 250px;
   height: 250px;
   padding: 1rem;
+  margin-bottom: -.5rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #title {
@@ -106,21 +110,19 @@ input{
   margin: 1rem;
   padding: 1rem;
   width: 20.75rem;
-  height: 36rem;
+  height: 28rem;
 }
 
 .card__title {
-  font-size: 1.25rem;
-  font-weight: 300;
+  font-size: 1.6rem;
   letter-spacing: 1.25px;
   text-transform: uppercase;
   text-align: center;
-  color: black
+  color: black;
 }
 
 .card__subtitle {
-  font-size: 2vh;
-  font-weight: 200;
+  font-size: 20px;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: black
@@ -140,11 +142,18 @@ button {
     margin: .5rem
 }
 
+.cartEditContainer{
+  display: flex;
+}
+
 #edit{
   background-color: lightgray;
   border: 1px solid black;
   color: black;
-  width: 7rem;
+  width: 4rem;
+  font-size: 12px;
+  text-align: center;
+  margin-left: auto;
 }
 
 #remove{
@@ -152,6 +161,20 @@ button {
   color: white;
   border: 1px solid black;
   width: 7rem;
+}
+
+#CancelOrder{
+  background-color: red;
+  color: white;
+  border: 1px solid black;
+  width: 8rem;
+}
+
+#CompleteOrder{
+  background-color: green;
+  color: white;
+  border: 1px solid black;
+  width: 8rem;
 }
 
 .checkoutButton{
@@ -232,7 +255,13 @@ button {
 }
 
 #quantity{
-  width: 7rem
+  width: 4rem;
+  font-size: medium;
+}
+
+#prodQuantity{
+  width: 10rem;
+  font-size: medium;
 }
 
 .cartPageContainer{
@@ -300,4 +329,30 @@ button {
 #total{
   font-size: 3vh;
   font-weight: bold;
+}
+
+#CheckoutContainer{
+  display: flex;
+  border: 5px black solid;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.CheckoutUserInfo{
+  display: block;
+  border: 5px solid red;
+  background-color: white;
+  margin-right: auto;
+  padding: 4%;
+
+}
+
+.paymentBox{
+  border: 5px solid green;
+  background-color: white;
+  margin-left: auto;
+  padding: 4%;
 }

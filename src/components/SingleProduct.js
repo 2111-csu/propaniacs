@@ -54,12 +54,13 @@ const SingleProduct = ({ token, id, cart, setCart }) => {
           <div className="card__text">
             <div key={product.id}>
               <div id="singleTextContainer">
-              <p className="single__subtitle">Product Name:{product.name}</p>
-              <p className="single__subtitle">Product Description:{product.description}</p>
-              <p className="single__subtitle">Product Price:{product.price}</p>
-              <p className="single__subtitle">Product inStock:{product.inStock}</p>
-              <p className="single__subtitle">Product Category:{product.category}</p>
+              <p className="single__subtitle">Product Name: {product.name}</p>
+              <p className="single__subtitle">Product Description: {product.description}</p>
+              <p className="single__subtitle">Product Price: ${product.price}</p>
+              <p className="single__subtitle">Product inStock: {product.inStock}</p>
+              <p className="single__subtitle">Product Category: {product.category}</p>
             </div>
+            <br></br>
           </div>
           <input type ="number" name="quantity" placeholder="Quantity" min = "0" value = {quantity} onChange = {(event) => setQuantity(event.target.value)}/>
                   <button

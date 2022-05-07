@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { callApi } from "../axios-services";
 
-const Cart = ({ id, token, cart, setCart }) => {
+const Cart = ({ id, token, cart, firstName, setCart }) => {
   const [quantity, setQuantity] = useState(0);
   useEffect(() => {
     const getCart = async () => {
@@ -66,7 +67,7 @@ const Cart = ({ id, token, cart, setCart }) => {
     <>
       <div class="cartPageContainer">
         <div class="cartContainer">
-          <h1>Your Cart</h1>
+          <h1>{firstName}'s Cart</h1>
           <div class="cartTitles">
             <p> Name | </p>
             <p> Quantity | </p>
@@ -88,19 +89,21 @@ const Cart = ({ id, token, cart, setCart }) => {
                       >
                         <button id="remove" type="submit">Remove Item</button>
                       </form>
-                      <input
-                        type ="number"
-                        id = "quantity"
-                        placeholder="Edit qty" 
-                        min = "0" 
-                        onChange = {(event) => setQuantity(event.target.value)}
-                      />
-                        <button 
-                        id="edit" 
-                        type="submit"
-                        onClick={(event) =>
-                        handleEdit(event, quantity, itemInCart.id)}
-                        >Submit</button>
+                      <div class ="cartEditContainer">
+                        <input
+                          type ="number"
+                          id = "quantity"
+                          placeholder="qty" 
+                          min = "0" 
+                          onChange = {(event) => setQuantity(event.target.value)}
+                        />
+                          <button 
+                          id="edit" 
+                          type="submit"
+                          onClick={(event) =>
+                          handleEdit(event, quantity, itemInCart.id)}
+                          >Change Qty</button>
+                        </div>
                       </div>
                         <img class ="cartImg" src={itemInCart.imageURL} alt=""/>
                         <div class ="cartTextOnly">
@@ -118,8 +121,12 @@ const Cart = ({ id, token, cart, setCart }) => {
         </div>
         <div class="totalContainer">
           <p id="total">Total Price: $</p>
-          <button class="checkoutButton">CheckOut</button>
-          <button class="continueButton">Continue Shopping</button>
+          <Link to={`/cart/checkout/${cart.orderId}`}>
+            <button class="checkoutButton">CheckOut</button>
+          </Link>
+          <Link to="/products">
+            <button class="continueButton">Continue Shopping</button>
+          </Link>
         </div>
       </div>
     </>

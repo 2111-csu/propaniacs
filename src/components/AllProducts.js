@@ -57,20 +57,11 @@ const AllProducts = ({ token, id, cart, setCart }) => {
               <div className="card">
                 <div className="card__text">
                   <Link to={`/products/${product.id}`}>
-                    <div className="card__title">Name: {product.name}</div>
+                    <div className="card__title">{product.name}</div>
                   </Link>
                   <img className="products" src={product.imageURL} alt="" />
-                  <div className="card__subtitle">
-                    {" "}
-                    Category: {product.category}
-                  </div>
                   <br></br>
-                  <div className="card__subtitle">
-                    {" "}
-                    Description: {product.description}
-                  </div>
-                  <br></br>
-                  <div className="card__subtitle"> Price: {product.price}</div>
+                  <div className="card__subtitle"> Price: ${product.price}</div>
                   <div className="card__subtitle">
                     {" "}
                     inStock: {product.inStock}
@@ -78,7 +69,7 @@ const AllProducts = ({ token, id, cart, setCart }) => {
                   <br></br>
                   <input
                     type ="number"
-                    id = "quantity"
+                    id = "prodQuantity"
                     placeholder="Quantity" 
                     min = "0" 
                     onChange = {(event) => setQuantity(event.target.value)}
