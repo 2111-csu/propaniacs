@@ -16,6 +16,7 @@ import {
   Profile,
   Cart,
   Home,
+  Checkout
 } from "./index";
 
 const App = () => {
@@ -105,7 +106,10 @@ const App = () => {
           <SingleOrder id={id} />
         </Route>
         <Route exact path="/cart">
-          <Cart id={id} token={token} cart={cart} setCart={setCart} />
+          <Cart id={id} token={token} firstName = {firstName} cart={cart} setCart={setCart} />
+        </Route>
+        <Route exact path="/cart/checkout/:orderId">
+          <Checkout token = {token} cart = {cart} email = {email}/>
         </Route>
       </BrowserRouter>
       <h1>Hello, World!</h1>

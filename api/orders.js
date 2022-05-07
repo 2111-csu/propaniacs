@@ -60,7 +60,7 @@ ordersRouter.get("/:orderId", async (req, res, next) => {
   }
 });
 
-ordersRouter.patch("/:orderId", requireUser, async (req, res, next) => {
+ordersRouter.patch("/:orderId", async (req, res, next) => {
   const { orderId } = req.params;
   const { status } = req.body
 
@@ -69,18 +69,28 @@ ordersRouter.patch("/:orderId", requireUser, async (req, res, next) => {
       id: orderId,
       status,
     });
-    res.send(updatedOrder);
+    res.send({
+      updatedOrder,
+      message: `This order is ${status}`
+    });
   } catch (error) {
     throw(error);
   }
 });
 
-ordersRouter.delete("/:orderId", requireUser, async (req, res, next) => {
+ordersRouter.delete("/:orderId", async (req, res, next) => {
   const { orderId } = req.params;
+  const { status } = req.body
 
   try {
-    const canceledOrder = await cancelOrder({id: orderId});
-    res.send(canceledOrder);
+    const canceledOrder = await cancelOrder({
+      id: orderId,
+      status,
+    });
+    res.send({
+      canceledOrder,
+      message: `This order is ${status}`
+    });  
   } catch (error) {
     throw(error);
   }
