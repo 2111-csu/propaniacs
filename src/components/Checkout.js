@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { callApi } from "../axios-services";
-import companyLogo from "../style/CompanyLogo.png"
+import {loadStripe} from "@stripe/stripe-js"
+import {Elements} from "@stripe/react-stripe-js"
+import PaymentForm from "./PaymentForm";
+
+const PUBLIC_KEY = "pk_test_51KwrdhDpvRAdcMotWgYznOcLGPqH3hxmCWkyOmHfyDXCRLNMarMbSbL051E8d7gSzpaQSCHG1Dnj4DbwbPyj8beu00ZvRFH4Sx"
+
+const stripeTestPromise = loadStripe(PUBLIC_KEY)
 
 const Checkout = ({ token, email, cart }) => {
     const [address, setAddress] = useState("")
@@ -8,6 +14,10 @@ const Checkout = ({ token, email, cart }) => {
     const [state, setState] = useState("")
     const [zip, setZip] = useState("")
     const [verifiedEmail, setVerifiedEmail] = useState("")
+    // const [creditCard, setCreditCard] = useState("")
+    // const [expiration, setExpiration] = useState("")
+    // const [CVC, setCVC] = useState("")
+    // const [zipCode, setZipCode] = useState("")
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -36,7 +46,7 @@ const Checkout = ({ token, email, cart }) => {
   const handleCompleteOrder = async (event, orderId) => {
     event.preventDefault();
     try{
-        const completeOrder = callApi({
+        const completeOrder = await callApi({
             url: `api/orders/${orderId}`,
             method: "PATCH",
             token,
@@ -53,7 +63,7 @@ const Checkout = ({ token, email, cart }) => {
   const handleCancelOrder = async (event, orderId) => {
     event.preventDefault();
     try{
-        const cancelOrder = callApi({
+        const cancelOrder = await callApi({
             url: `api/orders/${orderId}`,
             method: "DELETE",
             token,
@@ -114,8 +124,38 @@ const Checkout = ({ token, email, cart }) => {
                     </button>
                 </form>
             </div>
-            <img className="companyLogo" src = {companyLogo} alt="Strick-Land Propane Logo"/>
             <div class="paymentBox">
+                <Elements stripe = {stripeTestPromise}>
+                    <PaymentForm token ={token} />
+                </Elements>
+                {/* <input 
+                    type = "text" 
+                    maxlength="16"
+                    placeholder = "Credit Card Number" 
+                    value = {creditCard}
+                    onChange={(e) => setCreditCard(e.target.value)}>
+                </input>
+                <input 
+                    type = "text" 
+                    maxlength="4"
+                    placeholder = "Exp Date" 
+                    value = {expiration}
+                    onChange={(e) => setExpiration(e.target.value)}>
+                </input>
+                <input 
+                    type = "text" 
+                    maxlength="3"
+                    placeholder = "CVC" 
+                    value = {CVC}
+                    onChange={(e) => setCVC(e.target.value)}>
+                    </input>
+                <input 
+                    type = "text" 
+                    maxlength="5"
+                    placeholder = "Zip Code" 
+                    value = {zipCode}
+                    onChange={(e) => setZipCode(e.target.value)}>
+                    </input> */}
                 <button 
                 id="CancelOrder"
                 onClick={(event) =>

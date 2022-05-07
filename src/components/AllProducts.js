@@ -62,10 +62,16 @@ const AllProducts = ({ token, id, cart, setCart }) => {
                   <img className="products" src={product.imageURL} alt="" />
                   <br></br>
                   <div className="card__subtitle"> Price: ${product.price}</div>
-                  <div className="card__subtitle">
+                  {product.inStock === true
+                    ?<div className="card__subtitle">
                     {" "}
-                    inStock: {product.inStock}
-                  </div>
+                    inStock: Yes
+                    </div>
+                    :<div className="card__subtitle">
+                    {" "}
+                    inStock: No
+                    </div>
+                  }
                   <br></br>
                   <input
                     type ="number"

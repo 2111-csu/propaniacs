@@ -121,7 +121,7 @@ const Cart = ({ id, token, cart, firstName, setCart }) => {
         </div>
         <div class="totalContainer">
           <p id="total">Total Price: $</p>
-          <Link to={`/cart/checkout/${cart.orderId}`}>
+          <Link to="/payment">
             <button class="checkoutButton">CheckOut</button>
           </Link>
           <Link to="/products">

@@ -59,5 +59,6 @@ apiRouter.use("/account", require("../api/users"));
 apiRouter.use("/orders", require("../api/orders"));
 apiRouter.use("/order_products", require("../api/order_products"));
 apiRouter.use("/cart", require("../api/cart"));
+apiRouter.use("/payment", require("../api/payment"));
 
 module.exports = apiRouter;
