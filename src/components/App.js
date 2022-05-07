@@ -77,7 +77,7 @@ const App = () => {
   return (
     <div className="app-container">
       <BrowserRouter>
-        <NavBar token={token} setToken={setToken} loggedIn={loggedIn} />
+        <NavBar token={token} setToken={setToken} setLoggedIn ={setLoggedIn} loggedIn={loggedIn} />
         <Route exact path="/">
           <Home />
         </Route>

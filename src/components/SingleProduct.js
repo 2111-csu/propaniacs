@@ -57,22 +57,17 @@ const SingleProduct = ({ token, id, cart, setCart }) => {
               <p className="single__subtitle">Product Name: {product.name}</p>
               <p className="single__subtitle">Product Description: {product.description}</p>
               <p className="single__subtitle">Product Price: ${product.price}</p>
-              {product.inStock === true
-                ?<div className="card__subtitle">
-                {" "}
-                inStock: Yes
-                </div>
-                :<div className="card__subtitle">
-                {" "}
-                inStock: No
-                </div>
-              }
               <p className="single__subtitle">Product Category: {product.category}</p>
-            </div>
-            <br></br>
-          </div>
-          <input type ="number" name="quantity" placeholder="Quantity" min = "0" value = {quantity} onChange = {(event) => setQuantity(event.target.value)}/>
-                  <button
+              {product.inStock === true
+                  ?<>
+                  <input
+                    type ="number"
+                    id = "prodQuantity"
+                    placeholder="Quantity" 
+                    min = "0" 
+                    onChange = {(event) => setQuantity(event.target.value)}
+                   />
+                   <button
                     type="submit"
                     onClick={(event) =>
                       handleAdd(
@@ -85,6 +80,12 @@ const SingleProduct = ({ token, id, cart, setCart }) => {
                     }
                   >Add To Cart
                   </button>
+                  </>
+                  :<h2>OUT OF STOCK</h2>
+                }
+            </div>
+            <br></br>
+          </div>
         </div>
         <img id="singleimg" className ="products" src={product.imageURL} alt=""/>
       </div>

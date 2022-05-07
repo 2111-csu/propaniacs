@@ -73,6 +73,8 @@ const AllProducts = ({ token, id, cart, setCart }) => {
                     </div>
                   }
                   <br></br>
+                  {product.inStock === true
+                  ?<>
                   <input
                     type ="number"
                     id = "prodQuantity"
@@ -80,7 +82,7 @@ const AllProducts = ({ token, id, cart, setCart }) => {
                     min = "0" 
                     onChange = {(event) => setQuantity(event.target.value)}
                    />
-                  <button
+                   <button
                     type="submit"
                     onClick={(event) =>
                       handleAdd(
@@ -93,6 +95,9 @@ const AllProducts = ({ token, id, cart, setCart }) => {
                     }
                   >Add To Cart
                   </button>
+                  </>
+                  :<h2>OUT OF STOCK</h2>
+                }
                 </div>
               </div>
             </div>
