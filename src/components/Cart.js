@@ -79,9 +79,7 @@ const Cart = ({ id, token, cart, firstName, setCart }) => {
             return (
               <div key={cartItem.id}>
                 {cartItem.products.map((itemInCart) => {
-                  {
-                    cartTotal = Number(cartTotal) + Number(itemInCart.price);
-                  }
+                  cartTotal = Number(cartTotal) + Number(itemInCart.price);
 
                   return (
                     <div key={itemInCart.id}>
