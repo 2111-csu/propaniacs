@@ -82,12 +82,27 @@ input{
     margin-top: 3rem;
 }
 
+#searchContainer{
+  margin-left: 3rem;
+}
+
 #search {
   padding: 8px;
   margin-top: 10px;
   font-family: 'Oswald', sans-serif;
   font-size: 16px;
   border: 1px solid black;
+  width: 21rem;
+}
+
+#categories {
+  padding: 8px;
+  margin-top: 10px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  border: 1px solid black;
+  width: 21rem;
+  margin-left: 1rem;
 }
 
 .cards{
