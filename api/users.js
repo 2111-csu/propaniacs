@@ -115,8 +115,12 @@ usersRouter.get("/:username", async (req, res, next) => {
 });
 
 usersRouter.get("/:userId/orders", requireUser, async (req, res, next) => {
+  console.log("API TEST");
+  const { userId } = req.params;
   try {
-    res.send(req.user);
+    const userOrders = await getOrderByUser(userId);
+    console.log("Users orders from API", userOrders);
+    res.send(userOrders);
   } catch (error) {
     next(error);
   }

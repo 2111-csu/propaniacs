@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const NavBar = ({ token, setToken, setLoggedIn, loggedIn }) => {
+  const userId = localStorage.getItem("id");
+
   useEffect(() => {
     // const renderPage = async () => {
     //   if (token){
@@ -24,7 +26,7 @@ const NavBar = ({ token, setToken, setLoggedIn, loggedIn }) => {
           </Link>
           {loggedIn ? (
             <>
-              <Link to="/account/me" className="links">
+              <Link to={`/users/${userId}`} className="links">
                 {" "}
                 My Profile |
               </Link>
@@ -34,7 +36,7 @@ const NavBar = ({ token, setToken, setLoggedIn, loggedIn }) => {
                 onClick={() => {
                   localStorage.clear();
                   setToken("");
-                  setLoggedIn(false)
+                  setLoggedIn(false);
                 }}
               >
                 {" "}
@@ -42,7 +44,7 @@ const NavBar = ({ token, setToken, setLoggedIn, loggedIn }) => {
               </Link>
             </>
           ) : (
-            <Link to="/account/login" className="links">
+            <Link to="/users/login" className="links">
               {" "}
               Login/Register |
             </Link>

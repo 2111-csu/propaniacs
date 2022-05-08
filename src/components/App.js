@@ -16,7 +16,7 @@ import {
   Profile,
   Cart,
   Home,
-  Checkout
+  Checkout,
 } from "./index";
 
 const App = () => {
@@ -71,13 +71,18 @@ const App = () => {
     storedLastName,
     storedId,
     storedUsername,
-    storedLoggedIn
+    storedLoggedIn,
   ]);
 
   return (
     <div className="app-container">
       <BrowserRouter>
-        <NavBar token={token} setToken={setToken} setLoggedIn ={setLoggedIn} loggedIn={loggedIn} />
+        <NavBar
+          token={token}
+          setToken={setToken}
+          setLoggedIn={setLoggedIn}
+          loggedIn={loggedIn}
+        />
         <Route exact path="/">
           <Home />
         </Route>
@@ -85,15 +90,15 @@ const App = () => {
           <AllProducts id={id} token={token} cart={cart} setCart={setCart} />
         </Route>
         <Route exact path={`/products/:productId`}>
-          <SingleProduct id={id} token={token} cart={cart} setCart={setCart}/>
+          <SingleProduct id={id} token={token} cart={cart} setCart={setCart} />
         </Route>
-        <Route exact path="/account/login">
+        <Route exact path="/users/login">
           <Login setLoggedIn={setLoggedIn} />
         </Route>
-        <Route exact path="/account/register">
+        <Route exact path="/users/register">
           <Register />
         </Route>
-        <Route exact path="/account/me">
+        <Route exact path="/users/:userId">
           <Profile
             token={token}
             username={username}
@@ -106,10 +111,16 @@ const App = () => {
           <SingleOrder id={id} />
         </Route>
         <Route exact path="/cart">
-          <Cart id={id} token={token} firstName = {firstName} cart={cart} setCart={setCart} />
+          <Cart
+            id={id}
+            token={token}
+            firstName={firstName}
+            cart={cart}
+            setCart={setCart}
+          />
         </Route>
         <Route exact path="/payment">
-          <Checkout token = {token} cart = {cart} email = {email}/>
+          <Checkout token={token} cart={cart} email={email} />
         </Route>
       </BrowserRouter>
       <h1>Hello, World!</h1>

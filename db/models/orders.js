@@ -45,7 +45,7 @@ const getAllOrders = async () => {
   }
 };
 
-const getOrderByUser = async ({ id }) => {
+const getOrderByUser = async (id) => {
   try {
     const { rows: orders } = await client.query(
       `
