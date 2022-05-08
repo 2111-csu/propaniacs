@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { callApi } from "../axios-services";
+import { useParams } from "react-router-dom";
 import {loadStripe} from "@stripe/stripe-js"
 import {Elements} from "@stripe/react-stripe-js"
 import PaymentForm from "./PaymentForm";
@@ -9,6 +10,7 @@ const PUBLIC_KEY = "pk_test_51KwrdhDpvRAdcMotWgYznOcLGPqH3hxmCWkyOmHfyDXCRLNMarM
 const stripeTestPromise = loadStripe(PUBLIC_KEY)
 
 const Checkout = ({ token, email, cart }) => {
+    const { orderId } = useParams();
     const [address, setAddress] = useState("")
     const [city, setCity] = useState("")
     const [state, setState] = useState("")
@@ -18,7 +20,7 @@ const Checkout = ({ token, email, cart }) => {
     // const [expiration, setExpiration] = useState("")
     // const [CVC, setCVC] = useState("")
     // const [zipCode, setZipCode] = useState("")
-
+ 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
@@ -47,7 +49,7 @@ const Checkout = ({ token, email, cart }) => {
     event.preventDefault();
     try{
         const completeOrder = await callApi({
-            url: `api/orders/${orderId}`,
+            url: `/api/payment/${orderId}`,
             method: "PATCH",
             token,
             data: {
@@ -64,7 +66,7 @@ const Checkout = ({ token, email, cart }) => {
     event.preventDefault();
     try{
         const cancelOrder = await callApi({
-            url: `api/orders/${orderId}`,
+            url: `/api/payment/${orderId}`,
             method: "DELETE",
             token,
             data: {
@@ -126,7 +128,7 @@ const Checkout = ({ token, email, cart }) => {
             </div>
             <div class="paymentBox">
                 <Elements stripe = {stripeTestPromise}>
-                    <PaymentForm token ={token} />
+                    <PaymentForm orderId = {orderId} token ={token} />
                 </Elements>
                 {/* <input 
                     type = "text" 
@@ -159,12 +161,12 @@ const Checkout = ({ token, email, cart }) => {
                 <button 
                 id="CancelOrder"
                 onClick={(event) =>
-                handleCancelOrder(event, cart.id)}
+                handleCancelOrder(event, orderId)}
                 >Cancel Order</button>
                 <button 
                 id="CompleteOrder"
                 onClick={(event) =>
-                handleCompleteOrder(event, cart.id)}
+                handleCompleteOrder(event, orderId)}
                 >Complete Order</button>
             </div>
         </div>

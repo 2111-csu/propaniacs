@@ -24,7 +24,7 @@ const CARD_OPTIONS = {
     }
 }
 
-export default function PaymentForm({token}) {
+export default function PaymentForm({token, orderId}) {
     const [success, setSuccess] = useState(false)
     const stripe = useStripe()
     const elements = useElements()
@@ -40,7 +40,7 @@ export default function PaymentForm({token}) {
         try {
            const {id} = paymentMethod;
            const response = await callApi({
-               url: "api/payment",
+               url: `/api/payment/${orderId}`,
                method: "POST",
                token,
                data: {
