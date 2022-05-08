@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { callApi } from "../axios-services";
 
 const Cart = ({ id, token, cart, firstName, setCart }) => {
+  const orderId = localStorage.getItem("orderId")
   const [quantity, setQuantity] = useState(0);
   let cartTotal = 0;
 
@@ -13,7 +14,9 @@ const Cart = ({ id, token, cart, firstName, setCart }) => {
         token,
         method: "GET",
       });
+      console.log(userCart, "get cart");
       setCart(userCart.data);
+      localStorage.setItem("orderId", userCart.data[0].orderId)
     };
     getCart();
   }, [setCart, token]);
@@ -132,7 +135,7 @@ const Cart = ({ id, token, cart, firstName, setCart }) => {
         </div>
         <div class="totalContainer">
           <p id="total">Total Price: ${cartTotal}</p>
-          <Link to="/payment">
+          <Link to={`/payment/${orderId}`}>
             <button class="checkoutButton">CheckOut</button>
           </Link>
           <Link to="/products">

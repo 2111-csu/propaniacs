@@ -6,6 +6,11 @@ const bodyParser = require("body-parser")
 const cors = require("cors");
 const { application } = require("express");
 
+const {
+  updateOrder,
+  cancelOrder,
+} = require("../db/models/orders");
+
 paymentRouter.use(bodyParser.urlencoded({extended: true}))
 paymentRouter.use(bodyParser.json);
 
@@ -44,5 +49,41 @@ paymentRouter.post("/", cors(), async (req, res, next) => {
     })
     }
 })
+
+paymentRouter.patch("/:orderId", async (req, res, next) => {
+  const { orderId } = req.params;
+  const { status } = req.body
+
+  try {
+    const updatedOrder = await updateOrder({
+      id: orderId,
+      status,
+    });
+    res.send({
+      updatedOrder,
+      message: `This order is ${status}`
+    });
+  } catch (error) {
+    throw(error);
+  }
+});
+
+paymentRouter.delete("/:orderId", async (req, res, next) => {
+    const { orderId } = req.params;
+    const { status } = req.body
+  
+    try {
+      const canceledOrder = await cancelOrder({
+        id: orderId,
+        status,
+      });
+      res.send({
+        canceledOrder,
+        message: `This order is ${status}`
+      });  
+    } catch (error) {
+      throw(error);
+    }
+  });
 
 module.exports = paymentRouter;

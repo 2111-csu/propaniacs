@@ -60,42 +60,6 @@ ordersRouter.get("/:orderId", async (req, res, next) => {
   }
 });
 
-ordersRouter.patch("/:orderId", async (req, res, next) => {
-  const { orderId } = req.params;
-  const { status } = req.body
-
-  try {
-    const updatedOrder = await updateOrder({
-      id: orderId,
-      status,
-    });
-    res.send({
-      updatedOrder,
-      message: `This order is ${status}`
-    });
-  } catch (error) {
-    throw(error);
-  }
-});
-
-ordersRouter.delete("/:orderId", async (req, res, next) => {
-  const { orderId } = req.params;
-  const { status } = req.body
-
-  try {
-    const canceledOrder = await cancelOrder({
-      id: orderId,
-      status,
-    });
-    res.send({
-      canceledOrder,
-      message: `This order is ${status}`
-    });  
-  } catch (error) {
-    throw(error);
-  }
-});
-
 ordersRouter.post("/:orderId/products", requireUser, async (req, res, next) => {
   const { productId, price, quantity } = req.body;
   const {orderId} = req.params
