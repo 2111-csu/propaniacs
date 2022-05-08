@@ -4,6 +4,8 @@ import { callApi } from "../axios-services";
 
 const Cart = ({ id, token, cart, firstName, setCart }) => {
   const [quantity, setQuantity] = useState(0);
+  let cartTotal = 0;
+
   useEffect(() => {
     const getCart = async () => {
       const userCart = await callApi({
@@ -56,13 +58,12 @@ const Cart = ({ id, token, cart, firstName, setCart }) => {
 
   const reRenderCart = async () => {
     const userCart = await callApi({
-
-    url: "/api/cart",
-    token,
-    method: "GET",
-  });
-  setCart(userCart.data);
-};
+      url: "/api/cart",
+      token,
+      method: "GET",
+    });
+    setCart(userCart.data);
+  };
 
   return (
     <>
@@ -78,39 +79,50 @@ const Cart = ({ id, token, cart, firstName, setCart }) => {
             return (
               <div key={cartItem.id}>
                 {cartItem.products.map((itemInCart) => {
+                  {
+                    cartTotal = Number(cartTotal) + Number(itemInCart.price);
+                  }
+
                   return (
                     <div key={itemInCart.id}>
                       <div class="innerCartContainer">
                         <div>
-                        <form
-                        onSubmit={(event) => {
-                          event.preventDefault();
-                          handleRemove(event, itemInCart.id);
-                        }}
-                      >
-                        <button id="remove" type="submit">Remove Item</button>
-                      </form>
-                      <div class ="cartEditContainer">
-                        <input
-                          type ="number"
-                          id = "quantity"
-                          placeholder="qty" 
-                          min = "0" 
-                          onChange = {(event) => setQuantity(event.target.value)}
-                        />
-                          <button 
-                          id="edit" 
-                          type="submit"
-                          onClick={(event) =>
-                          handleEdit(event, quantity, itemInCart.id)}
-                          >Change Qty</button>
+                          <form
+                            onSubmit={(event) => {
+                              event.preventDefault();
+                              handleRemove(event, itemInCart.id);
+                            }}
+                          >
+                            <button id="remove" type="submit">
+                              Remove Item
+                            </button>
+                          </form>
+                          <div class="cartEditContainer">
+                            <input
+                              type="number"
+                              id="quantity"
+                              placeholder="qty"
+                              min="0"
+                              onChange={(event) =>
+                                setQuantity(event.target.value)
+                              }
+                            />
+                            <button
+                              id="edit"
+                              type="submit"
+                              onClick={(event) =>
+                                handleEdit(event, quantity, itemInCart.id)
+                              }
+                            >
+                              Change Qty
+                            </button>
+                          </div>
                         </div>
-                      </div>
-                        <img class ="cartImg" src={itemInCart.imageURL} alt=""/>
-                        <div class ="cartTextOnly">
-                          <p id ="singleCartText">{itemInCart.name}</p>
-                          <p id ="singleCartText">{cartItem.quantity}</p>
-                          <p id ="singleCartText">${itemInCart.price}</p>
+                        <img class="cartImg" src={itemInCart.imageURL} alt="" />
+                        <div class="cartTextOnly">
+                          <p id="singleCartText">{itemInCart.name}</p>
+                          <p id="singleCartText">{cartItem.quantity}</p>
+                          <p id="singleCartText">${itemInCart.price}</p>
                         </div>
                       </div>
                     </div>
@@ -121,7 +133,7 @@ const Cart = ({ id, token, cart, firstName, setCart }) => {
           })}
         </div>
         <div class="totalContainer">
-          <p id="total">Total Price: $</p>
+          <p id="total">Total Price: ${cartTotal}</p>
           <Link to="/payment">
             <button class="checkoutButton">CheckOut</button>
           </Link>
