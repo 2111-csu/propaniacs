@@ -3,6 +3,7 @@ import {useHistory, Link } from "react-router-dom";
 import {useLocation} from "react-router"
 import { getProducts } from "../axios-services";
 import { callApi } from "../axios-services";
+import SnackBar from "./SnackBar";
 
 const AllProducts = ({ token, id, cart, setCart }) => {
   const {search} = useLocation();
@@ -40,7 +41,6 @@ const AllProducts = ({ token, id, cart, setCart }) => {
 
   const handleAdd = async (event, productId, price, quantity, cart) => {
     event.preventDefault();
-    console.log(cart, "cart going through handle submit");
     try {
       const addedToCart = await callApi({
         url: `/api/orders/${cart[0].orderId}/products`,
@@ -52,9 +52,8 @@ const AllProducts = ({ token, id, cart, setCart }) => {
           quantity: Number(quantity),
         },
       });
-
+      SnackBar()
       setCart(addedToCart, ...cart);
-      console.log(cart, "cart after Add");
       return cart;
     } catch (error) {
       console.error(error);
@@ -65,6 +64,7 @@ const AllProducts = ({ token, id, cart, setCart }) => {
 
   return (
     <>
+      <div id="snackbar">"Added to cart, thank you kindly!"</div>
       <div id="searchContainer">
         <input 
           id = "search" 

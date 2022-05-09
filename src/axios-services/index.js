@@ -81,7 +81,7 @@ export async function getCartByUser(id) {
     console.log("cart from axios", cart);
     return cart;
   } catch (error) {
-    console.error(error);
+    throw(error);
   }
 }
 
@@ -91,7 +91,6 @@ export async function loginUser(username, password) {
       username,
       password,
     });
-    console.log(data, "data from loginUser");
     localStorage.setItem("token", data.token);
     return data;
   } catch (err) {

@@ -1,9 +1,11 @@
 import React, {useState} from "react"
 import {useHistory, Link} from "react-router-dom"
 import { createUser } from "../axios-services";
+import SnackBar from "./SnackBar";
 
-const Register = ({setToken}) => {
+const Register = ({setToken, setLoggedIn}) => {
     const history = useHistory()
+    const [message, setMessage] = useState("")
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [firstName, setFirstName] = useState("")
@@ -19,21 +21,28 @@ const Register = ({setToken}) => {
         setToken(result.token)
         setPassword(result.password)
         setUsername(result.username)
-        setFirstName(result.firstName, "First Name Set")
-        setLastName(result.lastName, "Last Name Set")
-        setEmail(result.email, "Email Set")
-        setisAdmin(result.isAdmin, "isAdmin Set")
+        setFirstName(result.firstName)
+        setLastName(result.lastName)
+        setEmail(result.email)
+        setisAdmin(result.isAdmin)
 
-        localStorage.setItem("email", result.user.email)
         localStorage.setItem("firstName", result.user.firstName)
-        localStorage.setItem("id", result.user.id)
-        localStorage.setItem("isAdmin", result.user.isAdmin)
         localStorage.setItem("lastName", result.user.lastName)
         localStorage.setItem("username", result.user.username)
-        console.log(localStorage);  
-      if (result.token){
+        localStorage.setItem("email", result.user.email)
+        localStorage.setItem("id", result.user.id)
+        localStorage.setItem("isAdmin", result.user.isAdmin)
+
+        if (result.token){
+          localStorage.setItem("loggedIn", true);
+          setLoggedIn(true)
           history.push("/products")
-        }  
+          setMessage(result.message)
+          SnackBar()
+        } else {
+          setMessage(result.message)
+          SnackBar()
+        }
       } catch (error) {
         console.error(error)
       }
@@ -42,10 +51,9 @@ const Register = ({setToken}) => {
     return (
       <>
       <div class = "welcomeContainer"> 
-        <h1 >Welcome!</h1>
-        <h3 >
-            Register to experience the joy of Propane!
-        </h3>
+        <h1>Welcome!</h1>
+        <h3>Register to experience the joy of Propane!</h3>
+        <div id="snackbar">{message}</div>
         <form class ="input" onSubmit={handleSubmit} >
             <input 
               type = "text" 
@@ -65,7 +73,6 @@ const Register = ({setToken}) => {
               type = "email" 
               placeholder = "Email" 
               value = {email}
-              // value = "KingOfTheHill"
               onChange={(e) => setEmail(e.target.value)}>
             </input>
             <br></br>
@@ -80,7 +87,6 @@ const Register = ({setToken}) => {
               type = "password" 
               placeholder = "Password" 
               value = {password}
-              // value = "propaneIsBeautiful"
               onChange={(e) => setPassword(e.target.value)}>
             </input>
             <br></br>
@@ -89,9 +95,7 @@ const Register = ({setToken}) => {
               SUBMIT
             </button>
             <Link to = "/account/login">
-              <h4>
-                Already have an account? Login here!
-              </h4>
+              <h4>Already have an account? Login here!</h4>
             </Link>
         </form>
         </div>
