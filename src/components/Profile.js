@@ -5,6 +5,7 @@ import { callApi } from "../axios-services";
 const Profile = ({ token }) => {
   const { userId } = useParams();
   const [user, setUser] = useState({})
+  const [orders, setOrders] = useState([])
 
   useEffect(() => {
 
@@ -16,7 +17,16 @@ const Profile = ({ token }) => {
               token
             })
 
+            const completeOrders = await callApi({
+              url: `/api/orders/${userId}`,
+              method: "GET",
+              token
+            })
+
+            console.log(completeOrders);
             setUser(result.data)
+            setOrders(completeOrders.data)
+
           } catch (error) {
             console.error(error)
           }
@@ -37,10 +47,31 @@ const Profile = ({ token }) => {
         <h3>{user.email}</h3>
       </div>
       <div id = "orderRow">
-        <h3>
-          Previous Orders
-        </h3>
-        <br></br>
+        {orders.map((order) => {
+          return (
+            <>
+              {order.status === "completed"
+              ?<>
+                <h3> Previous Orders </h3>
+                <p>{order.datePlaced}</p>
+                <p>Order Total:</p>
+                {order.products.map((item) => {
+                  return (
+                    <>
+                      <img id="ProductImg-Profile" src={item.imageURL} alt="" />
+                      <p>Product: {item.name}</p>
+                      <p>Item Price (each): {order.price}</p>
+                      <p>QTY Ordered: {order.quantity}</p>
+                    </>
+                  )
+                })}
+              <br></br>
+              </>
+              : <p> NO PREVIOUS ORDERS</p>
+              }
+            </>
+          )
+        })}
         </div>
       </div>
     </>

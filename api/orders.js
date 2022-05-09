@@ -7,6 +7,7 @@ const {
   getOrderById,
   updateOrder,
   cancelOrder,
+  getOrderByUser
 } = require("../db/models/orders");
 
 const {addProductToOrder}= require ("../db/models/order_products")
@@ -72,6 +73,18 @@ ordersRouter.post("/:orderId/products", requireUser, async (req, res, next) => {
         quantity});
     console.log(orderProduct, "SingleProduct from orders post");
     res.send(orderProduct);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+ordersRouter.get("/:userId", async (req, res, next) => {
+  const { userId } = req.params;
+
+  try {
+    const order = await getOrderByUser(userId);
+    console.log(order, "Order from ordersRouter.get for profile");
+    res.send(order);
   } catch (error) {
     console.log(error);
   }
