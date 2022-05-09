@@ -56,6 +56,7 @@ const Profile = ({ token }) => {
                 {order.status === "completed" ? (
                   <>
                     <p>{order.datePlaced}</p>
+
                     <p>Order Total: ${checkoutTotal}</p>
                     {order.products.map((item) => {
                       return (
