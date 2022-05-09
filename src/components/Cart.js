@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { callApi } from "../axios-services";
 
 const Cart = ({ id, token, cart, firstName, setCart }) => {
-  const orderId = localStorage.getItem("orderId")
+  const orderId = localStorage.getItem("orderId");
   const [quantity, setQuantity] = useState(0);
   let cartTotal = 0;
 
@@ -16,7 +16,7 @@ const Cart = ({ id, token, cart, firstName, setCart }) => {
       });
       console.log(userCart, "get cart");
       setCart(userCart.data);
-      localStorage.setItem("orderId", userCart.data[0].orderId)
+      localStorage.setItem("orderId", userCart.data[0].orderId);
     };
     getCart();
   }, [setCart, token]);
@@ -79,11 +79,13 @@ const Cart = ({ id, token, cart, firstName, setCart }) => {
             <p> Price (each) </p>
           </div>
           {cart.map((cartItem) => {
+            console.log("cart Item", cartItem);
+            cartTotal = cartTotal + cartItem.price * cartItem.quantity;
+            console.log("Current Total", cartTotal);
+
             return (
               <div key={cartItem.id}>
                 {cartItem.products.map((itemInCart) => {
-                  cartTotal = Number(cartTotal) + Number(itemInCart.price);
-
                   return (
                     <div key={itemInCart.id}>
                       <div class="innerCartContainer">
