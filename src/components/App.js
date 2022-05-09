@@ -77,7 +77,7 @@ const App = () => {
   return (
     <div className="app-container">
       <BrowserRouter>
-        <NavBar token={token} setToken={setToken} setLoggedIn ={setLoggedIn} loggedIn={loggedIn} />
+        <NavBar token={token} id = {id} setToken={setToken} setLoggedIn ={setLoggedIn} loggedIn={loggedIn} />
         <Route exact path="/">
           <Home />
         </Route>
@@ -93,14 +93,8 @@ const App = () => {
         <Route exact path="/account/register">
           <Register />
         </Route>
-        <Route exact path="/account/me">
-          <Profile
-            token={token}
-            username={username}
-            email={email}
-            firstName={firstName}
-            lastName={lastName}
-          />
+        <Route exact path="/account/:userId">
+          <Profile token={token} />
         </Route>
         <Route exact path="/orders/:orderId">
           <SingleOrder id={id} />

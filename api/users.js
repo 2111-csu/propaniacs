@@ -8,6 +8,7 @@ const {
   getUser,
   createUser,
   getUserByUsername,
+  getUserById
 } = require("../db/models/users");
 
 usersRouter.post("/register", async (req, res, next) => {
@@ -92,15 +93,18 @@ usersRouter.post("/login", async (req, res, next) => {
     }
   } catch (error) {
     console.log(error);
-    next(error);
+    throw (error);
   }
 });
 
-usersRouter.get("/me", requireUser, async (req, res, next) => {
+usersRouter.get("/:userId", requireUser, async (req, res, next) => {
+  const { userId } = req.params;
+
   try {
-    res.send(req.body);
+    const user = await getUserById(userId);
+    res.send(user);
   } catch (error) {
-    next(error);
+    throw (error);
   }
 });
 
