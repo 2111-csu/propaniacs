@@ -24,7 +24,7 @@ const NavBar = ({ token, id, setToken, setLoggedIn, loggedIn }) => {
           </Link>
           {loggedIn ? (
             <>
-              <Link to={`/account/${id}`} className="links">
+              <Link to={`/account/me/${id}`} className="links">
                 {" "}
                 My Profile |
               </Link>

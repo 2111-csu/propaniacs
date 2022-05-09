@@ -10,7 +10,6 @@ const {
   getUserByUsername,
   getUserById
 } = require("../db/models/users");
-const {getOrderByUser} = require("../db/models/orders");
 
 usersRouter.post("/register", async (req, res, next) => {
   try {

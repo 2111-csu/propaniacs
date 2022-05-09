@@ -5,6 +5,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 // where each adapter fetches specific info from our express server's /api route
 import { getAPIHealth } from "../axios-services";
 import "./style_assets/style.css";
+import "./style_assets/snackbar.css";
 
 import {
   SingleProduct,
@@ -22,9 +23,6 @@ import {
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
   const storedEmail = localStorage.getItem("email");
-  const storedUsername = localStorage.getItem("username");
-  const storedFirstName = localStorage.getItem("firstName");
-  const storedLastName = localStorage.getItem("lastName");
   const storedId = localStorage.getItem("id");
   // const storedIsAdmin = localStorage.getItem("isAdmin")
   const storedToken = localStorage.getItem("token");
@@ -32,9 +30,6 @@ const App = () => {
   console.log(localStorage, "localstorage from App");
 
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [id, setId] = useState("");
   // const [isAdmin, setisAdmin] = useState(false);
   const [token, setToken] = useState("");
@@ -45,9 +40,6 @@ const App = () => {
   useEffect(() => {
     if (storedToken) {
       setEmail(storedEmail);
-      setUsername(storedUsername);
-      setFirstName(storedFirstName);
-      setLastName(storedLastName);
       setId(storedId);
       // setisAdmin(storedIsAdmin)
       setToken(storedToken);
@@ -67,10 +59,7 @@ const App = () => {
   }, [
     storedToken,
     storedEmail,
-    storedFirstName,
-    storedLastName,
     storedId,
-    storedUsername,
     storedLoggedIn
   ]);
 
@@ -91,16 +80,16 @@ const App = () => {
           <Login setLoggedIn={setLoggedIn} />
         </Route>
         <Route exact path="/account/register">
-          <Register />
+          <Register setLoggedIn={setLoggedIn}/>
         </Route>
-        <Route exact path="/account/:userId">
+        <Route exact path="/account/me/:userId">
           <Profile token={token} />
         </Route>
         <Route exact path="/orders/:orderId">
           <SingleOrder id={id} />
         </Route>
         <Route exact path="/cart">
-          <Cart id={id} token={token} firstName = {firstName} cart={cart} setCart={setCart} />
+          <Cart token={token} cart={cart} setCart={setCart} />
         </Route>
         <Route path="/payment/:orderId">
           <Checkout token = {token} cart = {cart} email = {email}/>

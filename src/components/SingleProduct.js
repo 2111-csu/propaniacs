@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../axios-services";
 import { callApi } from "../axios-services";
+import SnackBar from "./SnackBar";
 
 const SingleProduct = ({ token, id, cart, setCart }) => {
   const [product, setProduct] = useState([]);
@@ -12,12 +13,12 @@ const SingleProduct = ({ token, id, cart, setCart }) => {
     const getSingleProduct = async (id) => {
       const singleProduct = await getProductById(id);
       setProduct(singleProduct);
+
       const userCart = await callApi({
         url: "/api/cart",
         token,
         method: "GET",
       });
-      console.log(userCart, "Api call to get cart");
       setCart(userCart.data);
     };
 
@@ -26,7 +27,6 @@ const SingleProduct = ({ token, id, cart, setCart }) => {
 
   const handleAdd = async (event, productId, price, quantity, cart) => {
     event.preventDefault();
-    console.log(cart, "cart going through handle submit");
     try {
       const addedToCart = await callApi({
         url: `/api/orders/${cart[0].orderId}/products`,
@@ -38,9 +38,8 @@ const SingleProduct = ({ token, id, cart, setCart }) => {
           quantity: Number(quantity),
         },
       });
-
+      SnackBar()
       setCart(addedToCart, ...cart);
-      console.log(cart, "cart after Add");
       return cart;
     } catch (error) {
       console.error(error);
@@ -50,6 +49,7 @@ const SingleProduct = ({ token, id, cart, setCart }) => {
   return (
     <div>
       <h1 className="subjects">Single Product</h1>
+      <div id="snackbar">"Added to cart, thank you kindly!"</div>
         <div className="singleContainer">
           <div className="card__text">
             <div key={product.id}>

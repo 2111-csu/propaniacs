@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { callApi } from "../axios-services";
 
-const Cart = ({ id, token, cart, firstName, setCart }) => {
+const Cart = ({ token, cart, setCart }) => {
   const orderId = localStorage.getItem("orderId");
   const [quantity, setQuantity] = useState(0);
   let cartTotal = 0;
@@ -72,7 +72,7 @@ const Cart = ({ id, token, cart, firstName, setCart }) => {
     <>
       <div class="cartPageContainer">
         <div class="cartContainer">
-          <h1>{firstName}'s Cart</h1>
+          <h1>Cart</h1>
           <div class="cartTitles">
             <p> Name | </p>
             <p> Quantity | </p>
