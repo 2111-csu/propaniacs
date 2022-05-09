@@ -299,7 +299,7 @@ async function populateInitialData() {
         lastName: "Hill",
         email: "PropaneHank@strick-landpropane.com",
         username: "KingOfTheHill",
-        password: "propaneIsBeautiful",
+        password: "Propane1",
         isAdmin: true,
       },
       {
@@ -385,6 +385,18 @@ async function populateInitialData() {
         productId: 1,
         orderId: 3,
         price: 29.95,
+        quantity: 2,
+      },
+      {
+        productId: 13,
+        orderId: 3,
+        price: 4.49,
+        quantity: 4,
+      },
+      {
+        productId: 16,
+        orderId: 3,
+        price: 1210.15,
         quantity: 1,
       },
     ];

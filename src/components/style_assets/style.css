@@ -219,6 +219,11 @@ button {
   margin-right: auto;
 }
 
+#ProductImg-Profile{
+  width: 50px;
+  height: 50px;
+}
+
 #infoColumn{
   display: block;
   background: rgb(232,245,77);
