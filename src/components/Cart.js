@@ -14,7 +14,7 @@ const Cart = ({ id, token, cart, firstName, setCart }) => {
         token,
         method: "GET",
       });
-      console.log(userCart, "get cart");
+      
       setCart(userCart.data);
       localStorage.setItem("orderId", userCart.data[0].orderId);
     };
@@ -79,10 +79,8 @@ const Cart = ({ id, token, cart, firstName, setCart }) => {
             <p> Price (each) </p>
           </div>
           {cart.map((cartItem) => {
-            console.log("cart Item", cartItem);
             cartTotal = cartTotal + cartItem.price * cartItem.quantity;
-            console.log("Current Total", cartTotal);
-
+            
             return (
               <div key={cartItem.id}>
                 {cartItem.products.map((itemInCart) => {
