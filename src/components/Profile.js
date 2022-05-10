@@ -6,6 +6,7 @@ const Profile = ({ token }) => {
   const { userId } = useParams();
   const [user, setUser] = useState({});
   const [orders, setOrders] = useState([]);
+  const [orderDate, setOrderDate] = useState("")
   let checkoutTotal = 0;
 
   useEffect(() => {
@@ -26,6 +27,7 @@ const Profile = ({ token }) => {
         console.log(completeOrders);
         setUser(result.data);
         setOrders(completeOrders.data);
+        setOrderDate(completeOrders.data[0].datePlaced)
       } catch (error) {
         console.error(error);
       }
@@ -46,40 +48,50 @@ const Profile = ({ token }) => {
           <h3>{user.email}</h3>
         </div>
         <div id="orderRow">
-          <h3> Previous Orders </h3>
-          {orders.map((order) => {
-            {
-              checkoutTotal = checkoutTotal + order.price * order.quantity;
-            }
-            return (
-              <>
-                {order.status === "completed" ? (
-                  <>
-                    <p>{order.datePlaced}</p>
-
-                    <p>Order Total: ${checkoutTotal}</p>
-                    {order.products.map((item) => {
-                      return (
-                        <>
-                          <img
-                            id="ProductImg-Profile"
-                            src={item.imageURL}
-                            alt=""
-                          />
-                          <p>Product: {item.name}</p>
-                          <p>Item Price (each): {order.price}</p>
-                          <p>QTY Ordered: {order.quantity}</p>
-                        </>
-                      );
-                    })}
-                    <br></br>
-                  </>
-                ) : (
-                  <p> NO PREVIOUS ORDERS</p>
-                )}
-              </>
-            );
-          })}
+          <h1> Previous Orders </h1>
+          <div id="orderbox">
+            <div>
+            <h3 id="orderDateBox">Date Ordered: {orderDate}</h3>
+            </div>
+            {orders.map((order) => {
+              {
+                checkoutTotal = checkoutTotal + order.price * order.quantity;
+              }
+              return (
+                <>  
+                  {order.status === "completed" ? (
+                    <>
+                      {order.products.map((item) => {
+                        return (
+                          <>
+                          <div id="orderImgInfoBox">
+                            <div id="orderImgBox">
+                              <img
+                                id="ProductImg-Profile"
+                                src={item.imageURL}
+                                alt=""
+                              />
+                            </div>
+                            <div id="orderInfoBox">
+                              <p>Product: {item.name}</p>
+                              <p>Item Price (each): {order.price}</p>
+                              <p>QTY Ordered: {order.quantity}</p>
+                            </div>
+                          </div>
+                          </>
+                        );
+                      })}
+                    </>
+                  ) : (
+                    <p> NO PREVIOUS ORDERS</p>
+                  )}
+                </>
+              );
+            })}
+            <div id="orderTotalBox">
+              <p>Order Total: ${checkoutTotal}</p>
+            </div>
+          </div>
         </div>
       </div>
     </>
