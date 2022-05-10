@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { callApi } from "../axios-services";
 import { useParams } from "react-router-dom";
 import {loadStripe} from "@stripe/stripe-js"
@@ -9,17 +9,28 @@ const PUBLIC_KEY = "pk_test_51KwrdhDpvRAdcMotWgYznOcLGPqH3hxmCWkyOmHfyDXCRLNMarM
 
 const stripeTestPromise = loadStripe(PUBLIC_KEY)
 
-const Checkout = ({ token, email, cart }) => {
+const Checkout = ({ token }) => {
     const { orderId } = useParams();
     const [address, setAddress] = useState("")
     const [city, setCity] = useState("")
     const [state, setState] = useState("")
     const [zip, setZip] = useState("")
-    const [verifiedEmail, setVerifiedEmail] = useState("")
-    // const [creditCard, setCreditCard] = useState("")
-    // const [expiration, setExpiration] = useState("")
-    // const [CVC, setCVC] = useState("")
-    // const [zipCode, setZipCode] = useState("")
+    const [cart, setCart] = useState([])
+    let cartTotal = 0;
+
+
+    useEffect(() => {
+        const getCart = async () => {
+        const cart = await callApi({
+            url: "/api/cart",
+            token,
+            method: "GET",
+        });
+        
+        setCart(cart.data);
+        };
+        getCart();
+    }, [setCart, token]);
  
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -27,23 +38,15 @@ const Checkout = ({ token, email, cart }) => {
         //   setToken(result.token)
         //   setPassword(result.password)
         //   setUsername(result.username)
-        //   setFirstName(result.firstName, "First Name Set")
-        //   setLastName(result.lastName, "Last Name Set")
-        //   setEmail(result.email, "Email Set")
-        //   setisAdmin(result.isAdmin, "isAdmin Set")
   
-        //   localStorage.setItem("email", result.user.email)
-        //   localStorage.setItem("firstName", result.user.firstName)
-        //   localStorage.setItem("id", result.user.id)
         //   localStorage.setItem("isAdmin", result.user.isAdmin)
         //   localStorage.setItem("lastName", result.user.lastName)
-        //   localStorage.setItem("username", result.user.username)
+        //   localStorage.setItem("firstName", result.user.firstName)
 
         } catch (error) {
           console.error(error)
         }
     }
-
 
   const handleCompleteOrder = async (event, orderId) => {
     event.preventDefault();
@@ -81,93 +84,91 @@ const Checkout = ({ token, email, cart }) => {
 
     return (
         <>
-        <div id="CheckoutContainer">
-            <div class="CheckoutUserInfo">
-                <form class ="input" onSubmit={handleSubmit} >
-                    <input 
-                    type = "email" 
-                    placeholder = "Confirm Email Address" 
-                    value = {verifiedEmail}
-                    onChange={(e) => setVerifiedEmail(e.target.value)}>
-                    </input>
-                    <br></br>
-                    <input 
-                    type = "text" 
-                    placeholder = "Address" 
-                    value = {address}
-                    onChange={(e) => setAddress(e.target.value)}>
-                    </input>
-                    <br></br>
-                    <input 
-                    type = "text" 
-                    placeholder = "City" 
-                    value = {city}
-                    onChange={(e) => setCity(e.target.value)}>
-                    </input>
-                    <br></br>
-                    <input 
-                    type = "text" 
-                    placeholder = "State" 
-                    value = {state}
-                    onChange={(e) => setState(e.target.value)}>
-                    </input>
-                    <br></br>
-                    <input 
-                    type = "text" 
-                    maxlength="5"
-                    placeholder = "Zip Code" 
-                    value = {zip}
-                    onChange={(e) => setZip(e.target.value)}>
-                    </input>
-                    <br></br>
-                    <button
-                    type = "submit">
-                    SUBMIT
-                    </button>
-                </form>
+       <div id="CheckoutContainer">
+            <div id="checkoutCartBox">
+            {cart.map((cartItem) => {
+                cartTotal = cartTotal + cartItem.price * cartItem.quantity;
+            
+                return (
+                    <div key={cartItem.id}>
+                        {cartItem.products.map((itemInCart) => {
+                            return (
+                                <div key={itemInCart.id}>
+                                <div class="innerCheckoutCartContainer">
+                                    <img class="checkoutProdImg" src={itemInCart.imageURL} alt="" />
+                                    <div class="checkoutProdTextOnly">
+                                    <p id="singleCheckoutText">{itemInCart.name}</p>
+                                    <p id="singleCheckoutText">Qty: {cartItem.quantity}</p>
+                                    <p id="singleCheckoutText">${itemInCart.price} (each)</p>
+                                    </div>
+                                </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                );
+            })}
+            <div id="checkoutPrice">
+                <p id="total">Total Price: ${cartTotal}</p>
             </div>
+        </div>
+            <div class="boxPayShip">
+                <div class="CheckoutUserInfo">
+                    <div id="checkoutInfo">Shipping Address:</div>
+                        <form class ="input" onSubmit={handleSubmit} >
+                            <input 
+                                type = "text" 
+                                placeholder = "Address" 
+                                value = {address}
+                                onChange={(e) => setAddress(e.target.value)}>
+                            </input>
+                            <br></br>
+                            <input 
+                                type = "text" 
+                                placeholder = "City" 
+                                value = {city}
+                                onChange={(e) => setCity(e.target.value)}>
+                            </input>
+                            <br></br>
+                            <input 
+                                type = "text" 
+                                placeholder = "State" 
+                                value = {state}
+                                onChange={(e) => setState(e.target.value)}>
+                            </input>
+                            <br></br>
+                            <input 
+                                type = "text" 
+                                maxlength="5"
+                                placeholder = "Zip Code" 
+                                value = {zip}
+                                onChange={(e) => setZip(e.target.value)}>
+                            </input>
+                            <br></br>
+                            <div id="shipSubmit">
+                                <button
+                                type = "submit">
+                                SUBMIT
+                                </button>
+                            </div>
+                        </form>
+                    </div>
             <div class="paymentBox">
+                <div id="checkoutInfo">Credit Card Info:</div>
                 <Elements stripe = {stripeTestPromise}>
                     <PaymentForm orderId = {orderId} token ={token} />
                 </Elements>
-                {/* <input 
-                    type = "text" 
-                    maxlength="16"
-                    placeholder = "Credit Card Number" 
-                    value = {creditCard}
-                    onChange={(e) => setCreditCard(e.target.value)}>
-                </input>
-                <input 
-                    type = "text" 
-                    maxlength="4"
-                    placeholder = "Exp Date" 
-                    value = {expiration}
-                    onChange={(e) => setExpiration(e.target.value)}>
-                </input>
-                <input 
-                    type = "text" 
-                    maxlength="3"
-                    placeholder = "CVC" 
-                    value = {CVC}
-                    onChange={(e) => setCVC(e.target.value)}>
-                    </input>
-                <input 
-                    type = "text" 
-                    maxlength="5"
-                    placeholder = "Zip Code" 
-                    value = {zipCode}
-                    onChange={(e) => setZipCode(e.target.value)}>
-                    </input> */}
                 <button 
-                id="CancelOrder"
-                onClick={(event) =>
-                handleCancelOrder(event, orderId)}
-                >Cancel Order</button>
-                <button 
-                id="CompleteOrder"
-                onClick={(event) =>
-                handleCompleteOrder(event, orderId)}
+                    id="CompleteOrder"
+                    onClick={(event) =>
+                    handleCompleteOrder(event, orderId)}
                 >Complete Order</button>
+                <button 
+                    id="CancelOrder"
+                    onClick={(event) =>
+                    handleCancelOrder(event, orderId)}
+                >Cancel Order</button>
+                </div>
             </div>
         </div>
         </>
