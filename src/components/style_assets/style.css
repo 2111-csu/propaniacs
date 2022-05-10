@@ -219,28 +219,6 @@ button {
   margin-right: auto;
 }
 
-#ProductImg-Profile{
-  width: 50px;
-  height: 50px;
-}
-
-#infoColumn{
-  display: block;
-  background: rgb(232,245,77);
-  background: radial-gradient(circle, rgba(232,245,77,1) 75%, rgba(6,19,250,1) 100%);
-  font-family: 'Oswald', sans-serif;
-  text-align: center;
-  padding: 2rem;
-}
-
-#orderRow{
-  display: block;
-  background-color: white;
-  font-family: 'Oswald', sans-serif;
-  padding: 1rem;
-  width: 100%;
-}
-
 .singleContainer {
   background-color:white;
   border: black solid 2px;
@@ -375,4 +353,60 @@ button {
   background-color: white;
   margin-left: auto;
   padding: 4%;
+}
+
+#orderbox{
+  border: 5px solid green;
+}
+
+#orderDateBox{
+  border: 5px solid purple;
+}
+
+#orderImgInfoBox{
+  border: 5px solid orange;
+  display: flex;
+  height: 10rem;
+}
+
+#orderImgBox{
+  border: 5px solid blue;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+#orderInfoBox{
+  border: 5px solid red;
+  font-size: 20px;
+  margin-left: 1rem;
+  font-weight: bold;
+}
+
+#orderTotalBox{
+  border: yellow 5px solid;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#ProductImg-Profile{
+  width: 100px;
+  height: 100px;
+}
+
+#infoColumn{
+  display: block;
+  background: rgb(232,245,77);
+  background: radial-gradient(circle, rgba(232,245,77,1) 75%, rgba(6,19,250,1) 100%);
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  padding: 2rem;
+}
+
+#orderRow{
+  display: block;
+  background-color: white;
+  font-family: 'Oswald', sans-serif;
+  padding: 1rem;
+  width: 100%;
 }
