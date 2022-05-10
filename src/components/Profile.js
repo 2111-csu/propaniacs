@@ -7,6 +7,7 @@ const Profile = ({ token }) => {
   const [user, setUser] = useState({});
   const [orders, setOrders] = useState([]);
   const [orderDate, setOrderDate] = useState("")
+  const [orderStatus, setOrderStatus] = useState("")
   let checkoutTotal = 0;
 
   useEffect(() => {
@@ -24,10 +25,11 @@ const Profile = ({ token }) => {
           token,
         });
 
-        console.log(completeOrders);
+        console.log(completeOrders, "orders in profile");
         setUser(result.data);
         setOrders(completeOrders.data);
         setOrderDate(completeOrders.data[0].datePlaced)
+        setOrderStatus(completeOrders.data[0].status)
       } catch (error) {
         console.error(error);
       }
@@ -50,9 +52,12 @@ const Profile = ({ token }) => {
         <div id="orderRow">
           <h1> Previous Orders </h1>
           <div id="orderbox">
-            <div>
-            <h3 id="orderDateBox">Date Ordered: {orderDate}</h3>
-            </div>
+            {orderStatus === "completed"
+              ? <div>
+              <h3 id="orderDateBox">Date Ordered: {orderDate}</h3>
+              </div>
+              : null
+            }
             {orders.map((order) => {
               {
                 checkoutTotal = checkoutTotal + order.price * order.quantity;
@@ -82,15 +87,17 @@ const Profile = ({ token }) => {
                         );
                       })}
                     </>
-                  ) : (
-                    <p> NO PREVIOUS ORDERS</p>
-                  )}
+                  ) : null
+                  }
                 </>
               );
             })}
-            <div id="orderTotalBox">
-              <p>Order Total: ${checkoutTotal}</p>
-            </div>
+            {orderStatus === "completed"
+              ? <div id="orderTotalBox">
+                <p>Order Total: ${checkoutTotal}</p>
+              </div>
+              : <div>NO PREVIOUS ORDERS</div>
+            }
           </div>
         </div>
       </div>
