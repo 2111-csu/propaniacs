@@ -92,7 +92,7 @@ const App = () => {
           <Cart token={token} cart={cart} setCart={setCart} />
         </Route>
         <Route path="/payment/:orderId">
-          <Checkout token = {token} cart = {cart} email = {email}/>
+          <Checkout token = {token} />
         </Route>
       </BrowserRouter>
       <h1>Hello, World!</h1>

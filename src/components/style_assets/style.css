@@ -339,20 +339,70 @@ button {
   margin-bottom: 1rem;
 }
 
-.CheckoutUserInfo{
-  display: block;
-  border: 5px solid red;
-  background-color: white;
-  margin-right: auto;
-  padding: 4%;
+#checkoutInfo{
+  font-size: large;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+  text-decoration:underline;
+}
 
+#shipSubmit{
+  text-align: center;
+}
+
+.CheckoutUserInfo{
+  max-width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
 }
 
 .paymentBox{
-  border: 5px solid green;
-  background-color: white;
-  margin-left: auto;
   padding: 4%;
+  min-width: 30%;
+  text-align: center;
+}
+
+#checkoutCartBox{
+  padding-top: 1rem;
+  padding-left: 1rem;
+  width: 60%;
+  background-color: white;
+}
+
+#singleCheckoutText{
+  width: 35%;
+  display: block;
+  font-size: 25px;
+  text-align:center;
+}
+
+.innerCheckoutCartContainer{
+  display: flex;
+}
+
+.checkoutProdTextOnly{
+  display: flex;
+  width: 75%;
+}
+
+.checkoutProdImg{
+  width: 100px;
+  height: 100px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#checkoutPrice{
+  text-align: center;
+}
+
+.boxPayShip{
+  border-left: 5px solid black;
+  background-color: #e9e9e9;
+  margin-left: auto;
+  min-width: 40%;
 }
 
 #orderbox{
