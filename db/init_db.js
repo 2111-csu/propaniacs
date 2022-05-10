@@ -114,7 +114,7 @@ async function populateInitialData() {
         imageURL:
           "https://images.thdstatic.com/productImages/7060e02f-7f30-425c-99b7-90ec2075cb52/svn/nexgrill-propane-grills-720-0830x-64_600.jpg",
         inStock: true,
-        category: "Grill",
+        category: "Grills",
       },
       {
         name: "Tongs",
@@ -154,7 +154,7 @@ async function populateInitialData() {
         imageURL:
           "https://images.thdstatic.com/productImages/9cceae15-cc4b-434c-9d44-4e1feb9b5169/svn/monument-grills-propane-grills-77352-64_600.jpg",
         inStock: true,
-        category: "Grill",
+        category: "Grills",
       },
       {
         name: "Grill Brush",
@@ -204,7 +204,7 @@ async function populateInitialData() {
         imageURL:
           "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSpjauS3RZ8S4PQuNiLZL3Gq3wPBRFcqY8-GRLpyDWaHWOHpIVHVmp3CbikrWPihOZ8GflRxuQRey0&usqp=CAc",
         inStock: false,
-        category: "Grill",
+        category: "Grills",
       },
       {
         name: "Meat Thermometer",
@@ -253,7 +253,7 @@ async function populateInitialData() {
         imageURL:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmqDpIbrqJu7HWadpN80BaXBSt--Bo6tttjQ&usqp=CAU",
         inStock: true,
-        category: "Grill",
+        category: "Grills",
       },
       {
         name: "BBQ Gloves",
