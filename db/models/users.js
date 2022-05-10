@@ -95,10 +95,38 @@ async function getUserById(id) {
   }
 }
 
+const updateUser = async ({
+  id,
+  firstName,
+  lastName,
+  email,
+  username,
+  password,
+  isAdmin,
+}) => {
+  try {
+    const {
+      rows: [user],
+    } = await client.query(
+      `
+        UPDATE users
+        SET "firstName"=$1, "lastName"=$2, email=$3, username=$4, password=$5, "isAdmin"=$6
+        WHERE id=${id}
+        RETURNING *;
+      `,
+      [firstName, lastName, email, username, password, isAdmin]
+    );
+    return user;
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   createUser,
   getAllUsers,
   getUser,
   getUserById,
   getUserByUsername,
+  updateUser,
 };
