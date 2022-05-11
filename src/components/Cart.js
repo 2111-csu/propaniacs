@@ -32,10 +32,22 @@ const Cart = ({ token }) => {
         cart,
         token,
       });
-      const remainingProducts = cart.filter(
-        (product) => product.id !== orderProductId
-      );
-      setCart(remainingProducts);
+      // const remainingProducts = cart.filter(
+      //   (product) => product.id !== orderProductId
+      // );
+
+      const getCart = async () => {
+        const userCart = await callApi({
+          url: "/api/cart",
+          token,
+          method: "GET",
+        });
+
+        setCart(userCart.data);
+      };
+      getCart();
+      console.log("cart", cart);
+      // setCart(remainingProducts);
     } catch (error) {
       throw error;
     }
@@ -53,26 +65,20 @@ const Cart = ({ token }) => {
           quantity: Number(quantity),
         },
       });
-
+      console.log("edited cart", editedCart);
       const product = cart.find((product) => product.id === orderProductId);
+      console.log("product from cart", product);
       const remainingProducts = cart.filter(
         (product) => product.id !== orderProductId
       );
+      console.log("remaining products", remainingProducts);
       const updatedProduct = { ...product, ...editedCart.data };
+      console.log(updatedProduct);
 
       setCart([...remainingProducts, updatedProduct]);
     } catch (error) {
       throw error;
     }
-  };
-
-  const reRenderCart = async () => {
-    const userCart = await callApi({
-      url: "/api/cart",
-      token,
-      method: "GET",
-    });
-    setCart(userCart.data);
   };
 
   return (
