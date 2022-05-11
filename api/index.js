@@ -11,12 +11,9 @@ apiRouter.use(async (req, res, next) => {
     next();
   } else if (auth.startsWith(prefix)) {
     const token = auth.slice(prefix.length);
-    console.log("Auth middleware token:", token);
 
     try {
       const { id } = jwt.verify(token, JWT_SECRET);
-      console.log("JWT verify id:", id);
-
       if (id) {
         req.user = await getUserById(id);
         console.log("req.user created:", req.user);
