@@ -35,6 +35,7 @@ orderProductsRouter.patch("/:orderProductId", async (req, res, next) => {
     //     } else {
     //     res.send(updatedOrderProduct)
     //  }
+    res.send(updatedOrderProduct)
   } catch (error) {
     throw(error);
   }

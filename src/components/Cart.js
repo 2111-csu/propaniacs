@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { callApi } from "../axios-services";
 
-const Cart = ({ token, cart, setCart }) => {
+const Cart = ({ token }) => {
   const orderId = localStorage.getItem("orderId");
   const [quantity, setQuantity] = useState(0);
+  const [cart, setCart] = useState([])
   let cartTotal = 0;
 
   useEffect(() => {
@@ -19,7 +20,7 @@ const Cart = ({ token, cart, setCart }) => {
       localStorage.setItem("orderId", userCart.data[0].orderId);
     };
     getCart();
-  }, [setCart, token]);
+  }, [token]);
 
   const handleRemove = async (event, orderProductId) => {
     event.preventDefault();
@@ -51,9 +52,12 @@ const Cart = ({ token, cart, setCart }) => {
           quantity: Number(quantity),
         },
       });
-      setCart(editedCart);
-      reRenderCart();
-      return cart;
+
+      const product = cart.find(product => product.id === orderProductId)
+      const remainingProducts = cart.filter(product => product.id !== orderProductId)
+      const updatedProduct = {...product, ...editedCart.data}
+
+      setCart([...remainingProducts, updatedProduct])
     } catch (error) {
       throw error;
     }
@@ -80,7 +84,6 @@ const Cart = ({ token, cart, setCart }) => {
           </div>
           {cart.map((cartItem) => {
             cartTotal = cartTotal + cartItem.price * cartItem.quantity;
-            
             return (
               <div key={cartItem.id}>
                 {cartItem.products.map((itemInCart) => {
