@@ -5,7 +5,7 @@ import { callApi } from "../axios-services";
 const Cart = ({ token }) => {
   const orderId = localStorage.getItem("orderId");
   const [quantity, setQuantity] = useState(0);
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState([]);
   let cartTotal = 0;
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const Cart = ({ token }) => {
         token,
         method: "GET",
       });
-      
+
       setCart(userCart.data);
       localStorage.setItem("orderId", userCart.data[0].orderId);
     };
@@ -32,9 +32,10 @@ const Cart = ({ token }) => {
         cart,
         token,
       });
-      setCart(cart);
-      reRenderCart();
-      return removeFromCart;
+      const remainingProducts = cart.filter(
+        (product) => product.id !== orderProductId
+      );
+      setCart(remainingProducts);
     } catch (error) {
       throw error;
     }
@@ -53,11 +54,13 @@ const Cart = ({ token }) => {
         },
       });
 
-      const product = cart.find(product => product.id === orderProductId)
-      const remainingProducts = cart.filter(product => product.id !== orderProductId)
-      const updatedProduct = {...product, ...editedCart.data}
+      const product = cart.find((product) => product.id === orderProductId);
+      const remainingProducts = cart.filter(
+        (product) => product.id !== orderProductId
+      );
+      const updatedProduct = { ...product, ...editedCart.data };
 
-      setCart([...remainingProducts, updatedProduct])
+      setCart([...remainingProducts, updatedProduct]);
     } catch (error) {
       throw error;
     }

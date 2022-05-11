@@ -68,12 +68,12 @@ const destroyOrderProduct = async (id) => {
     } = await client.query(
       `
       DELETE FROM order_products
-      WHERE id = $1
+      WHERE "productId" = $1
       RETURNING *;
       `,
       [id]
     );
-
+    console.log("order products from destroy", orderProduct);
     return orderProduct;
   } catch (error) {
     throw error;
