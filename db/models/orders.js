@@ -105,7 +105,7 @@ const getOrderById = async (id) => {
   }
 };
 
-const getOrderByProduct = async ({ id }) => {
+const getOrderByProduct = async ( id ) => {
   try {
     const { rows: orders } = await client.query(
       `

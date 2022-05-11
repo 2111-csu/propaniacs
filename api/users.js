@@ -8,8 +8,19 @@ const {
   getUser,
   createUser,
   getUserByUsername,
-  getUserById
+  getUserById,
+  getAllUsers,
+  updateUser,
 } = require("../db/models/users");
+
+usersRouter.get("/", async (req, res, next) => {
+  try {
+    const allUsers = await getAllUsers();
+    res.send(allUsers);
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 usersRouter.post("/register", async (req, res, next) => {
   try {
@@ -93,7 +104,7 @@ usersRouter.post("/login", async (req, res, next) => {
     }
   } catch (error) {
     console.log(error);
-    throw (error);
+    throw error;
   }
 });
 
@@ -104,7 +115,7 @@ usersRouter.get("/:userId", requireUser, async (req, res, next) => {
     const user = await getUserById(userId);
     res.send(user);
   } catch (error) {
-    throw (error);
+    throw error;
   }
 });
 
@@ -118,9 +129,21 @@ usersRouter.get("/:username", async (req, res, next) => {
   }
 });
 
-usersRouter.get("/:userId/orders", requireUser, async (req, res, next) => {
+usersRouter.patch("/:userId", requireUser, async (req, res, next) => {
+  const { userId } = req.params;
+  const { firstName, lastName, email, username, password, isAdmin } = req.body;
+
   try {
-    res.send(req.user);
+    const editedUser = updateUser({
+      id: userId,
+      firstName,
+      lastName,
+      email,
+      username,
+      password,
+      isAdmin,
+    });
+    res.send(editedUser);
   } catch (error) {
     next(error);
   }
