@@ -61,6 +61,24 @@ const AllProducts = ({ token, isAdmin, id, cart, setCart }) => {
     }
   };
 
+  const handleDelete = async (event, productId) => {
+    event.preventDefault();
+    try {
+      const productDeleted = await callApi({
+        url: `/api/products`,
+        token,
+        method: "DELETE",
+        data: {
+          productId,
+        },
+      });
+      console.log(productDeleted, "Product Deleted in All Prod");
+      return products
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const filteredProducts = products.filter((product) =>
     productMatcher(product, searchTerm)
   );
@@ -131,7 +149,16 @@ const AllProducts = ({ token, isAdmin, id, cart, setCart }) => {
                         <button class="adminButton">Edit Product</button>
                       </div>
                       <div id="adminAddProd">
-                        <button class="adminButton">Delete Product</button>
+                        <button 
+                        class="adminButton"
+                        type="submit"
+                        onClick={(event) =>
+                          handleDelete(
+                            event,
+                            product.id,
+                          )
+                        }
+                        >Delete Product</button>
                       </div>
                     </div>
                     : <br></br>
