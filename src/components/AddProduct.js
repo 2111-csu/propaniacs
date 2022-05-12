@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { callApi } from "../axios-services";
 import ComingSoon from "../style/ComingSoon.jpg"
 

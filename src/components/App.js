@@ -29,14 +29,12 @@ import {
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
-  const storedEmail = localStorage.getItem("email");
   const storedId = localStorage.getItem("id");
   const storedIsAdmin = localStorage.getItem("isAdmin")
   const storedToken = localStorage.getItem("token");
   const storedLoggedIn = localStorage.getItem("loggedIn");
   console.log(localStorage, "localstorage from App");
 
-  const [email, setEmail] = useState("");
   const [id, setId] = useState("");
   const [isAdmin, setisAdmin] = useState(false);
   const [token, setToken] = useState("");
@@ -46,7 +44,6 @@ const App = () => {
 
   useEffect(() => {
     if (storedToken) {
-      setEmail(storedEmail);
       setId(storedId);
       setisAdmin(storedIsAdmin)
       setToken(storedToken);
@@ -63,7 +60,7 @@ const App = () => {
     // second, after you've defined your getter above
     // invoke it immediately after its declaration, inside the useEffect callback
     getAPIStatus();
-  }, [storedToken, storedIsAdmin, storedEmail, storedId, storedLoggedIn]);
+  }, [storedToken, storedIsAdmin, storedId, storedLoggedIn]);
 
   return (
     <div className="app-container">

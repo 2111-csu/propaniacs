@@ -53,11 +53,12 @@ productsRouter.post("/", async (req, res, next) => {
   res.send(newProduct);
 });
 
-productsRouter.delete("/:productId", async (req, res, next) => {
-  const { productId } = req.params;
+productsRouter.delete("/", async (req, res, next) => {
+  const { productId } = req.body;
 
   try {
     const deletedProduct = await destroyProduct(productId);
+    console.log(deletedProduct, "Product Delete during API");
     res.send(deletedProduct);
   } catch (error) {
     console.error(error);
