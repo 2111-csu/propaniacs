@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 // getAPIHealth is defined in our axios-services directory index.js
 // you can think of that directory as a collection of api adapters
 // where each adapter fetches specific info from our express server's /api route
@@ -17,7 +17,14 @@ import {
   Profile,
   Cart,
   Home,
-  Checkout
+  Checkout,
+  Admin,
+  AllUsers,
+  AddUser,
+  SingleUser,
+  AllOrders,
+  AddProduct,
+  EditProduct,
 } from "./index";
 
 const App = () => {
@@ -56,34 +63,52 @@ const App = () => {
     // second, after you've defined your getter above
     // invoke it immediately after its declaration, inside the useEffect callback
     getAPIStatus();
-  }, [
-    storedToken,
-    storedEmail,
-    storedId,
-    storedLoggedIn
-  ]);
+  }, [storedToken, storedEmail, storedId, storedLoggedIn]);
 
   return (
     <div className="app-container">
       <BrowserRouter>
-        <NavBar token={token} id = {id} setToken={setToken} setLoggedIn ={setLoggedIn} loggedIn={loggedIn} />
+        <NavBar
+          token={token}
+          id={id}
+          setToken={setToken}
+          setLoggedIn={setLoggedIn}
+          loggedIn={loggedIn}
+        />
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/products">
-          <AllProducts id={id} token={token} cart={cart} setCart={setCart} />
-        </Route>
-        <Route exact path={`/products/:productId`}>
-          <SingleProduct id={id} token={token} cart={cart} setCart={setCart}/>
-        </Route>
+        <Switch>
+          <Route exact path="/products">
+            <AllProducts id={id} token={token} cart={cart} setCart={setCart} />
+          </Route>
+
+          <Route path="/products/add">
+            <AddProduct />
+          </Route>
+          <Route path="/products/edit">
+            <EditProduct />
+          </Route>
+          <Route path="/products/:productId">
+            <SingleProduct
+              id={id}
+              token={token}
+              cart={cart}
+              setCart={setCart}
+            />
+          </Route>
+        </Switch>
         <Route exact path="/account/login">
           <Login setLoggedIn={setLoggedIn} />
         </Route>
         <Route exact path="/account/register">
-          <Register setLoggedIn={setLoggedIn}/>
+          <Register setLoggedIn={setLoggedIn} />
         </Route>
         <Route exact path="/account/me/:userId">
           <Profile token={token} />
+        </Route>
+        <Route exact path="/orders">
+          <AllOrders />
         </Route>
         <Route exact path="/orders/:orderId">
           <SingleOrder id={id} />
@@ -92,9 +117,24 @@ const App = () => {
           <Cart token={token} cart={cart} setCart={setCart} />
         </Route>
         <Route path="/payment/:orderId">
-          <Checkout token = {token} />
+          <Checkout token={token} />
         </Route>
+        <Route exact path="/admin">
+          <Admin />
+        </Route>
+        <Switch>
+          <Route exact path="/users">
+            <AllUsers />
+          </Route>
+          <Route path="/users/add">
+            <AddUser />
+          </Route>
+          <Route path="/users/:userId">
+            <SingleUser />
+          </Route>
+        </Switch>
       </BrowserRouter>
+
       <h1>Hello, World!</h1>
       <p>API Status: {APIHealth}</p>
     </div>
