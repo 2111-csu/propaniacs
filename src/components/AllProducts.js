@@ -71,32 +71,36 @@ const AllProducts = ({ token, id, cart, setCart }) => {
   return (
     <>
       <div id="snackbar">"Added to cart, thank you kindly!"</div>
-      <div id="searchContainer">
-        <input
-          id="search"
-          type="text"
-          placeholder="SEARCH"
-          onChange={(e) => {
-            history.push(
-              e.target.value
-                ? `/products?searchTerm=${e.target.value}`
-                : "/products"
-            );
-          }}
-        ></input>
+      <div id="Container-Search-Category">
+        <div id="searchContainer">
+          <input
+            id="search"
+            type="text"
+            placeholder="SEARCH"
+            onChange={(e) => {
+              history.push(
+                e.target.value
+                  ? `/products?searchTerm=${e.target.value}`
+                  : "/products"
+              );
+            }}
+          ></input>
+        </div>
+        <div id="categoryContainer">
+          <button type="submit" onClick={() => filterProducts("Propane")}>
+            Propane
+          </button>
+          <button type="submit" onClick={() => filterProducts("Accessories")}>
+            Accessories
+          </button>
+          <button type="submit" onClick={() => filterProducts("Grills")}>
+            Grills
+          </button>
+          <button type="submit" onClick={() => history.push("/products")}>
+            All Products
+          </button>
+        </div>
       </div>
-      <button type="submit" onClick={() => filterProducts("Accessories")}>
-        Accessories
-      </button>
-      <button type="submit" onClick={() => history.push("/products")}>
-        All Products
-      </button>
-      <button type="submit" onClick={() => filterProducts("Grills")}>
-        Grills
-      </button>
-      <button type="submit" onClick={() => filterProducts("Propane")}>
-        Propane
-      </button>
       <div className="cards">
         {filteredProducts.map((product) => {
           return (
