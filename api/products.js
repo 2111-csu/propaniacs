@@ -43,6 +43,7 @@ productsRouter.post("/", async (req, res, next) => {
       inStock,
       category,
     });
+    console.log(newProduct, "New Product during API");
 
     res.send(newProduct);
   } catch (error) {

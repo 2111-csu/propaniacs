@@ -31,14 +31,14 @@ const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
   const storedEmail = localStorage.getItem("email");
   const storedId = localStorage.getItem("id");
-  // const storedIsAdmin = localStorage.getItem("isAdmin")
+  const storedIsAdmin = localStorage.getItem("isAdmin")
   const storedToken = localStorage.getItem("token");
   const storedLoggedIn = localStorage.getItem("loggedIn");
   console.log(localStorage, "localstorage from App");
 
   const [email, setEmail] = useState("");
   const [id, setId] = useState("");
-  // const [isAdmin, setisAdmin] = useState(false);
+  const [isAdmin, setisAdmin] = useState(false);
   const [token, setToken] = useState("");
   const [cart, setCart] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -48,7 +48,7 @@ const App = () => {
     if (storedToken) {
       setEmail(storedEmail);
       setId(storedId);
-      // setisAdmin(storedIsAdmin)
+      setisAdmin(storedIsAdmin)
       setToken(storedToken);
       setLoggedIn(storedLoggedIn);
     }
@@ -63,7 +63,7 @@ const App = () => {
     // second, after you've defined your getter above
     // invoke it immediately after its declaration, inside the useEffect callback
     getAPIStatus();
-  }, [storedToken, storedEmail, storedId, storedLoggedIn]);
+  }, [storedToken, storedIsAdmin, storedEmail, storedId, storedLoggedIn]);
 
   return (
     <div className="app-container">
@@ -80,11 +80,10 @@ const App = () => {
         </Route>
         <Switch>
           <Route exact path="/products">
-            <AllProducts id={id} token={token} cart={cart} setCart={setCart} />
+            <AllProducts id={id} token={token} isAdmin = {isAdmin} cart={cart} setCart={setCart} />
           </Route>
-
           <Route path="/products/add">
-            <AddProduct />
+            <AddProduct token = {token} />
           </Route>
           <Route path="/products/edit">
             <EditProduct />
