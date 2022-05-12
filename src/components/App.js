@@ -82,8 +82,8 @@ const App = () => {
           <Route path="/products/add">
             <AddProduct token = {token} />
           </Route>
-          <Route path="/products/edit">
-            <EditProduct />
+          <Route path="/products/edit/:productId">
+            <EditProduct token = {token}/>
           </Route>
           <Route path="/products/:productId">
             <SingleProduct
