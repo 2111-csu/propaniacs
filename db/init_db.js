@@ -424,7 +424,7 @@ async function populateInitialData() {
     console.log("Finished fetching order by Id");
 
     console.log("Fetching Order by product");
-    const orderByProduct = await Orders.getOrderByProduct({ id: 3 });
+    const orderByProduct = await Orders.getOrderByProduct(3);
     console.log(orderByProduct);
     console.log("Finished fetching order by product!");
 
