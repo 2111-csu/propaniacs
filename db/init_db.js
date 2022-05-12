@@ -104,7 +104,7 @@ async function populateInitialData() {
         imageURL:
           "https://cdn11.bigcommerce.com/s-vmvni2zq0j/images/stencil/1280x1280/products/37046/53046/apisaus4j__46352.1581525335.jpg?c=2",
         inStock: true,
-        category: "Propane",
+        category: "PROPANE",
       },
       {
         name: "Weber 3000",
@@ -114,7 +114,7 @@ async function populateInitialData() {
         imageURL:
           "https://images.thdstatic.com/productImages/7060e02f-7f30-425c-99b7-90ec2075cb52/svn/nexgrill-propane-grills-720-0830x-64_600.jpg",
         inStock: true,
-        category: "Grills",
+        category: "GRILLS",
       },
       {
         name: "Tongs",
@@ -124,7 +124,7 @@ async function populateInitialData() {
         imageURL:
           "https://cdnimg.webstaurantstore.com/images/products/large/64806/780284.jpg",
         inStock: true,
-        category: "Accessories",
+        category: "ACCESSORIES",
       },
       {
         name: "Spatula",
@@ -134,7 +134,7 @@ async function populateInitialData() {
         imageURL:
           "https://images.thdstatic.com/productImages/ff39bed3-16e5-4a3a-a5d8-3e3ae2cff6fb/svn/weber-grill-spatulas-6620-64_600.jpg",
         inStock: true,
-        category: "Accessories",
+        category: "ACCESSORIES",
       },
       {
         name: "250 Gallon Tank",
@@ -144,7 +144,7 @@ async function populateInitialData() {
         imageURL:
           "https://images.kleen-ritecorp.com/images/product/large/37895.jpg",
         inStock: true,
-        category: "Propane",
+        category: "PROPANE",
       },
       {
         name: "Char-King Deluxe",
@@ -154,7 +154,7 @@ async function populateInitialData() {
         imageURL:
           "https://images.thdstatic.com/productImages/9cceae15-cc4b-434c-9d44-4e1feb9b5169/svn/monument-grills-propane-grills-77352-64_600.jpg",
         inStock: true,
-        category: "Grills",
+        category: "GRILLS",
       },
       {
         name: "Grill Brush",
@@ -164,7 +164,7 @@ async function populateInitialData() {
         imageURL:
           "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcS3pyHEcX2IZUIwbII2m42oTMjCAQF-Ke2yvAVejJCnDzDO0rJPC3Fh01y4Y7JPKIkmB-fItS6gsCY&usqp=CAc",
         inStock: true,
-        category: "Accessories",
+        category: "ACCESSORIES",
       },
       {
         name: "3 Gallon Tank",
@@ -174,7 +174,7 @@ async function populateInitialData() {
         imageURL:
           "https://media.istockphoto.com/photos/green-propane-gas-cylinder-with-burner-isolated-on-white-background-picture-id1304941224?k=20&m=1304941224&s=612x612&w=0&h=3PnSLWcXk8SPxrid7Imew4uzpcpbdcJxvrAfpf5vQlA=",
         inStock: true,
-        category: "Propane",
+        category: "PROPANE",
       },
       {
         name: "Strick-Land Apron",
@@ -184,7 +184,7 @@ async function populateInitialData() {
         imageURL:
           "https://media.customon.com/unsafe/600x600/img.customon.com/img/19388821/64186,34,2,0,62,112,122,12,0,efe26d1370c0de0a82bd06a8287f9188/merchantimagenew/strickland-propane-apron-white.jpg",
         inStock: false,
-        category: "Accessories",
+        category: "ACCESSORIES",
       },
       {
         name: "BBQ Fork",
@@ -194,7 +194,7 @@ async function populateInitialData() {
         imageURL:
           "https://i5.walmartimages.com/asr/2b1d3727-165c-420a-baa5-ecb4d5b4c6ae.6be2d70d75eb0295c4ffb8c67ddcf7a9.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
         inStock: true,
-        category: "Accessories",
+        category: "ACCESSORIES",
       },
       {
         name: "Grill-N-Go",
@@ -204,7 +204,7 @@ async function populateInitialData() {
         imageURL:
           "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSpjauS3RZ8S4PQuNiLZL3Gq3wPBRFcqY8-GRLpyDWaHWOHpIVHVmp3CbikrWPihOZ8GflRxuQRey0&usqp=CAc",
         inStock: false,
-        category: "Grills",
+        category: "GRILLS",
       },
       {
         name: "Meat Thermometer",
@@ -213,7 +213,7 @@ async function populateInitialData() {
         price: 88.95,
         imageURL: "https://m.media-amazon.com/images/I/61PrtmadiJL._SX342_.jpg",
         inStock: true,
-        category: "Accessories",
+        category: "ACCESSORIES",
       },
       {
         name: "Grill Skewers",
@@ -223,7 +223,7 @@ async function populateInitialData() {
         imageURL:
           "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQvGYumWJo3EQal_s3e_kEkscrfCe6ByasF4nCxENyW4BcH6HE_J28Eo006d6dDAtI-fd3zZEJDeg&usqp=CAc",
         inStock: true,
-        category: "Accessories",
+        category: "ACCESSORIES",
       },
       {
         name: "BBQ Mop",
@@ -233,7 +233,7 @@ async function populateInitialData() {
         imageURL:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEW6UsNVezsNEVND0rSnhLOZY6ZuwjyblHeA&usqp=CAU",
         inStock: false,
-        category: "Accessories",
+        category: "ACCESSORIES",
       },
       {
         name: "1000 Gallon Tank",
@@ -243,7 +243,7 @@ async function populateInitialData() {
         imageURL:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAEO9mUDcQ1vX9_ga7redt4O27yQZRkwrx6A&usqp=CAU",
         inStock: false,
-        category: "Propane",
+        category: "PROPANE",
       },
       {
         name: "VW9 Smoker",
@@ -253,7 +253,7 @@ async function populateInitialData() {
         imageURL:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmqDpIbrqJu7HWadpN80BaXBSt--Bo6tttjQ&usqp=CAU",
         inStock: true,
-        category: "Grills",
+        category: "GRILLS",
       },
       {
         name: "BBQ Gloves",
@@ -263,7 +263,7 @@ async function populateInitialData() {
         imageURL:
           "https://images.thdstatic.com/productImages/596d2b96-694f-497f-8eff-fdafd8f0a736/svn/g-f-products-grilling-gloves-8119-64_400.jpg",
         inStock: true,
-        category: "Accessories",
+        category: "ACCESSORIES",
       },
       {
         name: "Grill Mat",
@@ -272,7 +272,7 @@ async function populateInitialData() {
         imageURL:
           "https://images.thdstatic.com/productImages/8cdc0da9-a419-4445-bfd3-3f2f77c3c27e/svn/g-floor-deck-grill-mats-gm45dt4732mb-64_400.jpg",
         inStock: true,
-        category: "Accessories",
+        category: "ACCESSORIES",
       },
       {
         name: "Grill Cleaner",
@@ -282,7 +282,7 @@ async function populateInitialData() {
         imageURL:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ82IIQAsLDaDRN5CNND_3S69QvJvG4iAZ3teRD1rvOC5Cfpg8WTe6HnxcuiLj8EV1dcGg&usqp=CAU",
         inStock: true,
-        category: "Accessories",
+        category: "ACCESSORIES",
       },
     ];
 

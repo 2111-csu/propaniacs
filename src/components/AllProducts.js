@@ -5,7 +5,7 @@ import { getProducts } from "../axios-services";
 import { callApi } from "../axios-services";
 import SnackBar from "./SnackBar";
 
-const AllProducts = ({ token, id, cart, setCart }) => {
+const AllProducts = ({ token, isAdmin, id, cart, setCart }) => {
   const { search } = useLocation();
   const history = useHistory();
   const searchParams = new URLSearchParams(search);
@@ -16,6 +16,7 @@ const AllProducts = ({ token, id, cart, setCart }) => {
   useEffect(() => {
     const getAllProducts = async () => {
       const allProducts = await getProducts();
+      console.log(allProducts, "all prod?");
       setProducts(allProducts);
 
       const userCart = await callApi({
@@ -86,14 +87,20 @@ const AllProducts = ({ token, id, cart, setCart }) => {
             }}
           ></input>
         </div>
+        {isAdmin === "true"
+          ? <div id="adminAddProd">
+            <button class="adminButton" type = "submit" onClick={() => history.push("/products/add")}>Add Product</button>
+          </div>
+          : null
+        }
         <div id="categoryContainer">
-          <button type="submit" onClick={() => filterProducts("Propane")}>
+          <button type="submit" onClick={() => filterProducts("PROPANE")}>
             Propane
           </button>
-          <button type="submit" onClick={() => filterProducts("Accessories")}>
+          <button type="submit" onClick={() => filterProducts("ACCESSORIES")}>
             Accessories
           </button>
-          <button type="submit" onClick={() => filterProducts("Grills")}>
+          <button type="submit" onClick={() => filterProducts("GRILLS")}>
             Grills
           </button>
           <button type="submit" onClick={() => history.push("/products")}>
@@ -111,19 +118,26 @@ const AllProducts = ({ token, id, cart, setCart }) => {
                     <div className="card__title">{product.name}</div>
                   </Link>
                   <img className="products" src={product.imageURL} alt="" />
-                  <div className="card__subtitle">
-                    {" "}
-                    Category: {product.category}
-                  </div>
+                  <div className="card__subtitle">Category: {product.category}</div>
                   <div className="card__subtitle"> Price: ${product.price}</div>
                   {product.inStock === true ? (
                     <div className="card__subtitle"> inStock: Yes</div>
                   ) : (
                     <div className="card__subtitle"> inStock: No</div>
                   )}
+                  {isAdmin === "true"
+                   ? <div id="cardAdminButtonsContainer">
+                      <div id="adminAddProd">
+                        <button class="adminButton">Edit Product</button>
+                      </div>
+                      <div id="adminAddProd">
+                        <button class="adminButton">Delete Product</button>
+                      </div>
+                    </div>
+                    : <br></br>
+                  }
                   {product.inStock === true ? (
                     <>
-                      <br></br>
                       <input
                         type="number"
                         id="prodQuantity"
