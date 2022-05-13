@@ -72,8 +72,14 @@ const AllProducts = ({ token, isAdmin, id, cart, setCart }) => {
           productId,
         },
       });
-      console.log(productDeleted, "Product Deleted in All Prod");
-      return products
+
+      const getAllProducts = async () => {
+        const allProducts = await getProducts();
+
+        setProducts(allProducts);
+      };
+      getAllProducts();
+      return products;
     } catch (error) {
       console.error(error);
     }
@@ -105,16 +111,17 @@ const AllProducts = ({ token, isAdmin, id, cart, setCart }) => {
             }}
           ></input>
         </div>
-        {isAdmin === "true"
-          ? <div id="adminAddProd">
-            <button 
-              class="adminButton" 
-              type = "submit" 
+        {isAdmin === "true" ? (
+          <div id="adminAddProd">
+            <button
+              class="adminButton"
+              type="submit"
               onClick={() => history.push("/products/add")}
-            >Add Product</button>
+            >
+              Add Product
+            </button>
           </div>
-          : null
-        }
+        ) : null}
         <div id="categoryContainer">
           <button type="submit" onClick={() => filterProducts("PROPANE")}>
             Propane
@@ -140,37 +147,41 @@ const AllProducts = ({ token, isAdmin, id, cart, setCart }) => {
                     <div className="card__title">{product.name}</div>
                   </Link>
                   <img className="products" src={product.imageURL} alt="" />
-                  <div className="card__subtitle">Category: {product.category}</div>
+                  <div className="card__subtitle">
+                    Category: {product.category}
+                  </div>
                   <div className="card__subtitle"> Price: ${product.price}</div>
                   {product.inStock === true ? (
                     <div className="card__subtitle"> inStock: Yes</div>
                   ) : (
                     <div className="card__subtitle"> inStock: No</div>
                   )}
-                  {isAdmin === "true"
-                   ? <div id="cardAdminButtonsContainer">
+                  {isAdmin === "true" ? (
+                    <div id="cardAdminButtonsContainer">
                       <div id="adminAddProd">
-                        <button 
-                          class="adminButton" 
-                          type = "submit" 
-                          onClick={() => history.push(`/products/edit/${product.id}`)}
-                        >Edit Product</button>
+                        <button
+                          class="adminButton"
+                          type="submit"
+                          onClick={() =>
+                            history.push(`/products/edit/${product.id}`)
+                          }
+                        >
+                          Edit Product
+                        </button>
                       </div>
                       <div id="adminAddProd">
-                        <button 
-                        class="adminButton"
-                        type="submit"
-                        onClick={(event) =>
-                          handleDelete(
-                            event,
-                            product.id,
-                          )
-                        }
-                        >Delete Product</button>
+                        <button
+                          class="adminButton"
+                          type="submit"
+                          onClick={(event) => handleDelete(event, product.id)}
+                        >
+                          Delete Product
+                        </button>
                       </div>
                     </div>
-                    : <br></br>
-                  }
+                  ) : (
+                    <br></br>
+                  )}
                   {product.inStock === true ? (
                     <>
                       <input
