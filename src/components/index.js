@@ -10,7 +10,6 @@ export { default as Cart } from "./Cart";
 export { default as Home } from "./Home";
 export { default as Checkout } from "./Checkout";
 export { default as SnackBar } from "./SnackBar";
-export { default as Admin } from "./Admin";
 export { default as AllUsers } from "./AllUsers";
 export { default as SingleUser } from "./SingleUser";
 export { default as AddUser } from "./AddUser";

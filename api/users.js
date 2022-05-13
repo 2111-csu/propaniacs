@@ -13,9 +13,10 @@ const {
   updateUser,
 } = require("../db/models/users");
 
-usersRouter.get("/", async (req, res, next) => {
+usersRouter.get("/users", requireUser, async (req, res, next) => {
   try {
     const allUsers = await getAllUsers();
+    console.log(allUsers, "Users call in API");
     res.send(allUsers);
   } catch (error) {
     console.error(error);
@@ -108,7 +109,7 @@ usersRouter.post("/login", async (req, res, next) => {
   }
 });
 
-usersRouter.get("/:userId", requireUser, async (req, res, next) => {
+usersRouter.get("/account/users/:userId", requireUser, async (req, res, next) => {
   const { userId } = req.params;
 
   try {
@@ -129,9 +130,9 @@ usersRouter.get("/:username", async (req, res, next) => {
   }
 });
 
-usersRouter.patch("/:userId", requireUser, async (req, res, next) => {
+usersRouter.patch("/account/users/:userId", requireUser, async (req, res, next) => {
   const { userId } = req.params;
-  const { firstName, lastName, email, username, password, isAdmin } = req.body;
+  const { firstName, lastName, email, username, isAdmin } = req.body;
 
   try {
     const editedUser = updateUser({
@@ -140,7 +141,6 @@ usersRouter.patch("/:userId", requireUser, async (req, res, next) => {
       lastName,
       email,
       username,
-      password,
       isAdmin,
     });
     res.send(editedUser);

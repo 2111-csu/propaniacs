@@ -1,10 +1,68 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { callApi } from "../axios-services";
 
-const AllUsers = () => {
+
+const AllUsers = ({token}) => {
+  const history = useHistory();
+  const [users, setUsers] = useState([])
+
+  useEffect(() => {
+    const getAllUsers = async () => {
+      const allUsers = await callApi({
+        url: `/api/account/users`,
+        token,
+        method: "GET"
+      });
+      console.log(allUsers, "All Users");
+      setUsers(allUsers.data);
+    };
+
+    getAllUsers();
+  }, [token]);
+
   return (
     <>
-      <h1>Admin: All Users</h1>
-      <h2>Show all users here</h2>
+    <div className="userCards">
+      {users.map((user) => {
+         return (
+          <div key={user.id}>
+            <div className="userCard">
+              <div className="card__text">
+                <div className="card__subtitle">Name: {user.firstName} {user.lastName}</div>
+                <br></br>
+                <div className="card__subtitle"> Username: {user.username}</div>
+                <br></br>
+                <div className="card__subtitle"> Email: {user.email}</div>
+                <br></br>
+                {user.isAdmin === true
+                  ?<div id="adminButtonStatus">
+                  <div className="card__subtitle"> Is Admin: YES</div>
+                  <button
+                  class="adminButton"
+                  type="submit"
+                    onClick={() =>
+                    history.push(`/account/users/${user.id}`)
+                    }
+                  >Edit User</button>
+                  </div>
+                  :<div id="adminButtonStatus">
+                  <div className="card__subtitle"> Is Admin: NO</div>
+                  <button
+                  class="adminButton"
+                  type="submit"
+                    onClick={() =>
+                    history.push(`/account/users/${user.id}`)
+                    }
+                  >Edit User</button>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+          );
+        })}
+      </div>
     </>
   );
 };
