@@ -23,7 +23,7 @@ const EditProduct = ({ token }) => {
     getSingleProduct(productId);
   }, [productId]);
 
-  const handleSubmit = async (event, productId) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const editedProduct = await callApi({
