@@ -65,7 +65,7 @@ productsRouter.delete("/", async (req, res, next) => {
   }
 });
 
-productsRouter.patch("/:productId", async (req, res, next) => {
+productsRouter.patch("/edit/:productId", async (req, res, next) => {
   const { productId } = req.params;
   const { name, description, price, imageURL, inStock, category } = req.body;
 
@@ -79,6 +79,7 @@ productsRouter.patch("/:productId", async (req, res, next) => {
       inStock,
       category,
     });
+    console.log(editedProduct, "Edit Product during Api");
     res.send(editedProduct);
   } catch (error) {
     console.error(error);

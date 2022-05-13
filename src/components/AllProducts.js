@@ -107,7 +107,11 @@ const AllProducts = ({ token, isAdmin, id, cart, setCart }) => {
         </div>
         {isAdmin === "true"
           ? <div id="adminAddProd">
-            <button class="adminButton" type = "submit" onClick={() => history.push("/products/add")}>Add Product</button>
+            <button 
+              class="adminButton" 
+              type = "submit" 
+              onClick={() => history.push("/products/add")}
+            >Add Product</button>
           </div>
           : null
         }
@@ -146,7 +150,11 @@ const AllProducts = ({ token, isAdmin, id, cart, setCart }) => {
                   {isAdmin === "true"
                    ? <div id="cardAdminButtonsContainer">
                       <div id="adminAddProd">
-                        <button class="adminButton">Edit Product</button>
+                        <button 
+                          class="adminButton" 
+                          type = "submit" 
+                          onClick={() => history.push(`/products/edit/${product.id}`)}
+                        >Edit Product</button>
                       </div>
                       <div id="adminAddProd">
                         <button 
