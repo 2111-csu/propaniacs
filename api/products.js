@@ -31,7 +31,7 @@ productsRouter.get("/:productId", async (req, res, next) => {
   }
 });
 
-productsRouter.post("/", async (req, res, next) => {
+productsRouter.post("/add", async (req, res, next) => {
   const { name, description, price, imageURL, inStock, category } = req.body;
 
   try {
@@ -49,8 +49,6 @@ productsRouter.post("/", async (req, res, next) => {
   } catch (error) {
     console.error(error);
   }
-
-  res.send(newProduct);
 });
 
 productsRouter.delete("/", async (req, res, next) => {
