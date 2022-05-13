@@ -24,7 +24,7 @@ const EditProduct = ({token}) => {
     getSingleProduct(productId);
   }, [productId]);
 
-  const handleSubmit = async (event, productId)  => {
+  const handleSubmit = async (event)  => {
     event.preventDefault();
     try {
 
@@ -75,7 +75,7 @@ const EditProduct = ({token}) => {
           <div className="card__text">
             <h1>NEW ENTRY</h1>
             {/* <div key={product.id}> */}
-            <form class ="input" onSubmit={productId, handleSubmit} >
+            <form class ="input" onSubmit={handleSubmit} >
             <div id="singleTextContainer">
               <label>Product Name:</label>
               <input 
