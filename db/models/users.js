@@ -32,12 +32,12 @@ const createUser = async ({
 
 async function getAllUsers() {
   try {
-    const { rows } = await client.query(`
+    const { rows: user } = await client.query(`
     SELECT *
     FROM users;
     `);
     delete user.password;
-    return rows;
+    return user;
   } catch (error) {
     throw error;
   }
@@ -101,7 +101,6 @@ const updateUser = async ({
   lastName,
   email,
   username,
-  password,
   isAdmin,
 }) => {
   try {
@@ -110,11 +109,11 @@ const updateUser = async ({
     } = await client.query(
       `
         UPDATE users
-        SET "firstName"=$1, "lastName"=$2, email=$3, username=$4, password=$5, "isAdmin"=$6
+        SET "firstName"=$1, "lastName"=$2, email=$3, username=$4, "isAdmin"=$5
         WHERE id=${id}
         RETURNING *;
       `,
-      [firstName, lastName, email, username, password, isAdmin]
+      [firstName, lastName, email, username, isAdmin]
     );
     return user;
   } catch (error) {

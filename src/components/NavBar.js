@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const NavBar = ({ token, id, setToken, setLoggedIn, loggedIn }) => {
+const NavBar = ({ token, id, isAdmin, setToken, setLoggedIn, loggedIn }) => {
   useEffect(() => {
     // const renderPage = async () => {
     //   if (token){
@@ -20,8 +20,14 @@ const NavBar = ({ token, id, setToken, setLoggedIn, loggedIn }) => {
           </Link>
           <Link to="/products" className="links">
             {" "}
-            Products |
+            Products | 
           </Link>
+          {loggedIn && isAdmin === "true"
+          ? <Link to="/account/users" className="links">
+            USERS |
+          </Link>
+          : null
+          }
           {loggedIn ? (
             <>
               <Link to={`/account/me/${id}`} className="links">

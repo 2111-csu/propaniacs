@@ -119,6 +119,7 @@ input{
 
 #cardAdminButtonsContainer{
   display: flex;
+  border: solid 5px green;
 }
 
 .card {
@@ -148,6 +149,7 @@ input{
   font-size: 20px;
   letter-spacing: 2px;
   text-transform: uppercase;
+  overflow-wrap: break-word;
   color: black;
   display: block;
 }
@@ -564,4 +566,31 @@ button {
 .editInput{
   width: 95%;
   text-transform:uppercase;
+}
+
+.userCards{
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+}
+
+.userCard {
+  justify-content: center;
+  background-color:white;
+  border: black solid 2px;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  margin: 3.5rem;
+  padding: 1rem;
+  width: 23rem;
+  height: 18rem;
+}
+
+#adminButtonStatus{
+  display: flex;
+  justify-content: space-between;
 }

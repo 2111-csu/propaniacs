@@ -318,6 +318,22 @@ async function populateInitialData() {
         password: "arlington",
         isAdmin: false,
       },
+      {
+        firstName: "Bill",
+        lastName: "Dauterive",
+        email: "armybarber@army.com",
+        username: "BillDozer",
+        password: "Iluvpeg1",
+        isAdmin: false,
+      },
+      {
+        firstName: "Rusty",
+        lastName: "Shackleford",
+        email: "youdontneedtoknow@dalesdeadbug.com",
+        username: "ManitobaCigs",
+        password: "shawshawshaw",
+        isAdmin: false,
+      },
     ];
     const users = await Promise.all(usersToCreate.map(Users.createUser));
     console.log("Users created:");

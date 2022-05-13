@@ -18,7 +18,6 @@ import {
   Cart,
   Home,
   Checkout,
-  Admin,
   AllUsers,
   AddUser,
   SingleUser,
@@ -68,6 +67,7 @@ const App = () => {
         <NavBar
           token={token}
           id={id}
+          isAdmin = {isAdmin}
           setToken={setToken}
           setLoggedIn={setLoggedIn}
           loggedIn={loggedIn}
@@ -115,20 +115,15 @@ const App = () => {
         <Route path="/payment/:orderId">
           <Checkout token={token} />
         </Route>
-        <Route exact path="/admin">
-          <Admin />
+        <Route exact path="/account/users">
+          <AllUsers token = {token} />
         </Route>
-        <Switch>
-          <Route exact path="/users">
-            <AllUsers />
-          </Route>
-          <Route path="/users/add">
-            <AddUser />
-          </Route>
-          <Route path="/users/:userId">
-            <SingleUser />
-          </Route>
-        </Switch>
+        <Route path="/account/users/add">
+          <AddUser token = {token} isAdmin = {isAdmin}/>
+        </Route>
+        <Route path="/account/users/:userId">
+          <SingleUser token = {token} isAdmin = {isAdmin}/>
+        </Route>
       </BrowserRouter>
 
       <h1>Hello, World!</h1>

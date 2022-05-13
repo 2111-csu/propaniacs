@@ -130,7 +130,8 @@ const EditProduct = ({ token }) => {
                   onChange={(e) => setInStock(true)}
                 ></input>
                 <input
-                  type="file"
+                  type="text"
+                  placeholder="URL"
                   value={image}
                   onChange={(e) => setImage(e.target.value)}
                 ></input>
