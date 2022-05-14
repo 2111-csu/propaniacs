@@ -4,7 +4,7 @@ import { callApi } from "../axios-services";
 
 const SingleUser = ({token}) => {
   const { userId } = useParams();
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   const [username, setUsername] = useState("")
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
@@ -12,20 +12,24 @@ const SingleUser = ({token}) => {
   const [isAdmin, setisAdmin] = useState(false)
 
   useEffect(() => {
+    try {
     const getSingleUser = async () => {
       const singleUser = await callApi({
         url: `/api/account/users/${userId}`,
-        token,
         method: "GET",
-        data: {
-          id: userId
-        }
+        token,
       });
+      console.log(singleUser, "single user response");
       setUser(singleUser.data);
     };
 
-    getSingleUser();
+    getSingleUser(userId);
+    } catch (error) {
+      console.error(error);
+    }
   }, [userId, token]);
+
+  console.log(user, "Single User set?");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -52,42 +56,44 @@ const SingleUser = ({token}) => {
   return (
     <div>
       <div id="editContainer">
-        <div className="OldContainer">
-          <div className="card__text">
+        <div class="OldContainer">
+          <div class="card__text">
             <h1>PREVIOUS ENTRY</h1>
-            {/* <div key={user.id}> */}
+            <div key={user.id}>
               <div id="singleTextContainer">
-                <p className="single__subtitle">User's Name: {user.firstName} {user.lastName}</p>
-                <p className="single__subtitle">
+                <p class="single__subtitle">User's Name: {user.firstName} {user.lastName}</p>
+                <br></br>
+                <p class="single__subtitle">
                   User's Email: {user.email}
                 </p>
-                <p className="single__subtitle">
-                  User's Username: ${user.username}
+                <br></br>
+                <p class="single__subtitle">
+                  User's Username: {user.username}
                 </p>
-
+                <br></br>
                 {user.isAdmin === true
-                  ? <p className="single__subtitle">
+                  ? <p class="single__subtitle">
                     Is the user an Admin?: YES
                   </p>
-                  : <p className="single__subtitle">
+                  : <p class="single__subtitle">
                   Is the user an Admin?: NO
                 </p>
-                }
+                } 
               </div>
-            {/* </div> */}
+            </div>
           </div>
         </div>
-        <div className="NewContainer">
-          <div className="card__text">
+        <div class="NewContainer">
+          <div class="card__text">
             <h1>NEW ENTRY</h1>
             {/* <div key={product.id}> */}
-            <form class="input" onSubmit={handleSubmit}>
+              <form class="input" onSubmit={handleSubmit}>
               <div id="singleTextContainer">
                 <label>User First Name:</label>
                 <input
                   class="editInput"
                   type="text"
-                  placeholder={user.firstName}
+                  placeholder=""
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                 ></input>
@@ -96,7 +102,7 @@ const SingleUser = ({token}) => {
                 <input
                   class="editInput"
                   type="text"
-                  placeholder={user.lastName}
+                  placeholder=""
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                 ></input>
@@ -105,7 +111,7 @@ const SingleUser = ({token}) => {
                 <input
                   class="editInput"
                   type="email"
-                  placeholder={user.email}
+                  placeholder=""
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 ></input>
@@ -114,7 +120,7 @@ const SingleUser = ({token}) => {
                 <input
                   class="editInput"
                   type="text"
-                  placeholder={user.username}
+                  placeholder=""
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 ></input>

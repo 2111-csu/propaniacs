@@ -121,7 +121,7 @@ const App = () => {
         <Route path="/account/users/add">
           <AddUser token = {token} isAdmin = {isAdmin}/>
         </Route>
-        <Route path="/account/users/:userId">
+        <Route exact path="/account/users/:userId">
           <SingleUser token = {token} isAdmin = {isAdmin}/>
         </Route>
       </BrowserRouter>
