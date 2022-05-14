@@ -5,7 +5,7 @@ import { getProducts } from "../axios-services";
 import { callApi } from "../axios-services";
 import SnackBar from "./SnackBar";
 
-const AllProducts = ({ token, isAdmin, id, cart, setCart }) => {
+const AllProducts = ({ token, loggedIn, isAdmin, cart, setCart }) => {
   const { search } = useLocation();
   const history = useHistory();
   const searchParams = new URLSearchParams(search);
@@ -156,8 +156,8 @@ const AllProducts = ({ token, isAdmin, id, cart, setCart }) => {
                   ) : (
                     <div className="card__subtitle"> inStock: No</div>
                   )}
-                  {isAdmin === "true" ? (
-                    <div id="cardAdminButtonsContainer">
+                  {loggedIn && isAdmin === "true" 
+                    ?<div id="cardAdminButtonsContainer">
                       <div id="adminAddProd">
                         <button
                           class="adminButton"
@@ -173,15 +173,24 @@ const AllProducts = ({ token, isAdmin, id, cart, setCart }) => {
                         <button
                           class="adminButton"
                           type="submit"
+                          onClick={() =>
+                            history.push(`/products/${product.id}/orders`)
+                          }
+                        > View Orders For Product
+                        </button>
+                      </div>
+                      <div id="adminAddProd">
+                        <button
+                          class="adminButton"
+                          type="submit"
                           onClick={(event) => handleDelete(event, product.id)}
                         >
                           Delete Product
                         </button>
                       </div>
                     </div>
-                  ) : (
-                    <br></br>
-                  )}
+                    : <br></br>
+                  }
                   {product.inStock === true ? (
                     <>
                       <input

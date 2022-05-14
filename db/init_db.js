@@ -330,8 +330,8 @@ async function populateInitialData() {
         firstName: "Rusty",
         lastName: "Shackleford",
         email: "youdontneedtoknow@dalesdeadbug.com",
-        username: "ManitobaCigs",
-        password: "shawshawshaw",
+        username: "SmokingBandit",
+        password: "Manitoba1",
         isAdmin: false,
       },
     ];
@@ -352,6 +352,14 @@ async function populateInitialData() {
       {
         status: "completed",
         userId: 3,
+      },
+      {
+        status: "completed",
+        userId: 4,
+      },
+      {
+        status: "completed",
+        userId: 5,
       },
     ];
     const orders = await Promise.all(ordersToCreate.map(Orders.createOrder));
@@ -413,6 +421,30 @@ async function populateInitialData() {
         productId: 16,
         orderId: 3,
         price: 1210.15,
+        quantity: 1,
+      },
+      {
+        productId: 19,
+        orderId: 4,
+        price: 7.95,
+        quantity: 9,
+      },
+      {
+        productId: 17,
+        orderId: 5,
+        price: 32.35,
+        quantity: 1,
+      },
+      {
+        productId: 10,
+        orderId: 5,
+        price: 9.95,
+        quantity: 2,
+      },
+      {
+        productId: 1,
+        orderId: 5,
+        price: 29.95,
         quantity: 1,
       },
     ];
