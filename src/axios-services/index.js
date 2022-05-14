@@ -31,11 +31,10 @@ export const callApi = async ({ url, method = "GET", token, data }) => {
     if (token) {
       options.headers["Authorization"] = `Bearer ${token}`;
     }
-    console.log("options", options);
-    console.log("token", token);
+    console.log("options from callApi", options);
     const resp = await axios(options);
 
-    console.log(resp);
+    console.log("callApi response", resp);
 
     if (resp.error) {
       console.log(resp.error);
@@ -81,7 +80,7 @@ export async function getCartByUser(id) {
     console.log("cart from axios", cart);
     return cart;
   } catch (error) {
-    throw(error);
+    throw error;
   }
 }
 
@@ -108,13 +107,13 @@ export async function profileUser() {
   }
 }
 
-export async function addToCart(id){
+export async function addToCart(id) {
   try {
-    const {data} = await axios.post(`api/orders/:orderId/products`, {id})
+    const { data } = await axios.post(`api/orders/:orderId/products`, { id });
     console.log(data, "data from addToCart");
-    return data
-  } catch (err){
-    throw err
+    return data;
+  } catch (err) {
+    throw err;
   }
 }
 
