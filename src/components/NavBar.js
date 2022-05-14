@@ -55,7 +55,7 @@ const NavBar = ({ token, id, isAdmin, setToken, setLoggedIn, loggedIn }) => {
           )}
           <Link to="/cart" className="links">
             {" "}
-            Cart |
+            Cart | 
           </Link>
         </nav>
       </div>

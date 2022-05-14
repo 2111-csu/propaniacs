@@ -77,7 +77,7 @@ const App = () => {
         </Route>
         <Switch>
           <Route exact path="/products">
-            <AllProducts id={id} token={token} isAdmin = {isAdmin} cart={cart} setCart={setCart} />
+            <AllProducts token={token} loggedIn = {loggedIn} isAdmin = {isAdmin} cart={cart} setCart={setCart} />
           </Route>
           <Route path="/products/add">
             <AddProduct token = {token} />
@@ -85,7 +85,7 @@ const App = () => {
           <Route path="/products/edit/:productId">
             <EditProduct token = {token}/>
           </Route>
-          <Route path="/products/:productId">
+          <Route exact path="/products/:productId">
             <SingleProduct
               id={id}
               token={token}
@@ -103,8 +103,8 @@ const App = () => {
         <Route exact path="/account/me/:userId">
           <Profile token={token} />
         </Route>
-        <Route exact path="/orders">
-          <AllOrders />
+        <Route exact path="/products/:productId/orders">
+          <AllOrders token = {token} />
         </Route>
         <Route exact path="/orders/:orderId">
           <SingleOrder id={id} />
