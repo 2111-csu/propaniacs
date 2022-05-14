@@ -32,14 +32,12 @@ const App = () => {
   const storedIsAdmin = localStorage.getItem("isAdmin")
   const storedToken = localStorage.getItem("token");
   const storedLoggedIn = localStorage.getItem("loggedIn");
-  console.log(localStorage, "localstorage from App");
 
   const [id, setId] = useState("");
   const [isAdmin, setisAdmin] = useState(false);
   const [token, setToken] = useState("");
   const [cart, setCart] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
-  console.log("logged in status", loggedIn);
 
   useEffect(() => {
     if (storedToken) {

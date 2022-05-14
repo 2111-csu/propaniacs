@@ -16,7 +16,6 @@ const AllProducts = ({ token, isAdmin, id, cart, setCart }) => {
   useEffect(() => {
     const getAllProducts = async () => {
       const allProducts = await getProducts();
-      console.log(allProducts, "all prod?");
       setProducts(allProducts);
 
       const userCart = await callApi({
@@ -72,6 +71,7 @@ const AllProducts = ({ token, isAdmin, id, cart, setCart }) => {
           productId,
         },
       });
+      console.log("deleted product", productDeleted);
 
       const getAllProducts = async () => {
         const allProducts = await getProducts();

@@ -25,7 +25,6 @@ const Profile = ({ token }) => {
           token,
         });
 
-        console.log(completeOrders, "orders in profile");
         setUser(result.data);
         setOrders(completeOrders.data);
         setOrderDate(completeOrders.data[0].datePlaced);
@@ -58,16 +57,15 @@ const Profile = ({ token }) => {
               </div>
             ) : null}
             {orders.map((order) => {
-              {
-                checkoutTotal = checkoutTotal + order.price * order.quantity;
-              }
+              checkoutTotal = checkoutTotal + order.price * order.quantity;
+
               return (
-                <>
+                <div key={order.id}>
                   {order.status === "completed" ? (
                     <>
                       {order.products.map((item) => {
                         return (
-                          <>
+                          <div key={item.id}>
                             <div id="orderImgInfoBox">
                               <div id="orderImgBox">
                                 <img
@@ -82,12 +80,12 @@ const Profile = ({ token }) => {
                                 <p>QTY Ordered: {order.quantity}</p>
                               </div>
                             </div>
-                          </>
+                          </div>
                         );
                       })}
                     </>
                   ) : null}
-                </>
+                </div>
               );
             })}
             {orderStatus === "completed" ? (

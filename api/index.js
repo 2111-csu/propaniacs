@@ -16,7 +16,6 @@ apiRouter.use(async (req, res, next) => {
       const { id } = jwt.verify(token, JWT_SECRET);
       if (id) {
         req.user = await getUserById(id);
-        console.log("req.user created:", req.user);
         next();
       }
     } catch ({ name, message }) {

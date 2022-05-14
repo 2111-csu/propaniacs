@@ -32,6 +32,8 @@ const Cart = ({ token }) => {
         cart,
         token,
       });
+      console.log("remove from cart", removeFromCart);
+
       // const remainingProducts = cart.filter(
       //   (product) => product.id !== orderProductId
       // );
@@ -46,7 +48,7 @@ const Cart = ({ token }) => {
         setCart(userCart.data);
       };
       getCart();
-      console.log("cart", cart);
+
       // setCart(remainingProducts);
     } catch (error) {
       throw error;
@@ -83,10 +85,10 @@ const Cart = ({ token }) => {
 
   return (
     <>
-      <div class="cartPageContainer">
-        <div class="cartContainer">
+      <div className="cartPageContainer">
+        <div className="cartContainer">
           <h1>Cart</h1>
-          <div class="cartTitles">
+          <div className="cartTitles">
             <p> Name | </p>
             <p> Quantity | </p>
             <p> Price (each) </p>
@@ -98,7 +100,7 @@ const Cart = ({ token }) => {
                 {cartItem.products.map((itemInCart) => {
                   return (
                     <div key={itemInCart.id}>
-                      <div class="innerCartContainer">
+                      <div className="innerCartContainer">
                         <div>
                           <form
                             onSubmit={(event) => {
@@ -110,7 +112,7 @@ const Cart = ({ token }) => {
                               Remove Item
                             </button>
                           </form>
-                          <div class="cartEditContainer">
+                          <div className="cartEditContainer">
                             <input
                               type="number"
                               id="quantity"
@@ -131,8 +133,12 @@ const Cart = ({ token }) => {
                             </button>
                           </div>
                         </div>
-                        <img class="cartImg" src={itemInCart.imageURL} alt="" />
-                        <div class="cartTextOnly">
+                        <img
+                          className="cartImg"
+                          src={itemInCart.imageURL}
+                          alt=""
+                        />
+                        <div className="cartTextOnly">
                           <p id="singleCartText">{itemInCart.name}</p>
                           <p id="singleCartText">{cartItem.quantity}</p>
                           <p id="singleCartText">${itemInCart.price}</p>
@@ -148,10 +154,10 @@ const Cart = ({ token }) => {
         <div class="totalContainer">
           <p id="total">Total Price: ${cartTotal}</p>
           <Link to={`/payment/${orderId}`}>
-            <button class="checkoutButton">CheckOut</button>
+            <button className="checkoutButton">CheckOut</button>
           </Link>
           <Link to="/products">
-            <button class="continueButton">Continue Shopping</button>
+            <button className="continueButton">Continue Shopping</button>
           </Link>
         </div>
       </div>
