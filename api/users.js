@@ -109,11 +109,12 @@ usersRouter.post("/login", async (req, res, next) => {
   }
 });
 
-usersRouter.get("/account/users/:userId", requireUser, async (req, res, next) => {
+usersRouter.get("/users/:userId", requireUser, async (req, res, next) => {
   const { userId } = req.params;
 
   try {
     const user = await getUserById(userId);
+    console.log(user, "user in Api request");
     res.send(user);
   } catch (error) {
     throw error;
@@ -130,7 +131,7 @@ usersRouter.get("/:username", async (req, res, next) => {
   }
 });
 
-usersRouter.patch("/account/users/:userId", requireUser, async (req, res, next) => {
+usersRouter.patch("/users/:userId", requireUser, async (req, res, next) => {
   const { userId } = req.params;
   const { firstName, lastName, email, username, isAdmin } = req.body;
 
