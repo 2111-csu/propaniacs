@@ -4,8 +4,8 @@ const { getCartByUser } = require("../db/models/orders");
 
 cartRouter.get("/", async (req, res, next) => {
   try {
-    // const { id } = req.user;
-    const userCart = await getCartByUser(1);
+    const { id } = req.user;
+    const userCart = await getCartByUser(id);
     res.send(userCart);
   } catch (error) {
     console.error(error);
