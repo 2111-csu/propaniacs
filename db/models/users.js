@@ -121,24 +121,6 @@ const updateUser = async ({
   }
 };
 
-const deleteUser = async (id) => {
-  try {
-    const {
-      rows: [user],
-    } = await client.query(
-      `
-      DELETE FROM users
-      WHERE id = ${id}
-      RETURNING *;
-      `,
-    );
-
-    return user;
-  } catch (error) {
-    throw error;
-  }
-};
-
 module.exports = {
   createUser,
   getAllUsers,
@@ -146,5 +128,4 @@ module.exports = {
   getUserById,
   getUserByUsername,
   updateUser,
-  deleteUser
 };

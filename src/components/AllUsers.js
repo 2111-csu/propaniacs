@@ -44,7 +44,7 @@ const AllUsers = ({token}) => {
                     onClick={() =>
                     history.push(`/account/users/${user.id}`)
                     }
-                  >View User</button>
+                  >Edit User</button>
                   </div>
                   :<div id="adminButtonStatus">
                   <div className="card__subtitle"> Is Admin: NO</div>
@@ -54,7 +54,7 @@ const AllUsers = ({token}) => {
                     onClick={() =>
                     history.push(`/account/users/${user.id}`)
                     }
-                  >View User</button>
+                  >Edit User</button>
                   </div>
                 }
               </div>

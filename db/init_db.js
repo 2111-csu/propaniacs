@@ -327,14 +327,6 @@ async function populateInitialData() {
         isAdmin: false,
       },
       {
-        firstName: "Jeff",
-        lastName: "Boomhauer",
-        email: "boomhauer@txsttroopers.com",
-        username: "bowchikawowwow",
-        password: "dangolyouknow",
-        isAdmin: false,
-      },
-      {
         firstName: "Rusty",
         lastName: "Shackleford",
         email: "youdontneedtoknow@dalesdeadbug.com",
