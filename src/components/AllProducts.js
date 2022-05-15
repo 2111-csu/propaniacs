@@ -216,7 +216,7 @@ const AllProducts = ({ token, loggedIn, isAdmin, cart, setCart }) => {
                       </button>
                     </>
                   ) : (
-                    <h2>OUT OF STOCK</h2>
+                    <h1>OUT OF STOCK</h1>
                   )}
                 </div>
               </div>
