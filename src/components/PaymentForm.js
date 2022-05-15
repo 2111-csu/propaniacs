@@ -21,7 +21,7 @@ const CARD_OPTIONS = {
   },
 };
 
-export default function PaymentForm({ token, orderId }) {
+export default function PaymentForm({ token, orderId, setCart }) {
   const [success, setSuccess] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
@@ -32,6 +32,17 @@ export default function PaymentForm({ token, orderId }) {
       type: "card",
       card: elements.getElement(CardElement),
     });
+
+    const completeOrder = await callApi({
+      url: `/api/payment/${orderId}`,
+      method: "PATCH",
+      token,
+      data: {
+        status: "completed",
+      },
+    });
+    console.log(completeOrder, "clicked = Complete Order");
+    setCart([]);
 
     if (!error) {
       try {

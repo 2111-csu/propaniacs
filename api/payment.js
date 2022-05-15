@@ -83,12 +83,12 @@ paymentRouter.patch("/:orderId", async (req, res, next) => {
 paymentRouter.delete("/:orderId", async (req, res, next) => {
   const { orderId } = req.params;
   const { status } = req.body;
+  console.log("order id in delete api", orderId);
+  console.log("status", status);
 
   try {
-    const canceledOrder = await cancelOrder({
-      id: orderId,
-      status,
-    });
+    const canceledOrder = await cancelOrder(orderId);
+    console.log("cancelOrder in api", canceledOrder);
     res.send({
       canceledOrder,
       message: `This order is ${status}`,

@@ -6,7 +6,7 @@ cartRouter.get("/", async (req, res, next) => {
   // const { id } = req.user;
 
   try {
-    const userCart = await getCartByUser(id);
+    const userCart = await getCartByUser(1);
     res.send(userCart);
   } catch (error) {
     console.error(error);
