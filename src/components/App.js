@@ -25,6 +25,7 @@ import {
   AddProduct,
   EditProduct,
 } from "./index";
+import ProdOrders from "./ProdOrders";
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
@@ -102,10 +103,13 @@ const App = () => {
           <Profile token={token} />
         </Route>
         <Route exact path="/products/:productId/orders">
-          <AllOrders token = {token} />
+          <ProdOrders token = {token} />
+        </Route>
+        <Route exact path="/orders">
+          <AllOrders token={token} />
         </Route>
         <Route exact path="/orders/:orderId">
-          <SingleOrder id={id} />
+          <SingleOrder token={token} />
         </Route>
         <Route exact path="/cart">
           <Cart token={token} cart={cart} setCart={setCart} />

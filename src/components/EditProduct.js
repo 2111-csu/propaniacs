@@ -90,7 +90,7 @@ const EditProduct = ({ token }) => {
                 <input
                   class="editInput"
                   type="text"
-                  placeholder={product.name}
+                  placeholder="Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 ></input>
@@ -99,7 +99,7 @@ const EditProduct = ({ token }) => {
                 <input
                   class="editInput"
                   type="text"
-                  placeholder={product.description}
+                  placeholder="Description"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                 ></input>
@@ -108,7 +108,7 @@ const EditProduct = ({ token }) => {
                 <input
                   class="editInput"
                   type="text"
-                  placeholder={product.price}
+                  placeholder="Price"
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
                 ></input>
@@ -117,7 +117,7 @@ const EditProduct = ({ token }) => {
                 <input
                   class="editInput"
                   type="text"
-                  placeholder={product.category}
+                  placeholder="Category"
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
                 ></input>
@@ -125,7 +125,7 @@ const EditProduct = ({ token }) => {
                 <label>In Stock: </label>
                 <input
                   type="checkbox"
-                  placeholder=""
+                  placeholder="true/false"
                   value={inStock}
                   onChange={(e) => setInStock(true)}
                 ></input>
