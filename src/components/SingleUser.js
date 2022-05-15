@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { callApi } from "../axios-services";
 
 const SingleUser = ({token}) => {
   const { userId } = useParams();
+  const history = useHistory();
   const [user, setUser] = useState({});
   const [username, setUsername] = useState("")
   const [firstName, setFirstName] = useState("")
@@ -47,7 +48,23 @@ const SingleUser = ({token}) => {
         },
       });
       console.log(editedUser, "Admin editing user");
+      history.push("/account/users");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
+  const handleDelete = async (event, userId) => {
+    event.preventDefault();
+    try {
+      const userDeleted = await callApi({
+        url: `/api/account/users/${userId}`,
+        token,
+        method: "DELETE",
+      });
+      console.log("user deleted", userDeleted);
+
+      history.push("/account/users");
     } catch (error) {
       console.error(error);
     }
@@ -79,6 +96,15 @@ const SingleUser = ({token}) => {
                   Is the user an Admin?: NO
                 </p>
                 } 
+                <div id="adminAddProd">
+                  <button
+                    class="adminButton"
+                    type="submit"
+                    onClick={(event) => handleDelete(event, user.id)}
+                  >
+                    Delete User
+                  </button>
+                </div>
               </div>
             </div>
           </div>
