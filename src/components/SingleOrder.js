@@ -34,7 +34,7 @@ const SingleOrder = ({token}) => {
         },
       });
       console.log(editedOrder, "Edited Order Response");
-      history.push("/orders");
+      // history.push("/orders");
     } catch (error) {
       console.error(error);
     }
