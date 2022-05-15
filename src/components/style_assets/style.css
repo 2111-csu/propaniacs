@@ -633,3 +633,59 @@ button {
   font-weight: bold;
   width: 25%;
 }
+
+#AllProductOrderContainer{
+  display: block;
+  width: 23%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+}
+
+#singleOrderContainer{
+  border: solid 2px black;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  background-color: white;
+}
+
+#singleOrderTitle{
+  text-align: center;
+  border-bottom: solid 2px black;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#singleOrderSingleProdContainer{
+  border: solid 2px black;
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#singleOrderProdContainer{
+  margin-top: 2rem;
+  display: flex;
+}
+
+#singleOrderChangeContainer{
+  display: flex;
+  text-align: center;
+  justify-content:center;
+  padding: 1rem;
+}
+
+#editInput{
+  width: 35%;
+  text-transform:lowercase;
+}
+
+#changeStatus{
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 1rem;
+}

@@ -13,6 +13,7 @@ export { default as SnackBar } from "./SnackBar";
 export { default as AllUsers } from "./AllUsers";
 export { default as SingleUser } from "./SingleUser";
 export { default as AddUser } from "./AddUser";
-export { default as AllOrders } from "./AllOrders";
+export { default as ProdOrders } from "./ProdOrders";
 export { default as AddProduct } from "./AddProduct";
 export { default as EditProduct } from "./EditProduct";
+export { default as AllOrders } from "./AllOrders";

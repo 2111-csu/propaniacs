@@ -57,6 +57,12 @@ const NavBar = ({ token, id, isAdmin, setToken, setLoggedIn, loggedIn }) => {
             {" "}
             Cart | 
           </Link>
+          {loggedIn && isAdmin === "true"
+          ? <Link to="/orders" className="links">
+            ORDERS |
+          </Link>
+          : null
+          }
         </nav>
       </div>
     </>

@@ -90,4 +90,19 @@ ordersRouter.get("/:userId", async (req, res, next) => {
   }
 });
 
+ordersRouter.patch("/:orderId", requireUser, async (req, res, next) => {
+  const { orderId } = req.params;
+  const { status } = req.body;
+
+  try {
+    const editedOrder = updateOrder({
+      id: orderId,
+      status
+    });
+    res.send(editedOrder);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = ordersRouter;
