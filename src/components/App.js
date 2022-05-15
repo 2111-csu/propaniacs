@@ -24,8 +24,8 @@ import {
   AllOrders,
   AddProduct,
   EditProduct,
+  ProdOrders
 } from "./index";
-import ProdOrders from "./ProdOrders";
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");

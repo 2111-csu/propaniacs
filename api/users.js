@@ -11,6 +11,7 @@ const {
   getUserById,
   getAllUsers,
   updateUser,
+  deleteUser
 } = require("../db/models/users");
 
 usersRouter.get("/users", requireUser, async (req, res, next) => {
@@ -147,6 +148,18 @@ usersRouter.patch("/users/:userId", requireUser, async (req, res, next) => {
     res.send(editedUser);
   } catch (error) {
     next(error);
+  }
+});
+
+usersRouter.delete("/users/:userId", requireUser, async (req, res, next) => {
+  const { userId } = req.params;
+
+  try {
+    const deletedUser = await deleteUser(userId);
+    console.log(deletedUser, "User Request to Delete");
+    res.send(deletedUser);
+  } catch (error) {
+    console.error(error);
   }
 });
 
