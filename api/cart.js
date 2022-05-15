@@ -3,8 +3,9 @@ const cartRouter = express.Router();
 const { getCartByUser } = require("../db/models/orders");
 
 cartRouter.get("/", async (req, res, next) => {
+  // const { id } = req.user;
+
   try {
-    const { id } = req.user;
     const userCart = await getCartByUser(id);
     res.send(userCart);
   } catch (error) {

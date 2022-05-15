@@ -27,7 +27,6 @@ const AddProduct = ({ token }) => {
           price: Number(price),
         },
       });
-      console.log(newProduct, "New Product in Add Product Component");
 
       history.push("/products");
       return newProduct;
