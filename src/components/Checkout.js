@@ -12,10 +12,10 @@ const stripeTestPromise = loadStripe(PUBLIC_KEY);
 
 const Checkout = ({ token }) => {
   const { orderId } = useParams();
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [zip, setZip] = useState("");
+  // const [address, setAddress] = useState("");
+  // const [city, setCity] = useState("");
+  // const [state, setState] = useState("");
+  // const [zip, setZip] = useState("");
   const [cart, setCart] = useState([]);
   let cartTotal = 0;
 
@@ -32,19 +32,14 @@ const Checkout = ({ token }) => {
     getCart();
   }, [setCart, token]);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      //   setToken(result.token)
-      //   setPassword(result.password)
-      //   setUsername(result.username)
-      //   localStorage.setItem("isAdmin", result.user.isAdmin)
-      //   localStorage.setItem("lastName", result.user.lastName)
-      //   localStorage.setItem("firstName", result.user.firstName)
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   try {
+
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   // const completeOrder = await callApi({
   //   url: `/api/payment/${orderId}`,

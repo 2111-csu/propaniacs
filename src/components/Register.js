@@ -18,7 +18,6 @@ const Register = ({setToken, setLoggedIn}) => {
       try {
         const result = await createUser(username, password, firstName, lastName, email, isAdmin)
 
-        setToken(result.token)
         setPassword(result.password)
         setUsername(result.username)
         setFirstName(result.firstName)
