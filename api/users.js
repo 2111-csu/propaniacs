@@ -17,7 +17,6 @@ const {
 usersRouter.get("/users", requireUser, async (req, res, next) => {
   try {
     const allUsers = await getAllUsers();
-    console.log(allUsers, "Users call in API");
     res.send(allUsers);
   } catch (error) {
     console.error(error);
@@ -105,7 +104,6 @@ usersRouter.post("/login", async (req, res, next) => {
       });
     }
   } catch (error) {
-    console.log(error);
     throw error;
   }
 });
@@ -115,7 +113,6 @@ usersRouter.get("/users/:userId", requireUser, async (req, res, next) => {
 
   try {
     const user = await getUserById(userId);
-    console.log(user, "user in Api request");
     res.send(user);
   } catch (error) {
     throw error;
@@ -156,7 +153,6 @@ usersRouter.delete("/users/:userId", requireUser, async (req, res, next) => {
 
   try {
     const deletedUser = await deleteUser(userId);
-    console.log(deletedUser, "User Request to Delete");
     res.send(deletedUser);
   } catch (error) {
     console.error(error);

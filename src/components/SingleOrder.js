@@ -14,7 +14,6 @@ const SingleOrder = ({token}) => {
   useEffect(() => {
     const getSingleOrder = async (orderId) => {
       const singleOrder = await getOrderById(orderId);
-      console.log(singleOrder, "Single Order response");
       setOrder(singleOrder);
       setDate(singleOrder[0].datePlaced)
       setCurrentStatus(singleOrder[0].status)
@@ -25,7 +24,7 @@ const SingleOrder = ({token}) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const editedOrder = await callApi({
+      await callApi({
         url: `/api/orders/${orderId}`,
         method: "PATCH",
         token,
@@ -33,7 +32,6 @@ const SingleOrder = ({token}) => {
           status
         },
       });
-      console.log(editedOrder, "Edited Order Response");
       history.push("/orders");
     } catch (error) {
       console.error(error);

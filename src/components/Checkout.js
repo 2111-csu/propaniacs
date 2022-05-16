@@ -32,42 +32,6 @@ const Checkout = ({ token }) => {
     getCart();
   }, [setCart, token]);
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   try {
-
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  // const completeOrder = await callApi({
-  //   url: `/api/payment/${orderId}`,
-  //   method: "PATCH",
-  //   token,
-  //   data: {
-  //     status: "completed",
-  //   },
-  // });
-
-  // const handleCancelOrder = async (event, orderId) => {
-  //   event.preventDefault();
-  //   try {
-  //     const cancelOrder = await callApi({
-  //       url: `/api/payment/${orderId}`,
-  //       method: "DELETE",
-  //       token,
-  //       data: {
-  //         status: "cancelled",
-  //       },
-  //     });
-  //     setCart([]);
-  //     console.log(cancelOrder, "clicked = Cancel Order");
-  //   } catch (error) {
-  //     throw error;
-  //   }
-  // };
-
   return (
     <>
       <div id="CheckoutContainer">

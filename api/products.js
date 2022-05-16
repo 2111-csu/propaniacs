@@ -27,7 +27,7 @@ productsRouter.get("/:productId", async (req, res, next) => {
     const product = await getProductById(productId);
     res.send(product);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 });
 
@@ -43,7 +43,6 @@ productsRouter.post("/add", async (req, res, next) => {
       inStock,
       category,
     });
-    console.log(newProduct, "New Product during API");
 
     res.send(newProduct);
   } catch (error) {
@@ -56,7 +55,6 @@ productsRouter.delete("/", async (req, res, next) => {
 
   try {
     const deletedProduct = await destroyProduct(productId);
-    console.log(deletedProduct, "Product Delete during API");
     res.send(deletedProduct);
   } catch (error) {
     console.error(error);
@@ -77,7 +75,6 @@ productsRouter.patch("/edit/:productId", async (req, res, next) => {
       inStock,
       category,
     });
-    console.log(editedProduct, "Edit Product during Api");
     res.send(editedProduct);
   } catch (error) {
     console.error(error);

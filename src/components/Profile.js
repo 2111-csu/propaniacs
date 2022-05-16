@@ -53,7 +53,7 @@ const Profile = ({ token }) => {
           <div id="orderbox">
             {orderStatus === "completed" ? (
               <div>
-                <h3 id="orderDateBox">Date Ordered: {orderDate}</h3>
+                <h3>Date Ordered: {orderDate}</h3>
               </div>
             ) : null}
             {orders.map((order) => {

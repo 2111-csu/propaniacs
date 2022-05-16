@@ -26,17 +26,12 @@ const Cart = ({ token }) => {
     event.preventDefault();
 
     try {
-      const removeFromCart = await callApi({
+       await callApi({
         url: `/api/order_products/${orderProductId}`,
         method: "DELETE",
         cart,
         token,
       });
-      console.log("remove from cart", removeFromCart);
-
-      // const remainingProducts = cart.filter(
-      //   (product) => product.id !== orderProductId
-      // );
 
       const getCart = async () => {
         const userCart = await callApi({
@@ -67,15 +62,11 @@ const Cart = ({ token }) => {
           quantity: Number(quantity),
         },
       });
-      console.log("edited cart", editedCart);
       const product = cart.find((product) => product.id === orderProductId);
-      console.log("product from cart", product);
       const remainingProducts = cart.filter(
         (product) => product.id !== orderProductId
       );
-      console.log("remaining products", remainingProducts);
       const updatedProduct = { ...product, ...editedCart.data };
-      console.log(updatedProduct);
 
       setCart([...remainingProducts, updatedProduct]);
     } catch (error) {

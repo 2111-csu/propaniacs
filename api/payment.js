@@ -26,7 +26,6 @@ paymentRouter.get("/secret", async (req, res, next) => {
       payment_method: id,
       confirm: true,
     });
-    console.log("Payment", payment);
 
     // res.json({
     //   message: "Payment Success!",
@@ -39,7 +38,6 @@ paymentRouter.get("/secret", async (req, res, next) => {
 
 paymentRouter.post("/", cors(), async (req, res, next) => {
   let { amount, id } = req.body;
-  console.log("Working?!?!?!?");
   try {
     const payment = await stripe.paymentIntents.create({
       amount,
@@ -48,13 +46,11 @@ paymentRouter.post("/", cors(), async (req, res, next) => {
       payment_method: id,
       confirm: true,
     });
-    console.log("Payment", payment);
     res.json({
       message: "Payment Success!",
       success: true,
     });
   } catch (error) {
-    console.log("error", error);
     res.json({
       message: "Payment Failed!",
       success: false,
@@ -83,12 +79,9 @@ paymentRouter.patch("/:orderId", async (req, res, next) => {
 paymentRouter.delete("/:orderId", async (req, res, next) => {
   const { orderId } = req.params;
   const { status } = req.body;
-  console.log("order id in delete api", orderId);
-  console.log("status", status);
 
   try {
     const canceledOrder = await cancelOrder(orderId);
-    console.log("cancelOrder in api", canceledOrder);
     res.send({
       canceledOrder,
       message: `This order is ${status}`,

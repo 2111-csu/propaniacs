@@ -1,14 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
-const NavBar = ({ token, id, isAdmin, setToken, setLoggedIn, loggedIn }) => {
-  useEffect(() => {
-    // const renderPage = async () => {
-    //   if (token){
-    //     renderPage()
-    //   }
-    // }
-  }, []);
+const NavBar = ({ id, isAdmin, setToken, setLoggedIn, loggedIn }) => {
 
   return (
     <>

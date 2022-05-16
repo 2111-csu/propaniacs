@@ -18,7 +18,7 @@ const ProdOrders = ({token}) => {
         token,
         method: "GET"
       });
-      console.log(allOrders, "All Users");
+
       setOrders(allOrders.data);
       setName(allOrders.data[0].products[0].name)
       setCategory(allOrders.data[0].products[0].category)

@@ -63,7 +63,7 @@ const AllProducts = ({ token, loggedIn, isAdmin, cart, setCart }) => {
   const handleDelete = async (event, productId) => {
     event.preventDefault();
     try {
-      const productDeleted = await callApi({
+      await callApi({
         url: `/api/products`,
         token,
         method: "DELETE",
@@ -71,7 +71,6 @@ const AllProducts = ({ token, loggedIn, isAdmin, cart, setCart }) => {
           productId,
         },
       });
-      console.log("deleted product", productDeleted);
 
       const getAllProducts = async () => {
         const allProducts = await getProducts();
