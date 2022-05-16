@@ -7,7 +7,7 @@ const Login = ({ setLoggedIn }) => {
   const history = useHistory();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("")
+  const [message, setMessage] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -28,15 +28,15 @@ const Login = ({ setLoggedIn }) => {
       if (result.token) {
         localStorage.setItem("loggedIn", true);
         setLoggedIn(true);
-        setMessage(result.message)
-        SnackBar()
+        setMessage(result.message);
+        SnackBar();
         history.push("/products");
       } else {
-        setMessage(result.message)
-        SnackBar()
+        setMessage(result.message);
+        SnackBar();
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
@@ -63,7 +63,7 @@ const Login = ({ setLoggedIn }) => {
           <br></br>
           <button type="submit">SUBMIT</button>
           <Link to="/account/register">
-            <h4>Already have an account? Login here!</h4>
+            <h4>Need an account? Register here!</h4>
           </Link>
         </form>
       </div>
