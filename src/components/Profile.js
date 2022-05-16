@@ -90,7 +90,7 @@ const Profile = ({ token }) => {
             })}
             {orderStatus === "completed" ? (
               <div id="orderTotalBox">
-                <p>Order Total: ${checkoutTotal}</p>
+                <p>Order Total: ${checkoutTotal.toFixed(2)}</p>
               </div>
             ) : (
               <div>NO PREVIOUS ORDERS</div>

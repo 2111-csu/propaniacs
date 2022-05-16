@@ -54,6 +54,17 @@ const AllProducts = ({ token, loggedIn, isAdmin, cart, setCart }) => {
       });
       SnackBar();
       setCart(addedToCart, ...cart);
+
+      const allProducts = await getProducts();
+      setProducts(allProducts);
+
+      const userCart = await callApi({
+        url: "/api/cart",
+        token,
+        method: "GET",
+      });
+      setCart(userCart.data);
+
       return cart;
     } catch (error) {
       console.error(error);
