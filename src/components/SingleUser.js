@@ -20,7 +20,6 @@ const SingleUser = ({token}) => {
         method: "GET",
         token,
       });
-      console.log(singleUser, "single user response");
       setUser(singleUser.data);
     };
 
@@ -30,12 +29,10 @@ const SingleUser = ({token}) => {
     }
   }, [userId, token]);
 
-  console.log(user, "Single User set?");
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const editedUser = await callApi({
+      await callApi({
         url: `/api/account/users/${userId}`,
         method: "PATCH",
         token,
@@ -47,7 +44,6 @@ const SingleUser = ({token}) => {
           isAdmin,
         },
       });
-      console.log(editedUser, "Admin editing user");
       history.push("/account/users");
     } catch (error) {
       console.error(error);
@@ -57,12 +53,11 @@ const SingleUser = ({token}) => {
   const handleDelete = async (event, userId) => {
     event.preventDefault();
     try {
-      const userDeleted = await callApi({
+      await callApi({
         url: `/api/account/users/${userId}`,
         token,
         method: "DELETE",
       });
-      console.log("user deleted", userDeleted);
 
       history.push("/account/users");
     } catch (error) {

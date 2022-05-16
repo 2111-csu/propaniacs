@@ -54,10 +54,9 @@ ordersRouter.get("/:orderId", async (req, res, next) => {
 
   try {
     const order = await getOrderById(orderId);
-    console.log(order, "Order from ordersRouter.get");
     res.send(order);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 });
 
@@ -71,10 +70,9 @@ ordersRouter.post("/:orderId/products", requireUser, async (req, res, next) => {
         productId, 
         price, 
         quantity});
-    console.log(orderProduct, "SingleProduct from orders post");
     res.send(orderProduct);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 });
 
@@ -83,10 +81,9 @@ ordersRouter.get("/:userId", async (req, res, next) => {
 
   try {
     const order = await getOrderByUser(userId);
-    console.log(order, "Order from ordersRouter.get for profile");
     res.send(order);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 });
 

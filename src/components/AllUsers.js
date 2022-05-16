@@ -14,7 +14,6 @@ const AllUsers = ({token}) => {
         token,
         method: "GET"
       });
-      console.log(allUsers, "All Users");
       setUsers(allUsers.data);
     };
 

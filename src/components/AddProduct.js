@@ -51,6 +51,7 @@ const AddProduct = ({ token }) => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></input>
+              <br></br>
               <label>Description:</label>
               <input
                 class="newInput"
@@ -67,6 +68,7 @@ const AddProduct = ({ token }) => {
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
               ></input>
+              <br></br>
               <label>Category:</label>
               <input
                 class="newInput"

@@ -3,7 +3,7 @@ import { useHistory, Link } from "react-router-dom";
 import { createUser } from "../axios-services";
 import SnackBar from "./SnackBar";
 
-const Register = ({ setToken, setLoggedIn }) => {
+const Register = ({ setLoggedIn }) => {
   const history = useHistory();
   const [message, setMessage] = useState("");
   const [username, setUsername] = useState("");

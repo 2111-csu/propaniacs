@@ -4,7 +4,7 @@ import { getProductById } from "../axios-services";
 import { callApi } from "../axios-services";
 import SnackBar from "./SnackBar";
 
-const SingleProduct = ({ token, id, cart, setCart }) => {
+const SingleProduct = ({ token, cart, setCart }) => {
   const [product, setProduct] = useState([]);
   const [quantity, setQuantity] = useState(0)
   const { productId } = useParams();

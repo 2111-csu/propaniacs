@@ -33,7 +33,7 @@ export default function PaymentForm({ token, orderId, setCart }) {
       card: elements.getElement(CardElement),
     });
 
-    const completeOrder = await callApi({
+     await callApi({
       url: `/api/payment/${orderId}`,
       method: "PATCH",
       token,
@@ -41,7 +41,6 @@ export default function PaymentForm({ token, orderId, setCart }) {
         status: "completed",
       },
     });
-    console.log(completeOrder, "clicked = Complete Order");
     setCart([]);
 
     if (!error) {
@@ -56,23 +55,21 @@ export default function PaymentForm({ token, orderId, setCart }) {
             id,
           },
         });
-        console.log(response, "response from payment");
         if (response.data.success) {
-          console.log("Successful Payment");
           setSuccess(true);
         }
       } catch (error) {
         console.error(error, "Payment Error");
       }
     } else {
-      console.log(error.message);
+      console.error(error.message);
     }
   };
 
   const handleCancelOrder = async (event, orderId) => {
     event.preventDefault();
     try {
-      const cancelOrder = await callApi({
+       await callApi({
         url: `/api/payment/${orderId}`,
         method: "DELETE",
         token,
@@ -81,7 +78,6 @@ export default function PaymentForm({ token, orderId, setCart }) {
         },
       });
       setCart([]);
-      console.log(cancelOrder, "clicked = Cancel Order");
     } catch (error) {
       throw error;
     }
@@ -97,7 +93,8 @@ export default function PaymentForm({ token, orderId, setCart }) {
                 <CardElement options={CARD_OPTIONS} />
               </div>
             </fieldset>
-            <button>Pay</button>
+            <button id="CompleteOrder"
+            >Pay</button>
           </form>
           <button
             id="CancelOrder"

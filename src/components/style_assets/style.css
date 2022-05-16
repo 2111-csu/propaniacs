@@ -199,7 +199,7 @@ button {
   background-color: green;
   color: white;
   border: 1px solid black;
-  width: 14rem;
+  width: 8rem;
 }
 
 .checkoutButton{
@@ -416,34 +416,26 @@ button {
 }
 
 #orderbox{
-  border: 5px solid green;
-}
-
-#orderDateBox{
-  border: 5px solid purple;
+  margin-left: 1rem ;
 }
 
 #orderImgInfoBox{
-  border: 5px solid orange;
   display: flex;
   height: 10rem;
 }
 
 #orderImgBox{
-  border: 5px solid blue;
   margin-top: auto;
   margin-bottom: auto;
 }
 
 #orderInfoBox{
-  border: 5px solid red;
   font-size: 20px;
   margin-left: 1rem;
   font-weight: bold;
 }
 
 #orderTotalBox{
-  border: yellow 5px solid;
   font-size: 30px;
   font-weight: bold;
   text-align: center;

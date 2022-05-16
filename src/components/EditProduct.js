@@ -26,7 +26,7 @@ const EditProduct = ({ token }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const editedProduct = await callApi({
+      await callApi({
         url: `/api/products/edit/${productId}`,
         method: "PATCH",
         token,
@@ -39,7 +39,6 @@ const EditProduct = ({ token }) => {
           price: Number(price),
         },
       });
-      console.log(editedProduct, "New Product in Add Product Component");
 
       history.push("/products");
     } catch (error) {

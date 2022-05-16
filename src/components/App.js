@@ -64,7 +64,6 @@ const App = () => {
     <div className="app-container">
       <BrowserRouter>
         <NavBar
-          token={token}
           id={id}
           isAdmin={isAdmin}
           setToken={setToken}
@@ -92,7 +91,6 @@ const App = () => {
           </Route>
           <Route exact path="/products/:productId">
             <SingleProduct
-              id={id}
               token={token}
               cart={cart}
               setCart={setCart}
