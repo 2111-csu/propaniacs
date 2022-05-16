@@ -69,17 +69,43 @@ export default function PaymentForm({ token, orderId, setCart }) {
     }
   };
 
+  const handleCancelOrder = async (event, orderId) => {
+    event.preventDefault();
+    try {
+      const cancelOrder = await callApi({
+        url: `/api/payment/${orderId}`,
+        method: "DELETE",
+        token,
+        data: {
+          status: "cancelled",
+        },
+      });
+      setCart([]);
+      console.log(cancelOrder, "clicked = Cancel Order");
+    } catch (error) {
+      throw error;
+    }
+  };
+
   return (
     <>
       {!success ? (
-        <form onSubmit={handleSubmit}>
-          <fieldset className="FormGroup">
-            <div className="FormRow">
-              <CardElement options={CARD_OPTIONS} />
-            </div>
-          </fieldset>
-          <button>Pay</button>
-        </form>
+        <>
+          <form onSubmit={handleSubmit}>
+            <fieldset className="FormGroup">
+              <div className="FormRow">
+                <CardElement options={CARD_OPTIONS} />
+              </div>
+            </fieldset>
+            <button>Pay</button>
+          </form>
+          <button
+            id="CancelOrder"
+            onClick={(event) => handleCancelOrder(event, orderId)}
+          >
+            Cancel Order
+          </button>
+        </>
       ) : (
         <div>
           <h2> Thank you for choosing Strick-Land Propane!</h2>

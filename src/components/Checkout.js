@@ -50,23 +50,23 @@ const Checkout = ({ token }) => {
   //   },
   // });
 
-  const handleCancelOrder = async (event, orderId) => {
-    event.preventDefault();
-    try {
-      const cancelOrder = await callApi({
-        url: `/api/payment/${orderId}`,
-        method: "DELETE",
-        token,
-        data: {
-          status: "cancelled",
-        },
-      });
-      setCart([]);
-      console.log(cancelOrder, "clicked = Cancel Order");
-    } catch (error) {
-      throw error;
-    }
-  };
+  // const handleCancelOrder = async (event, orderId) => {
+  //   event.preventDefault();
+  //   try {
+  //     const cancelOrder = await callApi({
+  //       url: `/api/payment/${orderId}`,
+  //       method: "DELETE",
+  //       token,
+  //       data: {
+  //         status: "cancelled",
+  //       },
+  //     });
+  //     setCart([]);
+  //     console.log(cancelOrder, "clicked = Cancel Order");
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // };
 
   return (
     <>
@@ -149,12 +149,6 @@ const Checkout = ({ token }) => {
             <Elements stripe={stripeTestPromise}>
               <PaymentForm orderId={orderId} token={token} setCart={setCart} />
             </Elements>
-            <button
-              id="CancelOrder"
-              onClick={(event) => handleCancelOrder(event, orderId)}
-            >
-              Cancel Order
-            </button>
           </div>
         </div>
       </div>

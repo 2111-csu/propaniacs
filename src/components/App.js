@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 // getAPIHealth is defined in our axios-services directory index.js
 // you can think of that directory as a collection of api adapters
 // where each adapter fetches specific info from our express server's /api route
-import { getAPIHealth } from "../axios-services";
+// import { getAPIHealth } from "../axios-services";
 import "./style_assets/style.css";
 import "./style_assets/snackbar.css";
 
@@ -24,13 +24,13 @@ import {
   AllOrders,
   AddProduct,
   EditProduct,
-  ProdOrders
+  ProdOrders,
 } from "./index";
 
 const App = () => {
-  const [APIHealth, setAPIHealth] = useState("");
+  // const [APIHealth, setAPIHealth] = useState("");
   const storedId = localStorage.getItem("id");
-  const storedIsAdmin = localStorage.getItem("isAdmin")
+  const storedIsAdmin = localStorage.getItem("isAdmin");
   const storedToken = localStorage.getItem("token");
   const storedLoggedIn = localStorage.getItem("loggedIn");
 
@@ -43,21 +43,21 @@ const App = () => {
   useEffect(() => {
     if (storedToken) {
       setId(storedId);
-      setisAdmin(storedIsAdmin)
+      setisAdmin(storedIsAdmin);
       setToken(storedToken);
       setLoggedIn(storedLoggedIn);
     }
     // follow this pattern inside your useEffect calls:
     // first, create an async function that will wrap your axios service adapter
     // invoke the adapter, await the response, and set the data
-    const getAPIStatus = async () => {
-      const { healthy } = await getAPIHealth();
-      setAPIHealth(healthy ? "api is up! :D" : "api is down :/");
-    };
+    // const getAPIStatus = async () => {
+    //   const { healthy } = await getAPIHealth();
+    //   setAPIHealth(healthy ? "api is up! :D" : "api is down :/");
+    // };
 
     // second, after you've defined your getter above
     // invoke it immediately after its declaration, inside the useEffect callback
-    getAPIStatus();
+    // getAPIStatus();
   }, [storedToken, storedIsAdmin, storedId, storedLoggedIn]);
 
   return (
@@ -66,7 +66,7 @@ const App = () => {
         <NavBar
           token={token}
           id={id}
-          isAdmin = {isAdmin}
+          isAdmin={isAdmin}
           setToken={setToken}
           setLoggedIn={setLoggedIn}
           loggedIn={loggedIn}
@@ -76,13 +76,19 @@ const App = () => {
         </Route>
         <Switch>
           <Route exact path="/products">
-            <AllProducts token={token} loggedIn = {loggedIn} isAdmin = {isAdmin} cart={cart} setCart={setCart} />
+            <AllProducts
+              token={token}
+              loggedIn={loggedIn}
+              isAdmin={isAdmin}
+              cart={cart}
+              setCart={setCart}
+            />
           </Route>
           <Route path="/products/add">
-            <AddProduct token = {token} />
+            <AddProduct token={token} />
           </Route>
           <Route path="/products/edit/:productId">
-            <EditProduct token = {token}/>
+            <EditProduct token={token} />
           </Route>
           <Route exact path="/products/:productId">
             <SingleProduct
@@ -103,7 +109,7 @@ const App = () => {
           <Profile token={token} />
         </Route>
         <Route exact path="/products/:productId/orders">
-          <ProdOrders token = {token} />
+          <ProdOrders token={token} />
         </Route>
         <Route exact path="/orders">
           <AllOrders token={token} />
@@ -118,18 +124,15 @@ const App = () => {
           <Checkout token={token} />
         </Route>
         <Route exact path="/account/users">
-          <AllUsers token = {token} />
+          <AllUsers token={token} />
         </Route>
         <Route path="/account/users/add">
-          <AddUser token = {token} isAdmin = {isAdmin}/>
+          <AddUser token={token} isAdmin={isAdmin} />
         </Route>
         <Route exact path="/account/users/:userId">
-          <SingleUser token = {token} isAdmin = {isAdmin}/>
+          <SingleUser token={token} isAdmin={isAdmin} />
         </Route>
       </BrowserRouter>
-
-      <h1>Hello, World!</h1>
-      <p>API Status: {APIHealth}</p>
     </div>
   );
 };
