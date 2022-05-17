@@ -85,7 +85,7 @@ const Cart = ({ token }) => {
             <p> Price (each) </p>
           </div>
           {cart.map((cartItem) => {
-            cartTotal = cartTotal + cartItem.price * cartItem.quantity;
+            cartTotal = (cartTotal + cartItem.price * cartItem.quantity);
             return (
               <div key={cartItem.id}>
                 {cartItem.products.map((itemInCart) => {
@@ -143,7 +143,7 @@ const Cart = ({ token }) => {
           })}
         </div>
         <div class="totalContainer">
-          <p id="total">Total Price: ${cartTotal}</p>
+          <p id="total">Total Price: ${cartTotal.toFixed(2)}</p>
           <Link to={`/payment/${orderId}`}>
             <button className="checkoutButton">CheckOut</button>
           </Link>

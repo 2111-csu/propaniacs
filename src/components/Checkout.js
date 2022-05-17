@@ -67,7 +67,7 @@ const Checkout = ({ token }) => {
             );
           })}
           <div id="checkoutPrice">
-            <p id="total">Total Price: ${cartTotal}</p>
+            <p id="total">Total Price: ${cartTotal.toFixed(2)}</p>
           </div>
         </div>
         <div class="boxPayShip">
