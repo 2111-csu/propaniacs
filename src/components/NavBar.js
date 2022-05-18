@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const NavBar = ({ id, isAdmin, setToken, setLoggedIn, loggedIn }) => {
-
   return (
     <>
       <div id="title">
@@ -13,14 +12,13 @@ const NavBar = ({ id, isAdmin, setToken, setLoggedIn, loggedIn }) => {
           </Link>
           <Link to="/products" className="links">
             {" "}
-            Products | 
+            Products |
           </Link>
-          {loggedIn && isAdmin === "true"
-          ? <Link to="/account/users" className="links">
-            USERS |
-          </Link>
-          : null
-          }
+          {loggedIn && isAdmin === "true" ? (
+            <Link to="/account/users" className="links">
+              Users |
+            </Link>
+          ) : null}
           {loggedIn ? (
             <>
               <Link to={`/account/me/${id}`} className="links">
@@ -33,7 +31,7 @@ const NavBar = ({ id, isAdmin, setToken, setLoggedIn, loggedIn }) => {
                 onClick={() => {
                   localStorage.clear();
                   setToken("");
-                  setLoggedIn(false)
+                  setLoggedIn(false);
                 }}
               >
                 {" "}
@@ -48,14 +46,13 @@ const NavBar = ({ id, isAdmin, setToken, setLoggedIn, loggedIn }) => {
           )}
           <Link to="/cart" className="links">
             {" "}
-            Cart | 
+            Cart |
           </Link>
-          {loggedIn && isAdmin === "true"
-          ? <Link to="/orders" className="links">
-            ORDERS |
-          </Link>
-          : null
-          }
+          {loggedIn && isAdmin === "true" ? (
+            <Link to="/orders" className="links">
+              Orders |
+            </Link>
+          ) : null}
         </nav>
       </div>
     </>

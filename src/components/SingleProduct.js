@@ -6,7 +6,7 @@ import SnackBar from "./SnackBar";
 
 const SingleProduct = ({ token, cart, setCart }) => {
   const [product, setProduct] = useState([]);
-  const [quantity, setQuantity] = useState(0)
+  const [quantity, setQuantity] = useState(0);
   const { productId } = useParams();
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const SingleProduct = ({ token, cart, setCart }) => {
           quantity: Number(quantity),
         },
       });
-      SnackBar()
+      SnackBar();
       setCart(addedToCart, ...cart);
       return cart;
     } catch (error) {
@@ -50,24 +50,32 @@ const SingleProduct = ({ token, cart, setCart }) => {
     <div>
       <h1 className="subjects">Single Product</h1>
       <div id="snackbar">"Added to cart, thank you kindly!"</div>
-        <div className="singleContainer">
-          <div className="card__text">
-            <div key={product.id}>
-              <div id="singleTextContainer">
-              <p className="single__subtitle">Product Name: {product.name}</p>
-              <p className="single__subtitle">Product Description: {product.description}</p>
-              <p className="single__subtitle">Product Price: ${product.price}</p>
-              <p className="single__subtitle">Product Category: {product.category}</p>
-              {product.inStock === true
-                  ?<>
+      <div className="singleContainer">
+        <div className="card__text">
+          <div key={product.id}>
+            <div id="singleTextContainer">
+              <p className="single__subtitle">
+                <b>Product Name</b>: {product.name}
+              </p>
+              <p className="single__subtitle">
+                <b>Product Description:</b> {product.description}
+              </p>
+              <p className="single__subtitle">
+                <b>Product Price:</b> ${product.price}
+              </p>
+              <p className="single__subtitle">
+                <b>Product Category:</b> {product.category}
+              </p>
+              {product.inStock === true ? (
+                <>
                   <input
-                    type ="number"
-                    id = "prodQuantity"
-                    placeholder="Quantity" 
-                    min = "0" 
-                    onChange = {(event) => setQuantity(event.target.value)}
-                   />
-                   <button
+                    type="number"
+                    id="prodQuantity"
+                    placeholder="Quantity"
+                    min="0"
+                    onChange={(event) => setQuantity(event.target.value)}
+                  />
+                  <button
                     type="submit"
                     onClick={(event) =>
                       handleAdd(
@@ -78,16 +86,23 @@ const SingleProduct = ({ token, cart, setCart }) => {
                         cart
                       )
                     }
-                  >Add To Cart
+                  >
+                    Add To Cart
                   </button>
-                  </>
-                  :<h2>OUT OF STOCK</h2>
-                }
+                </>
+              ) : (
+                <h2>OUT OF STOCK</h2>
+              )}
             </div>
             <br></br>
           </div>
         </div>
-        <img id="singleimg" className ="products" src={product.imageURL} alt=""/>
+        <img
+          id="singleimg"
+          className="products"
+          src={product.imageURL}
+          alt=""
+        />
       </div>
     </div>
   );

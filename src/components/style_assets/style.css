@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap");
 
-*{
+* {
   box-sizing: border-box;
 }
 
 html {
-  background-color:aqua;
+  background-color: aqua;
 }
 
 h1 {
@@ -14,38 +14,38 @@ h1 {
   margin: 0;
 }
 
-.subjects{
-    margin-top: 2rem;
+.subjects {
+  margin-top: 2rem;
 }
 
-.companyLogo{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 35%;
+.companyLogo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 35%;
 }
 
-.links{
+.links {
   color: yellow;
   font-size: 20px;
 }
 
-.products{
+.products {
   display: block;
   width: 250px;
   height: 225px;
   padding: 1rem;
-  margin-bottom: -.5rem;
+  margin-bottom: -0.5rem;
   margin-left: auto;
   margin-right: auto;
 }
 
 #title {
-  background-color:darkblue;
+  background-color: darkblue;
   text-align: center;
   font-weight: bold;
   padding: 2%;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
 }
 
 #title h1 {
@@ -54,49 +54,49 @@ h1 {
 }
 
 #title h5 {
-  font-size: 2rem ;
+  font-size: 2rem;
   color: yellow;
 }
 
-input{
+input {
   padding: 5px;
   border: solid black 2px;
   font-weight: bold;
   font-size: 1rem;
-  margin: .5rem;
+  margin: 0.5rem;
 }
 
 .welcomeContainer {
-    background-color:white;
-    color:black;
-    text-align: center;
-    border: black solid 2px;
-    border-radius: 2rem;
-    box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
-    padding: 1rem;
-    width: 25rem;
-    font-family: 'Oswald', sans-serif;
-    font-size: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 3rem;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border: black solid 2px;
+  border-radius: 2rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  padding: 1rem;
+  width: 25rem;
+  font-family: "Oswald", sans-serif;
+  font-size: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3rem;
 }
 
-#searchContainer{
-  margin-left: .25rem;
+#searchContainer {
+  margin-left: 0.25rem;
 }
 
 #search {
   padding: 8px;
   margin-top: 10px;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   font-size: 16px;
   border: 1px solid black;
   width: 21rem;
 }
 
-#Container-Search-Category{
-  margin-top: .25rem;
+#Container-Search-Category {
+  margin-top: 0.25rem;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -104,12 +104,12 @@ input{
   justify-content: space-between;
 }
 
-#categoryContainer{
-  margin-top: .5rem;
-  margin-right: .25rem;
+#categoryContainer {
+  margin-top: 0.5rem;
+  margin-right: 0.25rem;
 }
 
-.cards{
+.cards {
   display: flex;
   flex-wrap: wrap;
   margin-left: auto;
@@ -117,13 +117,13 @@ input{
   width: 95%;
 }
 
-#cardAdminButtonsContainer{
+#cardAdminButtonsContainer {
   display: flex;
 }
 
 .card {
   justify-content: center;
-  background-color:white;
+  background-color: white;
   border: black solid 2px;
   border-radius: 0.25rem;
   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
@@ -158,20 +158,20 @@ input{
 }
 
 button {
-    background-color: darkblue;
-    color: white;
-    font-weight: bold;
-    border: 1px solid #cccccc;
-    border-radius: .75rem;
-    padding: 0.5rem;
-    margin: .5rem
+  background-color: darkblue;
+  color: white;
+  font-weight: bold;
+  border: 1px solid #cccccc;
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
 }
 
-.cartEditContainer{
+.cartEditContainer {
   display: flex;
 }
 
-#edit{
+#edit {
   background-color: lightgray;
   border: 1px solid black;
   color: black;
@@ -181,28 +181,28 @@ button {
   margin-left: auto;
 }
 
-#remove{
-  background-color: red;
+#remove {
+  background-color: rgb(225, 47, 47);
   color: white;
   border: 1px solid black;
   width: 7rem;
 }
 
-#CancelOrder{
+#CancelOrder {
   background-color: red;
   color: white;
   border: 1px solid black;
   width: 8rem;
 }
 
-#CompleteOrder{
+#CompleteOrder {
   background-color: green;
   color: white;
   border: 1px solid black;
   width: 8rem;
 }
 
-.checkoutButton{
+.checkoutButton {
   background-color: green;
   color: white;
   border: 1px solid black;
@@ -211,7 +211,7 @@ button {
   width: 75%;
 }
 
-.continueButton{
+.continueButton {
   background-color: darkblue;
   color: white;
   border: 1px solid black;
@@ -230,7 +230,7 @@ button {
 }
 
 .singleContainer {
-  background-color:white;
+  background-color: white;
   border: black solid 2px;
   border-radius: 0.25rem;
   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
@@ -242,12 +242,12 @@ button {
   margin-right: auto;
 }
 
-#singleTextContainer{
+#singleTextContainer {
   display: block;
   width: 100%;
 }
 
-#singleimg{
+#singleimg {
   display: block;
   width: 350px;
   height: 350px;
@@ -259,20 +259,20 @@ button {
   font-weight: 200;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: black
+  color: black;
 }
 
-#quantity{
+#quantity {
   width: 4rem;
   font-size: medium;
 }
 
-#prodQuantity{
+#prodQuantity {
   width: 10rem;
   font-size: medium;
 }
 
-.cartPageContainer{
+.cartPageContainer {
   display: flex;
   width: 95%;
   margin-top: 2rem;
@@ -281,16 +281,16 @@ button {
   margin-bottom: 1rem;
 }
 
-.totalContainer{
+.totalContainer {
   border: solid black 2px;
   background-color: white;
   margin-right: auto;
   margin-left: auto;
-  height:12rem;
+  height: 12rem;
   text-align: center;
 }
 
-.cartContainer{
+.cartContainer {
   border: solid black 2px;
   background-color: white;
   margin-left: 1.5rem;
@@ -298,35 +298,36 @@ button {
   width: 75%;
 }
 
-.cartTitles{
+.cartTitles {
   justify-content: flex-end;
-  display:flex;
+  display: flex;
   font-size: 25px;
   width: 95%;
   margin-left: auto;
   margin-right: auto;
-  gap: 25vh
+  gap: 25vh;
 }
 
-.innerCartContainer{
+.innerCartContainer {
   display: flex;
   margin-right: 2rem;
-  margin-left: .5rem;
-  margin-bottom: .75rem;
+  margin-left: 0.5rem;
+  margin-bottom: 0.75rem;
+  border-bottom: solid black 0.5px;
 }
 
-.cartImg{
+.cartImg {
   width: 100px;
   height: 100px;
   margin-left: 3rem;
 }
 
-.cartTextOnly{
+.cartTextOnly {
   display: flex;
   width: 84%;
 }
 
-#singleCartText{
+#singleCartText {
   width: 35%;
   display: block;
   justify-content: flex-end;
@@ -334,12 +335,12 @@ button {
   text-align: end;
 }
 
-#total{
+#total {
   font-size: 3vh;
   font-weight: bold;
 }
 
-#CheckoutContainer{
+#CheckoutContainer {
   display: flex;
   border: 5px black solid;
   width: 75%;
@@ -349,99 +350,99 @@ button {
   margin-bottom: 1rem;
 }
 
-#checkoutInfo{
+#checkoutInfo {
   font-size: large;
   font-weight: bold;
   text-align: center;
   margin-bottom: 1rem;
-  text-decoration:underline;
+  text-decoration: underline;
 }
 
-#shipSubmit{
+#shipSubmit {
   text-align: center;
 }
 
-.CheckoutUserInfo{
+.CheckoutUserInfo {
   max-width: max-content;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1rem;
 }
 
-.paymentBox{
+.paymentBox {
   padding: 4%;
   min-width: 30%;
   text-align: center;
 }
 
-#checkoutCartBox{
+#checkoutCartBox {
   padding-top: 1rem;
   padding-left: 1rem;
   width: 60%;
   background-color: white;
 }
 
-#singleCheckoutText{
+#singleCheckoutText {
   width: 35%;
   display: block;
   font-size: 25px;
-  text-align:center;
+  text-align: center;
 }
 
-.innerCheckoutCartContainer{
+.innerCheckoutCartContainer {
   display: flex;
 }
 
-.checkoutProdTextOnly{
+.checkoutProdTextOnly {
   display: flex;
   width: 75%;
 }
 
-.checkoutProdImg{
+.checkoutProdImg {
   width: 100px;
   height: 100px;
   margin-left: 1rem;
   margin-right: 1rem;
 }
 
-#checkoutPrice{
+#checkoutPrice {
   text-align: center;
 }
 
-.boxPayShip{
+.boxPayShip {
   border-left: 5px solid black;
   background-color: #e9e9e9;
   margin-left: auto;
   min-width: 40%;
 }
 
-#orderbox{
-  margin-left: 1rem ;
+#orderbox {
+  margin-left: 1rem;
 }
 
-#orderImgInfoBox{
+#orderImgInfoBox {
   display: flex;
   height: 10rem;
 }
 
-#orderImgBox{
+#orderImgBox {
   margin-top: auto;
   margin-bottom: auto;
 }
 
-#orderInfoBox{
+#orderInfoBox {
   font-size: 20px;
   margin-left: 1rem;
   font-weight: bold;
 }
 
-#orderTotalBox{
+#orderTotalBox {
   font-size: 30px;
   font-weight: bold;
   text-align: center;
 }
 
-#ProductImg-Profile{
+#ProductImg-Profile {
   width: 100px;
   height: 100px;
   margin-top: auto;
@@ -450,47 +451,51 @@ button {
   margin-right: auto;
 }
 
-#infoColumn{
+#infoColumn {
   display: block;
-  background: rgb(232,245,77);
-  background: radial-gradient(circle, rgba(232,245,77,1) 75%, rgba(6,19,250,1) 100%);
-  font-family: 'Oswald', sans-serif;
+  background: rgb(232, 245, 77);
+  background: radial-gradient(
+    circle,
+    rgba(232, 245, 77, 1) 75%,
+    rgba(6, 19, 250, 1) 100%
+  );
+  font-family: "Oswald", sans-serif;
   text-align: center;
   padding: 2rem;
 }
 
-#orderRow{
+#orderRow {
   display: block;
   background-color: white;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   padding: 1rem;
   width: 100%;
 }
 
-.adminButton{
+.adminButton {
   background-color: yellow;
   border: 2px black solid;
   color: black;
   font-weight: bold;
-  border-radius: .75rem;
+  border-radius: 0.75rem;
   padding: 0.5rem;
-  margin: .5rem
+  margin: 0.5rem;
 }
 
-#adminAddProd{
+#adminAddProd {
   display: block;
-  margin-top: .4rem;
-  margin-right: .25rem;
+  margin-top: 0.4rem;
+  margin-right: 0.25rem;
 }
 
-#ComingSoonImg{
+#ComingSoonImg {
   border: 2px solid black;
   padding: 0;
   margin-right: 1rem;
 }
 
-.newSingleContainer{
-  background-color:white;
+.newSingleContainer {
+  background-color: white;
   border: black solid 2px;
   border-radius: 0.25rem;
   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
@@ -501,7 +506,7 @@ button {
   margin-right: auto;
 }
 
-#newSingleTextContainer{
+#newSingleTextContainer {
   font-size: large;
   font-weight: bold;
   text-align: center;
@@ -512,32 +517,32 @@ button {
   width: 95%;
 }
 
-#newTextImgContainer{
+#newTextImgContainer {
   display: flex;
   margin-top: 1rem;
 }
 
-.newInput{
+.newInput {
   width: 77%;
-  text-transform:uppercase;
+  text-transform: uppercase;
 }
 
-#center{
+#center {
   margin-left: auto;
   margin-right: auto;
-  margin-top: .5rem;
-  width: 15%
+  margin-top: 0.5rem;
+  width: 15%;
 }
 
-#editContainer{
+#editContainer {
   display: flex;
   width: 95%;
   margin-left: auto;
   margin-right: auto;
 }
 
-.OldContainer{
-  background-color:white;
+.OldContainer {
+  background-color: white;
   border: black solid 2px;
   border-radius: 0.25rem;
   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
@@ -547,8 +552,8 @@ button {
   width: 45%;
 }
 
-.NewContainer{
-  background-color:white;
+.NewContainer {
+  background-color: white;
   border: black solid 2px;
   border-radius: 0.25rem;
   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
@@ -558,12 +563,12 @@ button {
   width: 45%;
 }
 
-.editInput{
+.editInput {
   width: 95%;
-  text-transform:uppercase;
+  text-transform: uppercase;
 }
 
-.userCards{
+.userCards {
   display: flex;
   flex-wrap: wrap;
   margin-left: auto;
@@ -573,7 +578,7 @@ button {
 
 .userCard {
   justify-content: center;
-  background-color:white;
+  background-color: white;
   border: black solid 2px;
   border-radius: 0.25rem;
   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
@@ -585,12 +590,12 @@ button {
   height: 20rem;
 }
 
-#adminButtonStatus{
+#adminButtonStatus {
   display: flex;
   justify-content: space-between;
 }
 
-#productOrderContainer{
+#productOrderContainer {
   display: flex;
   width: 95%;
   margin-left: auto;
@@ -598,7 +603,7 @@ button {
   margin-top: 1rem;
 }
 
-#orderContainer{
+#orderContainer {
   border: solid 2px black;
   background-color: white;
   margin-left: auto;
@@ -606,7 +611,7 @@ button {
   padding: 1rem;
 }
 
-#productContainer{
+#productContainer {
   border: solid 2px black;
   display: flex;
   padding: 1rem;
@@ -617,7 +622,7 @@ button {
   background-color: white;
 }
 
-#productContainerText{
+#productContainerText {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
@@ -626,7 +631,7 @@ button {
   width: 25%;
 }
 
-#AllProductOrderContainer{
+#AllProductOrderContainer {
   display: block;
   width: 23%;
   margin-left: auto;
@@ -634,7 +639,7 @@ button {
   margin-top: 1rem;
 }
 
-#singleOrderContainer{
+#singleOrderContainer {
   border: solid 2px black;
   width: 90%;
   margin-left: auto;
@@ -643,7 +648,7 @@ button {
   background-color: white;
 }
 
-#singleOrderTitle{
+#singleOrderTitle {
   text-align: center;
   border-bottom: solid 2px black;
   width: 95%;
@@ -651,7 +656,7 @@ button {
   margin-right: auto;
 }
 
-#singleOrderSingleProdContainer{
+#singleOrderSingleProdContainer {
   border: solid 2px black;
   width: 25%;
   margin-left: auto;
@@ -659,24 +664,24 @@ button {
   text-align: center;
 }
 
-#singleOrderProdContainer{
+#singleOrderProdContainer {
   margin-top: 2rem;
   display: flex;
 }
 
-#singleOrderChangeContainer{
+#singleOrderChangeContainer {
   display: flex;
   text-align: center;
-  justify-content:center;
+  justify-content: center;
   padding: 1rem;
 }
 
-#editInput{
+#editInput {
   width: 35%;
-  text-transform:lowercase;
+  text-transform: lowercase;
 }
 
-#changeStatus{
+#changeStatus {
   margin-top: auto;
   margin-bottom: auto;
   margin-left: 1rem;
