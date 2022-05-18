@@ -28,6 +28,11 @@ h1 {
 .links {
   color: yellow;
   font-size: 20px;
+  text-decoration: none;
+}
+
+.links:hover {
+  text-decoration: underline;
 }
 
 .products {
@@ -685,4 +690,8 @@ button {
   margin-top: auto;
   margin-bottom: auto;
   margin-left: 1rem;
+}
+
+#navbar {
+  text-decoration: none;
 }

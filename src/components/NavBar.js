@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const NavBar = ({ id, isAdmin, setToken, setLoggedIn, loggedIn }) => {
   return (
-    <>
+    <div id="navbar">
       <div id="title">
         <h1>Strick-Land Propane</h1>
         <nav>
@@ -50,12 +50,12 @@ const NavBar = ({ id, isAdmin, setToken, setLoggedIn, loggedIn }) => {
           </Link>
           {loggedIn && isAdmin === "true" ? (
             <Link to="/orders" className="links">
-              Orders |
+              Orders
             </Link>
           ) : null}
         </nav>
       </div>
-    </>
+    </div>
   );
 };
 
