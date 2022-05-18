@@ -26,7 +26,7 @@ const Cart = ({ token }) => {
     event.preventDefault();
 
     try {
-       await callApi({
+      await callApi({
         url: `/api/order_products/${orderProductId}`,
         method: "DELETE",
         cart,
@@ -85,7 +85,7 @@ const Cart = ({ token }) => {
             <p> Price (each) </p>
           </div>
           {cart.map((cartItem) => {
-            cartTotal = (cartTotal + cartItem.price * cartItem.quantity);
+            cartTotal = cartTotal + cartItem.price * cartItem.quantity;
             return (
               <div key={cartItem.id}>
                 {cartItem.products.map((itemInCart) => {
@@ -93,16 +93,6 @@ const Cart = ({ token }) => {
                     <div key={itemInCart.id}>
                       <div className="innerCartContainer">
                         <div>
-                          <form
-                            onSubmit={(event) => {
-                              event.preventDefault();
-                              handleRemove(event, itemInCart.id);
-                            }}
-                          >
-                            <button id="remove" type="submit">
-                              Remove Item
-                            </button>
-                          </form>
                           <div className="cartEditContainer">
                             <input
                               type="number"
@@ -123,6 +113,16 @@ const Cart = ({ token }) => {
                               Change Qty
                             </button>
                           </div>
+                          <form
+                            onSubmit={(event) => {
+                              event.preventDefault();
+                              handleRemove(event, itemInCart.id);
+                            }}
+                          >
+                            <button id="remove" type="submit">
+                              Remove Item
+                            </button>
+                          </form>
                         </div>
                         <img
                           className="cartImg"

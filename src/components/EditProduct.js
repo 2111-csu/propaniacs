@@ -81,7 +81,7 @@ const EditProduct = ({ token }) => {
         </div>
         <div className="NewContainer">
           <div className="card__text">
-            <h1>NEW ENTRY</h1>
+            <h1>EDIT PRODUCT INFORMATION</h1>
             {/* <div key={product.id}> */}
             <form class="input" onSubmit={handleSubmit}>
               <div id="singleTextContainer">
