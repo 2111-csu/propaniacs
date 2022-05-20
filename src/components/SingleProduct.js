@@ -48,14 +48,13 @@ const SingleProduct = ({ token, cart, setCart }) => {
 
   return (
     <div>
-      <h1 className="subjects">Single Product</h1>
       <div id="snackbar">"Added to cart, thank you kindly!"</div>
       <div className="singleContainer">
         <div className="card__text">
           <div key={product.id}>
             <div id="singleTextContainer">
               <p className="single__subtitle">
-                <b>Product Name</b>: {product.name}
+                <h2>Product Name: {product.name}</h2>
               </p>
               <p className="single__subtitle">
                 <b>Product Description:</b> {product.description}

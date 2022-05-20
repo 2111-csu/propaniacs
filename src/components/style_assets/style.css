@@ -141,6 +141,10 @@ input {
   height: 32rem;
 }
 
+.card:hover{
+  transform: scale(1.05);
+}
+
 .card__title {
   font-size: 1.6rem;
   letter-spacing: 1.25px;
