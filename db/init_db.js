@@ -342,6 +342,38 @@ async function populateInitialData() {
         password: "Manitoba1",
         isAdmin: false,
       },
+      {
+        firstName: "Rusty",
+        lastName: "Shackleford",
+        email: "youdontneedtoknow@dalesdeadbug.com",
+        username: "SmokingBandit2",
+        password: "Manitoba1",
+        isAdmin: false,
+      },
+      {
+        firstName: "Rusty",
+        lastName: "Shackleford",
+        email: "youdontneedtoknow@dalesdeadbug.com",
+        username: "SmokingBandit3",
+        password: "Manitoba1",
+        isAdmin: false,
+      },
+      {
+        firstName: "Rusty",
+        lastName: "Shackleford",
+        email: "youdontneedtoknow@dalesdeadbug.com",
+        username: "SmokingBandit4",
+        password: "Manitoba1",
+        isAdmin: false,
+      },
+      {
+        firstName: "Rusty",
+        lastName: "Shackleford",
+        email: "youdontneedtoknow@dalesdeadbug.com",
+        username: "SmokingBandit5",
+        password: "Manitoba1",
+        isAdmin: false,
+      },
     ];
     const users = await Promise.all(usersToCreate.map(Users.createUser));
     console.log("Users created:");
