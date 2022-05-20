@@ -337,7 +337,7 @@ async function populateInitialData() {
       {
         firstName: "Rusty",
         lastName: "Shackleford",
-        email: "youdontneedtoknow@dalesdeadbug.com",
+        email: "youdontneedtoknow1@dalesdeadbug.com",
         username: "SmokingBandit",
         password: "Manitoba1",
         isAdmin: false,
@@ -345,7 +345,7 @@ async function populateInitialData() {
       {
         firstName: "Rusty",
         lastName: "Shackleford",
-        email: "youdontneedtoknow@dalesdeadbug.com",
+        email: "youdontneedtoknow2@dalesdeadbug.com",
         username: "SmokingBandit2",
         password: "Manitoba1",
         isAdmin: false,
@@ -353,7 +353,7 @@ async function populateInitialData() {
       {
         firstName: "Rusty",
         lastName: "Shackleford",
-        email: "youdontneedtoknow@dalesdeadbug.com",
+        email: "youdontneedtoknow3@dalesdeadbug.com",
         username: "SmokingBandit3",
         password: "Manitoba1",
         isAdmin: false,
@@ -361,7 +361,7 @@ async function populateInitialData() {
       {
         firstName: "Rusty",
         lastName: "Shackleford",
-        email: "youdontneedtoknow@dalesdeadbug.com",
+        email: "youdontneedtoknow4@dalesdeadbug.com",
         username: "SmokingBandit4",
         password: "Manitoba1",
         isAdmin: false,
@@ -369,7 +369,7 @@ async function populateInitialData() {
       {
         firstName: "Rusty",
         lastName: "Shackleford",
-        email: "youdontneedtoknow@dalesdeadbug.com",
+        email: "youdontneedtoknow5@dalesdeadbug.com",
         username: "SmokingBandit5",
         password: "Manitoba1",
         isAdmin: false,
